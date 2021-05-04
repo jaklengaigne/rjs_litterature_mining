@@ -111,6 +111,29 @@ clean_data = raw_data_str
 
 
 # Data exploration
-# Most common words in all the abstracts (top 20)
-top_twenty = Counter(" ".join(clean_data['Abstract']).split()).most_common(20)
-print(top_twenty)
+# Most common words in all the abstracts (top 100)
+top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)
+#print(top_hundred)
+# Occurence of all the clean words (approximate number by trial and error)
+clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(2900)
+#print(clean_words_occ)
+"""
+# Number of articles that write about micro AND/OR nano fibers
+# Number of article that treat about microfiber
+micro_art = []
+for article in clean_data['UT (Unique WOS ID)']:
+    micro_word = False
+    while False:
+        micro_word
+        for iword in clean_data['Abstract']:
+            if iword == 'microfib':
+                micro_word = True              
+    micro_art.append(article)
+"""
+
+
+
+# Write files
+# Writing a csv file for the occurence of all the clean words
+clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['word', 'count'])
+clean_words_occ_df.to_csv('CleanWordsOccurence.csv',sep=';')
