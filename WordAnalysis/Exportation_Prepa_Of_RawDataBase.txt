@@ -1,0 +1,5 @@
+1) On webofknowledge.com, do your research (ex : "rotary jet spinning"  OR "centrifugal spinning"  OR "cotton candy method")
+2) More → Excel → full records → Export
+3) Open the file .xls
+4) Replace ; by something else because ; will be used as delimiters (ex : ctrl+h → search ; → replace by - → replace all)
+5) Save as csv with ; as delimiters
