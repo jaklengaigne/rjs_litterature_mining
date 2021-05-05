@@ -142,9 +142,34 @@ del clean_data['Micro']
 del clean_data['Nano']
 del clean_data['Micro and nano']
 
+# Copy paste of section just above, I shoul write a function for this because that's bad
+# Number of articles that write about viscosity AND/OR solution
+# Defining the works to look for
+visco_word = ['viscos']
+sol_word = ['solut']
+# Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
+clean_data['Viscosity'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in visco_word]))
+clean_data['Solution'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in sol_word]))
+# Adding column to check if an article write about both, if so put True in the cell
+clean_data['Both'] = (clean_data['Viscosity'] == True) & (clean_data['Solution'] == True)
+#print(clean_data)
+# Counting the number of true for each new columns
+# one method
+visco_art = clean_data.value_counts('Viscosity').loc[True]
+# other method
+sol_art = clean_data['Solution'].sum()
+visco_sol_art = clean_data['Both'].sum()
+# Creating a dataframe with those information
+nb_art_visco_of_sol = {'Occurence': [visco_art, sol_art, visco_sol_art]}
+nb_art_visco_of_sol_df = pd.DataFrame(nb_art_visco_of_sol, index=['Viscosity', 'Solution', 'Both'])
+# Deleting all the new columns because this particular analyse is done
+del clean_data['Viscosity']
+del clean_data['Solution']
+del clean_data['Both']
+
 
 
 # Write files
 # Writing a csv file for the occurence of all the clean words
-clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['word', 'count'])
+clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
 clean_words_occ_df.to_csv('CleanWordsOccurence.csv',sep=';')
