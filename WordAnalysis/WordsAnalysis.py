@@ -24,7 +24,7 @@ raw_data = pd.read_csv("DataBase_20210503.csv", sep=";")
 
 # Return the data frame of raw_data
 raw_data.head
-print(raw_data.head)
+#print(raw_data.head)
 
 
 
@@ -53,7 +53,7 @@ del raw_data_noDup['dup']
 
 # Removing useless columns (All articles have written nothing in those fields)
 raw_data_useField = raw_data_noDup.dropna(axis=1, how='all')
-print(raw_data_useField)
+#print(raw_data_useField)
 
 
 
@@ -117,20 +117,30 @@ top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)
 # Occurence of all the clean words (approximate number by trial and error)
 clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(2900)
 #print(clean_words_occ)
-"""
-# Number of articles that write about micro AND/OR nano fibers
-# Number of article that treat about microfiber
-micro_art = []
-for article in clean_data['UT (Unique WOS ID)']:
-    micro_word = False
-    while False:
-        micro_word
-        for iword in clean_data['Abstract']:
-            if iword == 'microfib':
-                micro_word = True              
-    micro_art.append(article)
-"""
 
+# Number of articles that write about micro AND/OR nano fibers
+# Defining the works to look for
+microfib_word = 'microfib'
+nanofib_word = 'nanofib'
+# Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
+clean_data['Micro'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in microfib_word]))
+clean_data['Nano'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in nanofib_word]))
+# Adding column to check if an article write about both, if so put True in the cell
+clean_data['Micro and nano'] = (clean_data['Micro'] == True) & (clean_data['Nano'] == True)
+#print(clean_data)
+# Counting the number of true for each new columns
+# one method
+micro_art = clean_data.value_counts('Micro').loc[True]
+# other method
+nano_art = clean_data['Nano'].sum()
+micro_nano_art = clean_data['Micro and nano'].sum()
+# Creating a dataframe with those information
+nb_art_fiber_size = {'Occurence': [micro_art, nano_art, micro_nano_art]}
+nb_art_fiber_size_df = pd.DataFrame(nb_art_fiber_size, index=['Micro', 'Nano', 'Both'])
+# Deleting all the new columns because this particular analyse is done
+del clean_data['Micro']
+del clean_data['Nano']
+del clean_data['Micro and nano']
 
 
 # Write files
