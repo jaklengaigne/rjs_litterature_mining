@@ -120,8 +120,8 @@ clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(
 
 # Number of articles that write about micro AND/OR nano fibers
 # Defining the works to look for
-microfib_word = 'microfib'
-nanofib_word = 'nanofib'
+microfib_word = ['microfib']
+nanofib_word = ['nanofib']
 # Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
 clean_data['Micro'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in microfib_word]))
 clean_data['Nano'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in nanofib_word]))
@@ -141,6 +141,7 @@ nb_art_fiber_size_df = pd.DataFrame(nb_art_fiber_size, index=['Micro', 'Nano', '
 del clean_data['Micro']
 del clean_data['Nano']
 del clean_data['Micro and nano']
+
 
 
 # Write files
