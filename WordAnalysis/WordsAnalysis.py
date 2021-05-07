@@ -111,6 +111,18 @@ clean_data = raw_data_str
 
 
 
+# Citation's data - extension pack
+# Importing
+raw_cita_data = pd.read_csv("CitationsData_20210507.csv", sep=";")
+# Creating a DataFrame
+raw_cita_data.head
+# Removing all cloumns that only contain 0
+clean_cita_data = raw_cita_data.loc[:, (raw_cita_data != 0).any(axis=0)]
+# Adding this extension to the clean database
+clean_data.join(clean_cita_data)
+
+
+
 # Data exploration
 # Most common words in all the abstracts (top 100)
 top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)

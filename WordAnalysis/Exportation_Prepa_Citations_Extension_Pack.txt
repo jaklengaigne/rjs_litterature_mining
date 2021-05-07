@@ -1,0 +1,6 @@
+Preparation to add citation's data into the first database
+1) On the research page, Create Citation Report
+2) Sort by Date (as the first database, else it's going to have mismatches)
+3) Save to Excel File
+4) Conserving only columns "Total Citation" to "2021" [current year]. First cell, "Total Citation", in 1A
+5) Save as .csv with ";" as delimiters
