@@ -8,6 +8,7 @@ import pandas as pd
 import warnings
 import re
 from nltk.stem import WordNetLemmatizer, PorterStemmer, SnowballStemmer
+from nltk import word_tokenize, bigrams, trigrams
 from collections import Counter
 
 
@@ -166,6 +167,25 @@ nb_art_visco_of_sol_df = pd.DataFrame(nb_art_visco_of_sol, index=['Viscosity', '
 del clean_data['Viscosity']
 del clean_data['Solution']
 del clean_data['Both']
+
+# Most common bigrams and trigrams in not clean data
+# Puting all raw to string abstracts into a list
+all_abstracts_list = raw_data_str['Abstract'].tolist()
+# Defining variables
+all_abstracts_bigrams = []
+all_abstracts_trigrams = []
+# Creating list of bigrams and trigrams by abstracts, i.e. list[0]=allBigramOfAbs1
+for abstracts in all_abstracts_list:
+    abstracts = word_tokenize(abstracts)
+    all_abstracts_bigrams.append(list(bigrams(abstracts)))
+    all_abstracts_trigrams.append(list(trigrams(abstracts)))
+# Obtaining the most commons ones
+top3_bi_by_abstract = []
+# Converting the list to something hashable. Needed to use Counter.
+all_abst_bi_noTuple = [list(ele) for ele in all_abstracts_bigrams]
+for top_bi in all_abst_bi_noTuple:   
+    top_bi = Counter(" ".join(all_abst_bi_noTuple).split()).most_common(3)
+    top3_bi_by_abstract.append(top_bi)
 
 
 
