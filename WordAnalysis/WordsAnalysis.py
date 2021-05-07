@@ -204,6 +204,31 @@ for tri_by_abst in all_abstracts_trigrams:
 # Most common author's full name
 top_authors = Counter(" ".join(clean_data['Author Full Names']).split('-')).most_common(10)
 
+# Score
+# Sorting the articles with the help of an homemade intuition base criteria's equation
+# -1 : solut, tio, carbon, tissu, cell, drug, treatment, scaffold, less than 10 citations
+# +1 : microfib, most common authors, jet, model, nozzle, temperatur, morpholog, speed, viscos
+clean_data['Score'] = 0
+minus_word = ['solut', 'tio', 'carbon', 'tissu', 'cell', 'drug', 'treatment', 'scaffold']
+plus_word = ['microfib', 'jet', 'model', 'nozzle', 'temperatur', 'morpholog', 'speed', 'viscos']
+cita_lim = 10
+abst_words_by_art = []
+i = -1
+for abstracts in all_abstracts_list:
+    abst_words_by_art.append(abstracts.split())
+for abstracts in abst_words_by_art:
+    i += 1
+    for word in minus_word:
+        if word in abstracts:
+           clean_data.at[i, 'Score'] -= 1
+i = -1
+for abstracts in abst_words_by_art:
+    i += 1
+    for word in plus_word:
+        if word in abstracts:
+           clean_data.at[i, 'Score'] += 1
+
+
 
 # Write files
 # Writing a csv file for the occurence of all the clean words
