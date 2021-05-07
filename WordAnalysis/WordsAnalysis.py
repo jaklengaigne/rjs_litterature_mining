@@ -116,7 +116,7 @@ clean_data = raw_data_str
 raw_cita_data = pd.read_csv("CitationsData_20210507.csv", sep=";")
 # Creating a DataFrame
 raw_cita_data.head
-# Removing all cloumns that only contain 0
+# Removing all columns that only contain 0
 clean_cita_data = raw_cita_data.loc[:, (raw_cita_data != 0).any(axis=0)]
 # Adding this extension to the clean database
 clean_data = pd.concat([clean_data, clean_cita_data], axis=1)
@@ -201,6 +201,8 @@ for tri_by_abst in all_abstracts_trigrams:
     top3_tri_by_abst = Counter(tri_by_abst).most_common(3)
     top3_tri.append(top3_tri_by_abst)
 
+# Most common author's full name
+top_authors = Counter(" ".join(clean_data['Author Full Names']).split('-')).most_common(10)
 
 
 # Write files
