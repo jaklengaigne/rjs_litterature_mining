@@ -168,9 +168,9 @@ del clean_data['Viscosity']
 del clean_data['Solution']
 del clean_data['Both']
 
-# Most common bigrams and trigrams in not clean data
-# Puting all raw to string abstracts into a list
-all_abstracts_list = raw_data_str['Abstract'].tolist()
+# Most common bigrams and trigrams in clean data
+# Puting all abstracts into a list
+all_abstracts_list = clean_data['Abstract'].tolist()
 # Defining variables
 all_abstracts_bigrams = []
 all_abstracts_trigrams = []
@@ -179,13 +179,15 @@ for abstracts in all_abstracts_list:
     abstracts = word_tokenize(abstracts)
     all_abstracts_bigrams.append(list(bigrams(abstracts)))
     all_abstracts_trigrams.append(list(trigrams(abstracts)))
-# Obtaining the most commons ones
-top3_bi_by_abstract = []
-# Converting the list to something hashable. Needed to use Counter.
-all_abst_bi_noTuple = [list(ele) for ele in all_abstracts_bigrams]
-for top_bi in all_abst_bi_noTuple:   
-    top_bi = Counter(" ".join(all_abst_bi_noTuple).split()).most_common(3)
-    top3_bi_by_abstract.append(top_bi)
+# Obtaining the most commons ones by abstracts for all of them
+top3_bi = []
+for bi_by_abst in all_abstracts_bigrams:
+    top3_bi_by_abst = Counter(bi_by_abst).most_common(3)
+    top3_bi.append(top3_bi_by_abst)
+top3_tri = []
+for tri_by_abst in all_abstracts_trigrams:
+    top3_tri_by_abst = Counter(tri_by_abst).most_common(3)
+    top3_tri.append(top3_tri_by_abst)
 
 
 
