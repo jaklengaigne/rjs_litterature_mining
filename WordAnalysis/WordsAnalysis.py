@@ -119,7 +119,7 @@ raw_cita_data.head
 # Removing all cloumns that only contain 0
 clean_cita_data = raw_cita_data.loc[:, (raw_cita_data != 0).any(axis=0)]
 # Adding this extension to the clean database
-clean_data.join(clean_cita_data)
+clean_data = pd.concat([clean_data, clean_cita_data], axis=1)
 
 
 
