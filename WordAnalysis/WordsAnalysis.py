@@ -5,17 +5,11 @@ Chalaguine, L. A. (2020, August 3). Getting started with text analysis in Python
 
 # Librairies 
 import pandas as pd
-import warnings
 import re
-from nltk.stem import WordNetLemmatizer, PorterStemmer, SnowballStemmer
+from nltk.stem import PorterStemmer
 from nltk import word_tokenize, bigrams, trigrams
 from collections import Counter
 import os
-
-
-
-# Do not know why
-#warnings.filterwarnings('ignore')
 
 
 
@@ -26,7 +20,6 @@ raw_data = pd.read_csv("DataBase_20210503.csv", sep=";")
 
 # Return the data frame of raw_data
 raw_data.head
-#print(raw_data.head)
 
 
 
@@ -55,7 +48,6 @@ del raw_data_noDup['dup']
 
 # Removing useless columns (All articles have written nothing in those fields)
 raw_data_useField = raw_data_noDup.dropna(axis=1, how='all')
-#print(raw_data_useField)
 
 
 
@@ -127,10 +119,9 @@ clean_data = pd.concat([clean_data, clean_cita_data], axis=1)
 # Data exploration
 # Most common words in all the abstracts (top 100)
 top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)
-#print(top_hundred)
+
 # Occurence of all the clean words (approximate number by trial and error)
 clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(2900)
-#print(clean_words_occ)
 
 # Number of articles that write about micro AND/OR nano fibers
 # Defining the works to look for
@@ -141,7 +132,6 @@ clean_data['Micro'] = clean_data['Abstract'].apply(lambda x: any([k in x for k i
 clean_data['Nano'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in nanofib_word]))
 # Adding column to check if an article write about both, if so put True in the cell
 clean_data['Micro and nano'] = (clean_data['Micro'] == True) & (clean_data['Nano'] == True)
-#print(clean_data)
 # Counting the number of true for each new columns
 # one method
 micro_art = clean_data.value_counts('Micro').loc[True]
@@ -166,7 +156,6 @@ clean_data['Viscosity'] = clean_data['Abstract'].apply(lambda x: any([k in x for
 clean_data['Solution'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in sol_word]))
 # Adding column to check if an article write about both, if so put True in the cell
 clean_data['Both'] = (clean_data['Viscosity'] == True) & (clean_data['Solution'] == True)
-#print(clean_data)
 # Counting the number of true for each new columns
 # one method
 visco_art = clean_data.value_counts('Viscosity').loc[True]
@@ -274,4 +263,9 @@ os.makedirs('Results', exist_ok=True)
 clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
 clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
 
-# Writing a csv file for 
+# Writing a csv file with the article sorted by the score
+# Creating a refined dataframe
+art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
+art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
+# Writing the file
+art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
