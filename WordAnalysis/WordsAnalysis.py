@@ -10,6 +10,7 @@ import re
 from nltk.stem import WordNetLemmatizer, PorterStemmer, SnowballStemmer
 from nltk import word_tokenize, bigrams, trigrams
 from collections import Counter
+import os
 
 
 
@@ -266,6 +267,11 @@ for authors in authors_by_art:
 
 
 # Write files
+# If there is no folder for the result create one
+os.makedirs('Results', exist_ok=True)
+
 # Writing a csv file for the occurence of all the clean words
 clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
-clean_words_occ_df.to_csv('CleanWordsOccurence.csv',sep=';')
+clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
+
+# Writing a csv file for 
