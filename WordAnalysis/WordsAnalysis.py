@@ -60,13 +60,14 @@ raw_data_str = raw_data_useField.fillna("NaN")
 """
 SmartStoplist.txt
 by Lisa Andreevna
-Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021, from https://github.com/lisanka93/text_analysis_python_101
+Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021, 
+from https://github.com/lisanka93/text_analysis_python_101
 **** Note : nan is added to Lisa Andreevna's list ****
 """
 # Definition of constant and variable
 stop_words_file = 'SmartStoplist.txt'
 stop_words = []
-# Do not understand yet
+# Creating a list of stop words while reading the stop words's file
 with open(stop_words_file, "r") as f:
     for line in f:
         stop_words.extend(line.split())
@@ -124,7 +125,7 @@ top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)
 clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(2900)
 
 # Number of articles that write about micro AND/OR nano fibers
-# Defining the works to look for
+# Defining the words to look for
 microfib_word = ['microfib']
 nanofib_word = ['nanofib']
 # Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
