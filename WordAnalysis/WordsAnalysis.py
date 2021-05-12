@@ -253,7 +253,12 @@ for authors in authors_by_art:
     for name in top_authors_list:
         if name in authors:
            clean_data.at[i, 'Score'] += 1
-
+           
+# Plot
+# Creating histogram of number of articles in function of publication year
+nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts()
+nb_art_by_pub_year.sort_index().plot.bar()
+# Creating histogram of most common words in function of publication year?????? 100*24!!!!!!!!!!
 
 
 # Write files
