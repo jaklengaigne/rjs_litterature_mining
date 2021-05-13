@@ -300,6 +300,8 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
 plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning microfib by year', './Results/PlotMicrofibByYear.svg')
 # Creating histogram of number of articles mentioning scaffold in function of publication year
 plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning scaffolf by year', './Results/PlotScaffoldByYear.svg')
+# Creating histogram of number of articles mentioning viscos in function of publication year
+plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning viscos by year', './Results/PlotViscosByYear.svg')
 
 
 
