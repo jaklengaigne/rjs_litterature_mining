@@ -28,7 +28,7 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
         j = -1
         for year in nb_word_by_year['Publication Year']:     
             j += 1
-            if (df.at[i, 'Word'] == True) & (df.at[i, 'B'] == year):
+            if (df.at[i, 'Word'] == True) & (df.at[i, col_year] == year):
                 nb_word_by_year.at[j, 'Count'] += 1
     del df['Word']
     plt.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'])

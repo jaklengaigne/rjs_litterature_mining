@@ -293,7 +293,7 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
         j = -1
         for year in nb_word_by_year['Publication Year']:     
             j += 1
-            if (df.at[i, 'Word'] == True) & (df.at[i, 'B'] == year):
+            if (df.at[i, 'Word'] == True) & (df.at[i, col_year] == year):
                 nb_word_by_year.at[j, 'Count'] += 1
     # Remove the columns with the true or false indicating if the word is in it
     del df['Word']
@@ -304,6 +304,7 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
     # Return the dataframe
     return nb_word_by_year
 # Creating histogram of number of articles mentioning microfib in function of publication year
+plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning microfib by year', './Results/PlotMicrofibByYear.svg')
 
 
 
