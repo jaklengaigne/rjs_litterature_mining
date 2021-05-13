@@ -258,7 +258,23 @@ for authors in authors_by_art:
 # Creating histogram of number of articles in function of publication year
 nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts()
 nb_art_by_pub_year.sort_index().plot.bar()
-# Creating histogram of most common words in function of publication year?????? 100*24!!!!!!!!!!
+# Creating histogram of most common words in function of publication year?????? 100*25!!!!!!!!!!
+# Creating histogram of number of articles mentioning microfib in function of publication year
+clean_data['Micro'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in microfib_word]))
+pub_year = pd.DataFrame(nb_art_by_pub_year).index.sort_values().tolist()
+nb_micro_by_year = pd.DataFrame(pub_year, columns=['Publication Year'])
+nb_micro_by_year['Count'] = 0
+i = -1
+for article in clean_data['Publication Year']:
+    i += 1
+    j = -1
+    for year in nb_micro_by_year['Publication Year']:     
+        j += 1
+        if (clean_data.at[i, 'Micro'] == True) & (clean_data.at[i, 'Publication Year'] == year):
+            nb_micro_by_year.at[j, 'Count'] += 1
+#del clean_data['Micro']
+nb_micro_by_year.plot.bar('Publication Year', 'Count')
+
 
 
 # Write files
