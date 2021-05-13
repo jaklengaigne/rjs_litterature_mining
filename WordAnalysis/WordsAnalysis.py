@@ -13,6 +13,7 @@ import os
 
 
 
+
 # Read the database file
 raw_data = pd.read_csv("DataBase_20210503.csv", sep=";")
 
@@ -259,21 +260,50 @@ for authors in authors_by_art:
 nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts()
 nb_art_by_pub_year.sort_index().plot.bar()
 # Creating histogram of most common words in function of publication year?????? 100*25!!!!!!!!!!
+"""
+Defining a function that create an histogram of number of articles mentioning a 
+certain clean word by publication year.
+Note : this function replace NaN made into 'NaN' to 0.
+Input :     word        word that is want to count by year (List of one string element)
+            df          dataframe that contain the two columns
+            col_word    column's name of the dataframe where to search the word (String)
+            col_year    column's name of the dataframe where it is store the year of publication (String)
+            plot_title  Title of the plot (String)
+            path        Where to save the plot (String)
+Return :    nb_word_by_year     
+Save :      plot bar (x,y) → (Publication Year, number of article)
+"""
+def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
+    # Import
+    import matplotlib.pyplot as plt
+    # Adding a new columns in df and if word in it put True un cell, else False
+    df['Word'] = df[col_word].apply(lambda x: any([k in x for k in word]))
+    # Getting the publication year without duplicates as an index
+    nb_art_by_year = df[col_year].replace('NaN', 0).value_counts()
+    nb_art_by_year.sort_index()
+    # Creating a list from the index that have the years without duplicates
+    pub_year = pd.DataFrame(nb_art_by_year).index.sort_values().tolist()
+    # Creating a dataframe with two columns (year, count), count inisialize at 0
+    nb_word_by_year = pd.DataFrame(pub_year, columns=['Publication Year'])
+    nb_word_by_year['Count'] = 0
+    # Initializing the loop and counting nb of instance of the word by year
+    i = -1
+    for article in df[col_year]:
+        i += 1
+        j = -1
+        for year in nb_word_by_year['Publication Year']:     
+            j += 1
+            if (df.at[i, 'Word'] == True) & (df.at[i, 'B'] == year):
+                nb_word_by_year.at[j, 'Count'] += 1
+    # Remove the columns with the true or false indicating if the word is in it
+    del df['Word']
+    # Plotting the dataframe dans saving it in a folder
+    plt.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'])
+    plt.suptitle(plot_title)
+    plt.savefig(path)
+    # Return the dataframe
+    return nb_word_by_year
 # Creating histogram of number of articles mentioning microfib in function of publication year
-clean_data['Micro'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in microfib_word]))
-pub_year = pd.DataFrame(nb_art_by_pub_year).index.sort_values().tolist()
-nb_micro_by_year = pd.DataFrame(pub_year, columns=['Publication Year'])
-nb_micro_by_year['Count'] = 0
-i = -1
-for article in clean_data['Publication Year']:
-    i += 1
-    j = -1
-    for year in nb_micro_by_year['Publication Year']:     
-        j += 1
-        if (clean_data.at[i, 'Micro'] == True) & (clean_data.at[i, 'Publication Year'] == year):
-            nb_micro_by_year.at[j, 'Count'] += 1
-#del clean_data['Micro']
-nb_micro_by_year.plot.bar('Publication Year', 'Count')
 
 
 
