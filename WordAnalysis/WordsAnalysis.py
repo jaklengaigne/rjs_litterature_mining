@@ -125,52 +125,45 @@ top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)
 # Occurence of all the clean words (approximate number by trial and error)
 clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(2900)
 
+# Number of articles that write about 1 subject AND/OR another
+"""
+Creating a dataframe [3x1]. The first row contain the number of abstract 
+(article) mentioning 1 word. The second is the number for another word. The 
+third and last one is the number of article that mentioned both.
+Input :     word1        word to count how many article mention it (String)
+            word2        word to count how many article mention it (String)
+            df          dataframe that contain the column (see below)
+            col_words   column's name of the dataframe where to search both words (String)
+Return :    nb_word_by_year     
+Save :      plot bar (x,y) → (Publication Year, number of article)
+"""
+def nb_art_vs_2sub(word1, word2, df, col_words):
+    # Defining the words to look for
+    word1_list = [word1]
+    word2_list = [word2]
+    # Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
+    df['Word1'] = df[col_words].apply(lambda x: any([k in x for k in word1_list]))
+    df['Word2'] = df[col_words].apply(lambda x: any([k in x for k in word2_list]))
+    # Adding column to check if an article write about both, if so put True in the cell
+    df['Both'] = (df['Word1'] == True) & (df['Word2'] == True)
+    # Counting the number of true for each new columns
+    # one method
+    word1_art = df.value_counts('Word1').loc[True]
+    # other method
+    word2_art = df['Word2'].sum()
+    both_art = df['Both'].sum()
+    # Creating a dataframe with those information
+    nb_art_2sub = {'Occurence': [word1_art, word2_art, both_art]}
+    nb_art_2sub_df = pd.DataFrame(nb_art_2sub, index=[word1, word2, 'both'])
+    # Deleting all the new columns because this particular analyse is done
+    del df['Word1']
+    del df['Word2']
+    del df['Both']
+    return nb_art_2sub_df
 # Number of articles that write about micro AND/OR nano fibers
-# Defining the words to look for
-microfib_word = ['microfib']
-nanofib_word = ['nanofib']
-# Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
-clean_data['Micro'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in microfib_word]))
-clean_data['Nano'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in nanofib_word]))
-# Adding column to check if an article write about both, if so put True in the cell
-clean_data['Micro and nano'] = (clean_data['Micro'] == True) & (clean_data['Nano'] == True)
-# Counting the number of true for each new columns
-# one method
-micro_art = clean_data.value_counts('Micro').loc[True]
-# other method
-nano_art = clean_data['Nano'].sum()
-micro_nano_art = clean_data['Micro and nano'].sum()
-# Creating a dataframe with those information
-nb_art_fiber_size = {'Occurence': [micro_art, nano_art, micro_nano_art]}
-nb_art_fiber_size_df = pd.DataFrame(nb_art_fiber_size, index=['Micro', 'Nano', 'Both'])
-# Deleting all the new columns because this particular analyse is done
-del clean_data['Micro']
-del clean_data['Nano']
-del clean_data['Micro and nano']
-
-# Copy paste of section just above, I shoul write a function for this because that's bad
+nb_art_fiber_size = nb_art_vs_2sub('microfib', 'nanofib', clean_data, 'Abstract')
 # Number of articles that write about viscosity AND/OR solution
-# Defining the works to look for
-visco_word = ['viscos']
-sol_word = ['solut']
-# Adding columns 'Micro' and 'Nano'. Putting True in according cell if word is found.
-clean_data['Viscosity'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in visco_word]))
-clean_data['Solution'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in sol_word]))
-# Adding column to check if an article write about both, if so put True in the cell
-clean_data['Both'] = (clean_data['Viscosity'] == True) & (clean_data['Solution'] == True)
-# Counting the number of true for each new columns
-# one method
-visco_art = clean_data.value_counts('Viscosity').loc[True]
-# other method
-sol_art = clean_data['Solution'].sum()
-visco_sol_art = clean_data['Both'].sum()
-# Creating a dataframe with those information
-nb_art_visco_of_sol = {'Occurence': [visco_art, sol_art, visco_sol_art]}
-nb_art_visco_of_sol_df = pd.DataFrame(nb_art_visco_of_sol, index=['Viscosity', 'Solution', 'Both'])
-# Deleting all the new columns because this particular analyse is done
-del clean_data['Viscosity']
-del clean_data['Solution']
-del clean_data['Both']
+nb_art_visco_vs_sol = nb_art_vs_2sub('viscos', 'solut', clean_data, 'Abstract')
 
 # Most common bigrams and trigrams in clean data
 # Puting all abstracts into a list
