@@ -8,8 +8,11 @@ import pandas as pd
 
 def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
     import matplotlib.pyplot as plt
+    import math
+    
     df['Word'] = df[col_word].apply(lambda x: any([k in x for k in word]))
-    nb_art_by_year = df[col_year].replace('NaN', 0).value_counts().sort_index()
+    col_year_noStr = pd.DataFrame(df[col_year].replace('NaN', 0))
+    nb_art_by_year = col_year_noStr.value_counts().sort_index()
     nb_art_by_year = pd.DataFrame(nb_art_by_year)
     pub_year = pd.DataFrame(nb_art_by_year).index.sort_values().tolist()
     nb_word_by_year = pd.DataFrame(pub_year, columns=['Publication Year'])
@@ -20,17 +23,24 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
         j = -1
         for year in nb_word_by_year['Publication Year']:     
             j += 1
-            if (df.at[i, 'Word'] == True) & (df.at[i, col_year] == year):
+            if (df.at[i, 'Word'] == True) & (col_year_noStr.at[i, col_year] == year):
                 nb_word_by_year.at[j, 'Count'] += 1
     del df['Word']
     nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(str)
-    plt.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'])
+    
+    fig = plt.figure()
+    axes = fig.add_subplot()
+    axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
+    axes.set_xlabel('Publication Year')
+    axes.set_ylabel('Number of article with ' + word[0])
+    axes.set_title(plot_title)
     plt.xticks(rotation = 65)
-    plt.xlabel('Publication Year')
+    min_y = min(nb_word_by_year['Count'])
+    max_y = max(nb_word_by_year['Count'])
+    y_increment_by_1 = range(math.floor(min_y), math.ceil(max_y)+1)
+    plt.yticks(y_increment_by_1)
     plt.gcf().subplots_adjust(bottom=0.20)
-    plt.ylabel('Number of Article with' + word[0])
-    plt.suptitle(plot_title)
-    #plt.savefig(path)
+    plt.savefig(path)
     return nb_word_by_year
 
 # Test 1
@@ -39,18 +49,29 @@ d = {'A': ['ish', 'Prout', 'lie', 'Prout', 'bird', 'Prout'], 'B': [2003, 0, 2004
 df = pd.DataFrame(d)
 col_word = 'A'
 col_year = 'B'
-plot_title = ' Nb of worb by year'
+plot_title = ' Nb of word by year'
 path = './TestPlot/figTest1.svg'
 
-plot_word_by_year(word, df, col_word, col_year, plot_title, path)
+test1 = plot_word_by_year(word, df, col_word, col_year, plot_title, path)
 
 # Test 2
 word = ['cheval']
-d = {'Rasta': ['cheval', 'arc', 'bee', 'fleur', 'flash', 'cheval'], 'Germe': [2004, 2021, 2004, 2004, 1999, 0]}
+d = {'Rasta': ['cheval', 'arc', 'bee', 'fleur', 'flash', 'cheval'], 'Germe': [2004, 2021, 2004, 2004, 1999, 'NaN']}
 df = pd.DataFrame(d)
 col_word = 'Rasta'
 col_year = 'Germe'
-plot_title = ' Nb of worb by year'
+plot_title = ' Nb of word by year'
 path = './TestPlot/figTest2.svg'
 
-plot_word_by_year(word, df, col_word, col_year, plot_title, path)
+test2 = plot_word_by_year(word, df, col_word, col_year, plot_title, path)
+
+# Test 3
+word = ['a']
+d = {'123': ['a', 'a', 'a', 'a', 'a', 'b'], '456': [56, 99, 56, 56, 56, 56]}
+df = pd.DataFrame(d)
+col_word = '123'
+col_year = '456'
+plot_title = ' Nb of word by year'
+path = './TestPlot/figTest3.svg'
+
+test3 = plot_word_by_year(word, df, col_word, col_year, plot_title, path)
