@@ -10,8 +10,7 @@ from nltk.stem import PorterStemmer
 from nltk import word_tokenize, bigrams, trigrams
 from collections import Counter
 import os
-
-
+import matplotlib.pyplot as plt
 
 
 # Read the database file
@@ -250,8 +249,15 @@ for authors in authors_by_art:
            
 # Plot
 # Creating histogram of number of articles in function of publication year
-nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts()
-nb_art_by_pub_year.sort_index().plot.bar()
+nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
+nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
+plt.bar(nb_art_by_pub_year.index.map(int).map(str), nb_art_by_pub_year['Publication Year'])
+plt.xticks(rotation = 65)
+plt.xlabel('Publication Year')
+plt.gcf().subplots_adjust(bottom=0.20)
+plt.ylabel('Number of Article')
+plt.suptitle('Number of articles by publication year')
+plt.savefig('./Results/PlotArticleByYear.svg')
 # Creating histogram of most common words in function of publication year?????? 100*25!!!!!!!!!!
 """
 Defining a function that create an histogram of number of articles mentioning a 
@@ -296,13 +302,15 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
     plt.savefig(path)
     # Return the dataframe
     return nb_word_by_year
-# Creating histogram of number of articles mentioning microfib in function of publication year
-plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning microfib by year', './Results/PlotMicrofibByYear.svg')
-# Creating histogram of number of articles mentioning scaffold in function of publication year
-plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning scaffolf by year', './Results/PlotScaffoldByYear.svg')
-# Creating histogram of number of articles mentioning viscos in function of publication year
-plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning viscos by year', './Results/PlotViscosByYear.svg')
-
+# =============================================================================
+# # Creating histogram of number of articles mentioning microfib in function of publication year
+# plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning microfib by year', './Results/PlotMicrofibByYear.svg')
+# # Creating histogram of number of articles mentioning scaffold in function of publication year
+# plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning scaffolf by year', './Results/PlotScaffoldByYear.svg')
+# # Creating histogram of number of articles mentioning viscos in function of publication year
+# plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning viscos by year', './Results/PlotViscosByYear.svg')
+# 
+# =============================================================================
 
 
 # Write files
