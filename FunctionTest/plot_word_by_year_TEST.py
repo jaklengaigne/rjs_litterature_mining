@@ -6,7 +6,7 @@ Created on Thu May 13 09:22:05 2021
 """
 import pandas as pd
 
-def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
+def plot_word_by_year(word, df, col_word, col_year, path):
     import matplotlib.pyplot as plt
     import math
     
@@ -26,14 +26,14 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
             if (df.at[i, 'Word'] == True) & (col_year_noStr.at[i, col_year] == year):
                 nb_word_by_year.at[j, 'Count'] += 1
     del df['Word']
-    nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(str)
+    nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(int).astype(str)
     
     fig = plt.figure()
     axes = fig.add_subplot()
     axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
     axes.set_xlabel('Publication Year')
     axes.set_ylabel('Number of article with ' + word[0])
-    axes.set_title(plot_title)
+    axes.set_title('Number of article mentionning ' + word[0] + ' by year')
     plt.xticks(rotation = 65)
     min_y = min(nb_word_by_year['Count'])
     max_y = max(nb_word_by_year['Count'])
@@ -49,10 +49,9 @@ d = {'A': ['ish', 'Prout', 'lie', 'Prout', 'bird', 'Prout'], 'B': [2003, 0, 2004
 df = pd.DataFrame(d)
 col_word = 'A'
 col_year = 'B'
-plot_title = ' Nb of word by year'
 path = './TestPlot/figTest1.svg'
 
-test1 = plot_word_by_year(word, df, col_word, col_year, plot_title, path)
+test1 = plot_word_by_year(word, df, col_word, col_year, path)
 
 # Test 2
 word = ['cheval']
@@ -60,18 +59,16 @@ d = {'Rasta': ['cheval', 'arc', 'bee', 'fleur', 'flash', 'cheval'], 'Germe': [20
 df = pd.DataFrame(d)
 col_word = 'Rasta'
 col_year = 'Germe'
-plot_title = ' Nb of word by year'
 path = './TestPlot/figTest2.svg'
 
-test2 = plot_word_by_year(word, df, col_word, col_year, plot_title, path)
+test2 = plot_word_by_year(word, df, col_word, col_year, path)
 
 # Test 3
 word = ['a']
-d = {'123': ['a', 'a', 'a', 'a', 'a', 'b'], '456': [56, 99, 56, 56, 56, 56]}
+d = {'123': ['a', 'a', 'a', 'a', 'a', 'b'], '456': [56, 99.0, 56, 56, 56, 56]}
 df = pd.DataFrame(d)
 col_word = '123'
 col_year = '456'
-plot_title = ' Nb of word by year'
 path = './TestPlot/figTest3.svg'
 
-test3 = plot_word_by_year(word, df, col_word, col_year, plot_title, path)
+test3 = plot_word_by_year(word, df, col_word, col_year, path)

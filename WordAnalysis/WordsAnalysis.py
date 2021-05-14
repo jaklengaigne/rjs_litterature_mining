@@ -272,14 +272,17 @@ Input :     word        word that is want to count by year (List of one string e
 Return :    nb_word_by_year     
 Save :      plot bar (x,y) → (Publication Year, number of article)
 """
-def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
+def plot_word_by_year(word, df, col_word, col_year, path):
     # Import
     import matplotlib.pyplot as plt
+    import math
     # Adding a new columns in df and if word in it put True un cell, else False
     df['Word'] = df[col_word].apply(lambda x: any([k in x for k in word]))
+    # Creating a new datafram with the pub year columns and removing 'NaN' → all int
+    col_year_noStr = pd.DataFrame(df[col_year].replace('NaN', 0))
     # Getting the publication year without duplicates as an index
-    nb_art_by_year = df[col_year].replace('NaN', 0).value_counts()
-    nb_art_by_year.sort_index()
+    nb_art_by_year = col_year_noStr.value_counts().sort_index()
+    nb_art_by_year = pd.DataFrame(nb_art_by_year)
     # Creating a list from the index that have the years without duplicates
     pub_year = pd.DataFrame(nb_art_by_year).index.sort_values().tolist()
     # Creating a dataframe with two columns (year, count), count inisialize at 0
@@ -292,25 +295,36 @@ def plot_word_by_year(word, df, col_word, col_year, plot_title, path):
         j = -1
         for year in nb_word_by_year['Publication Year']:     
             j += 1
-            if (df.at[i, 'Word'] == True) & (df.at[i, col_year] == year):
+            if (df.at[i, 'Word'] == True) & (col_year_noStr.at[i, col_year] == year):
                 nb_word_by_year.at[j, 'Count'] += 1
-    # Remove the columns with the true or false indicating if the word is in it
+    # Removing the columns with the true or false indicating if the word is in it
     del df['Word']
+    # Converting the year (int) into str in the dataframe used to plot → no bar 
+    # in year with no pub : so 0-2000 is not a problem
+    nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(int).astype(str)
     # Plotting the dataframe dans saving it in a folder
-    plt.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'])
-    plt.suptitle(plot_title)
+    fig = plt.figure()
+    axes = fig.add_subplot()
+    axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
+    axes.set_xlabel('Publication Year')
+    axes.set_ylabel('Number of article with ' + word[0])
+    axes.set_title('Number of article mentionning ' + word[0] + ' by year')
+    plt.xticks(rotation = 65)
+    min_y = min(nb_word_by_year['Count'])
+    max_y = max(nb_word_by_year['Count'])
+    y_increment_by_1 = range(math.floor(min_y), math.ceil(max_y)+1)
+    plt.yticks(y_increment_by_1)
+    plt.gcf().subplots_adjust(bottom=0.20)
     plt.savefig(path)
     # Return the dataframe
     return nb_word_by_year
-# =============================================================================
-# # Creating histogram of number of articles mentioning microfib in function of publication year
-# plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning microfib by year', './Results/PlotMicrofibByYear.svg')
-# # Creating histogram of number of articles mentioning scaffold in function of publication year
-# plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning scaffolf by year', './Results/PlotScaffoldByYear.svg')
-# # Creating histogram of number of articles mentioning viscos in function of publication year
-# plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', 'Number of article mentionning viscos by year', './Results/PlotViscosByYear.svg')
-# 
-# =============================================================================
+# Creating histogram of number of articles mentioning microfib in function of publication year
+plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', './Results/PlotMicrofibByYear.svg')
+# Creating histogram of number of articles mentioning scaffold in function of publication year
+plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './Results/PlotScaffoldByYear.svg')
+# Creating histogram of number of articles mentioning viscos in function of publication year
+plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
+
 
 
 # Write files
