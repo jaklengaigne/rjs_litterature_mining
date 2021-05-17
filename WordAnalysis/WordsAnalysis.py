@@ -209,19 +209,21 @@ words (not the whole abstract)
 """
 for abstracts in all_abstracts_list:
     abst_words_by_art.append(abstracts.split())
-# Removing points depending of words that we don't particularly want into the article
-for abstracts in abst_words_by_art:
-    i += 1
-    for word in minus_word:
-        if word in abstracts:
-           clean_data.at[i, 'Score'] -= 1
-# Reinitializing the indice and removing points depending of number of citations
-i = -1
-# Removing points if the article have been cite less than 10 times
-for nb_cita in clean_data['Total Citations']:
-    i += 1
-    if nb_cita < cita_lim:
-        clean_data.at[i, 'Score'] -= 1
+# =============================================================================
+# # Removing points depending of words that we don't particularly want into the article
+# for abstracts in abst_words_by_art:
+#     i += 1
+#     for word in minus_word:
+#         if word in abstracts:
+#            clean_data.at[i, 'Score'] -= 1
+# # Reinitializing the indice and removing points depending of number of citations
+# i = -1
+# # Removing points if the article have been cite less than 10 times
+# for nb_cita in clean_data['Total Citations']:
+#     i += 1
+#     if nb_cita < cita_lim:
+#         clean_data.at[i, 'Score'] -= 1
+# =============================================================================
 # Reinitializing the indice and adding points depending of wanted words
 i = -1
 for abstracts in abst_words_by_art:
@@ -229,111 +231,115 @@ for abstracts in abst_words_by_art:
     for word in plus_word:
         if word in abstracts:
            clean_data.at[i, 'Score'] += 1
-"""
-Convert the list of single string into a list of multiple strings representing 
-authors
-"""           
-for author in clean_data['Author Full Names']:
-    authors_by_art.append(author.replace(" ", "").split('-'))
-# Convert the most common authors list of tuple into list of listed name
-for aut_tuple in top_authors:
-    top_authors_list.append(aut_tuple[0].replace(" ", ""))
-# Reinitializing the indice
-i = -1
-# Adding points if the article is written by anyone in the top 10 of most common authors
-for authors in authors_by_art:
-    i += 1
-    for name in top_authors_list:
-        if name in authors:
-           clean_data.at[i, 'Score'] += 1
+# =============================================================================
+# """
+# Convert the list of single string into a list of multiple strings representing 
+# authors
+# """           
+# for author in clean_data['Author Full Names']:
+#     authors_by_art.append(author.replace(" ", "").split('-'))
+# # Convert the most common authors list of tuple into list of listed name
+# for aut_tuple in top_authors:
+#     top_authors_list.append(aut_tuple[0].replace(" ", ""))
+# # Reinitializing the indice
+# i = -1
+# # Adding points if the article is written by anyone in the top 10 of most common authors
+# for authors in authors_by_art:
+#     i += 1
+#     for name in top_authors_list:
+#         if name in authors:
+#            clean_data.at[i, 'Score'] += 1
+# =============================================================================
            
-# Plot
-# Creating histogram of number of articles in function of publication year
-nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
-nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
-plt.bar(nb_art_by_pub_year.index.map(int).map(str), nb_art_by_pub_year['Publication Year'])
-plt.xticks(rotation = 65)
-plt.xlabel('Publication Year')
-plt.gcf().subplots_adjust(bottom=0.20)
-plt.ylabel('Number of Article')
-plt.suptitle('Number of articles by publication year')
-plt.savefig('./Results/PlotArticleByYear.svg')
-# Creating histogram of most common words in function of publication year?????? 100*25!!!!!!!!!!
-"""
-Defining a function that create an histogram of number of articles mentioning a 
-certain clean word by publication year.
-Note : this function replace NaN made into 'NaN' to 0.
-Input :     word        word that is want to count by year (List of one string element)
-            df          dataframe that contain the two columns
-            col_word    column's name of the dataframe where to search the word (String)
-            col_year    column's name of the dataframe where it is store the year of publication (String)
-            plot_title  Title of the plot (String)
-            path        Where to save the plot (String)
-Return :    nb_word_by_year     
-Save :      plot bar (x,y) → (Publication Year, number of article)
-"""
-def plot_word_by_year(word, df, col_word, col_year, path):
-    # Import
-    import matplotlib.pyplot as plt
-    import math
-    # Adding a new columns in df and if word in it put True un cell, else False
-    df['Word'] = df[col_word].apply(lambda x: any([k in x for k in word]))
-    # Creating a new datafram with the pub year columns and removing 'NaN' → all int
-    col_year_noStr = pd.DataFrame(df[col_year].replace('NaN', 0))
-    # Getting the publication year without duplicates as an index
-    nb_art_by_year = col_year_noStr.value_counts().sort_index()
-    nb_art_by_year = pd.DataFrame(nb_art_by_year)
-    # Creating a list from the index that have the years without duplicates
-    pub_year = pd.DataFrame(nb_art_by_year).index.sort_values().tolist()
-    # Creating a dataframe with two columns (year, count), count inisialize at 0
-    nb_word_by_year = pd.DataFrame(pub_year, columns=['Publication Year'])
-    nb_word_by_year['Count'] = 0
-    # Initializing the loop and counting nb of instance of the word by year
-    i = -1
-    for article in df[col_year]:
-        i += 1
-        j = -1
-        for year in nb_word_by_year['Publication Year']:     
-            j += 1
-            if (df.at[i, 'Word'] == True) & (col_year_noStr.at[i, col_year] == year):
-                nb_word_by_year.at[j, 'Count'] += 1
-    # Removing the columns with the true or false indicating if the word is in it
-    del df['Word']
-    # Converting the year (int) into str in the dataframe used to plot → no bar 
-    # in year with no pub : so 0-2000 is not a problem
-    nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(int).astype(str)
-    # Plotting the dataframe dans saving it in a folder
-    fig = plt.figure()
-    axes = fig.add_subplot()
-    axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
-    axes.set_xlabel('Publication Year')
-    axes.set_ylabel('Number of article with ' + word[0])
-    axes.set_title('Number of article mentionning ' + word[0] + ' by year')
-    plt.xticks(rotation = 65)
-    min_y = min(nb_word_by_year['Count'])
-    max_y = max(nb_word_by_year['Count'])
-    y_increment_by_1 = range(math.floor(min_y), math.ceil(max_y)+1)
-    plt.yticks(y_increment_by_1)
-    plt.gcf().subplots_adjust(bottom=0.20)
-    plt.savefig(path)
-    # Return the dataframe
-    return nb_word_by_year
-# Creating histogram of number of articles mentioning microfib in function of publication year
-plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', './Results/PlotMicrofibByYear.svg')
-# Creating histogram of number of articles mentioning scaffold in function of publication year
-plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './Results/PlotScaffoldByYear.svg')
-# Creating histogram of number of articles mentioning viscos in function of publication year
-plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
-
-
-
-# Write files
-# If there is no folder for the result create one
-os.makedirs('Results', exist_ok=True)
-
-# Writing a csv file for the occurence of all the clean words
-clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
-clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
+# =============================================================================
+# # Plot
+# # Creating histogram of number of articles in function of publication year
+# nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
+# nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
+# plt.bar(nb_art_by_pub_year.index.map(int).map(str), nb_art_by_pub_year['Publication Year'])
+# plt.xticks(rotation = 65)
+# plt.xlabel('Publication Year')
+# plt.gcf().subplots_adjust(bottom=0.20)
+# plt.ylabel('Number of Article')
+# plt.suptitle('Number of articles by publication year')
+# plt.savefig('./Results/PlotArticleByYear.svg')
+# # Creating histogram of most common words in function of publication year?????? 100*25!!!!!!!!!!
+# """
+# Defining a function that create an histogram of number of articles mentioning a 
+# certain clean word by publication year.
+# Note : this function replace NaN made into 'NaN' to 0.
+# Input :     word        word that is want to count by year (List of one string element)
+#             df          dataframe that contain the two columns
+#             col_word    column's name of the dataframe where to search the word (String)
+#             col_year    column's name of the dataframe where it is store the year of publication (String)
+#             plot_title  Title of the plot (String)
+#             path        Where to save the plot (String)
+# Return :    nb_word_by_year     
+# Save :      plot bar (x,y) → (Publication Year, number of article)
+# """
+# def plot_word_by_year(word, df, col_word, col_year, path):
+#     # Import
+#     import matplotlib.pyplot as plt
+#     import math
+#     # Adding a new columns in df and if word in it put True un cell, else False
+#     df['Word'] = df[col_word].apply(lambda x: any([k in x for k in word]))
+#     # Creating a new datafram with the pub year columns and removing 'NaN' → all int
+#     col_year_noStr = pd.DataFrame(df[col_year].replace('NaN', 0))
+#     # Getting the publication year without duplicates as an index
+#     nb_art_by_year = col_year_noStr.value_counts().sort_index()
+#     nb_art_by_year = pd.DataFrame(nb_art_by_year)
+#     # Creating a list from the index that have the years without duplicates
+#     pub_year = pd.DataFrame(nb_art_by_year).index.sort_values().tolist()
+#     # Creating a dataframe with two columns (year, count), count inisialize at 0
+#     nb_word_by_year = pd.DataFrame(pub_year, columns=['Publication Year'])
+#     nb_word_by_year['Count'] = 0
+#     # Initializing the loop and counting nb of instance of the word by year
+#     i = -1
+#     for article in df[col_year]:
+#         i += 1
+#         j = -1
+#         for year in nb_word_by_year['Publication Year']:     
+#             j += 1
+#             if (df.at[i, 'Word'] == True) & (col_year_noStr.at[i, col_year] == year):
+#                 nb_word_by_year.at[j, 'Count'] += 1
+#     # Removing the columns with the true or false indicating if the word is in it
+#     del df['Word']
+#     # Converting the year (int) into str in the dataframe used to plot → no bar 
+#     # in year with no pub : so 0-2000 is not a problem
+#     nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(int).astype(str)
+#     # Plotting the dataframe dans saving it in a folder
+#     fig = plt.figure()
+#     axes = fig.add_subplot()
+#     axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
+#     axes.set_xlabel('Publication Year')
+#     axes.set_ylabel('Number of article with ' + word[0])
+#     axes.set_title('Number of article mentionning ' + word[0] + ' by year')
+#     plt.xticks(rotation = 65)
+#     min_y = min(nb_word_by_year['Count'])
+#     max_y = max(nb_word_by_year['Count'])
+#     y_increment_by_1 = range(math.floor(min_y), math.ceil(max_y)+1)
+#     plt.yticks(y_increment_by_1)
+#     plt.gcf().subplots_adjust(bottom=0.20)
+#     plt.savefig(path)
+#     # Return the dataframe
+#     return nb_word_by_year
+# # Creating histogram of number of articles mentioning microfib in function of publication year
+# plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', './Results/PlotMicrofibByYear.svg')
+# # Creating histogram of number of articles mentioning scaffold in function of publication year
+# plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './Results/PlotScaffoldByYear.svg')
+# # Creating histogram of number of articles mentioning viscos in function of publication year
+# plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
+# 
+# 
+# 
+# # Write files
+# # If there is no folder for the result create one
+# os.makedirs('Results', exist_ok=True)
+# 
+# # Writing a csv file for the occurence of all the clean words
+# clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
+# clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
+# =============================================================================
 
 # Writing a csv file with the article sorted by the score
 # Creating a refined dataframe
