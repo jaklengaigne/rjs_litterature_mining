@@ -215,15 +215,13 @@ for abstracts in abst_words_by_art:
     for word in minus_word:
         if word in abstracts:
            clean_data.at[i, 'Score'] -= 1
-# =============================================================================
-# # Reinitializing the indice and removing points depending of number of citations
-# i = -1
-# # Removing points if the article have been cite less than 10 times
-# for nb_cita in clean_data['Total Citations']:
-#     i += 1
-#     if nb_cita < cita_lim:
-#         clean_data.at[i, 'Score'] -= 1
-# =============================================================================
+# Reinitializing the indice and removing points depending of number of citations
+i = -1
+# Removing points if the article have been cite less than 10 times
+for nb_cita in clean_data['Total Citations']:
+    i += 1
+    if nb_cita < cita_lim:
+        clean_data.at[i, 'Score'] -= 1
 # Reinitializing the indice and adding points depending of wanted words
 i = -1
 for abstracts in abst_words_by_art:
@@ -231,26 +229,24 @@ for abstracts in abst_words_by_art:
     for word in plus_word:
         if word in abstracts:
            clean_data.at[i, 'Score'] += 1
-# =============================================================================
-# """
-# Convert the list of single string into a list of multiple strings representing 
-# authors
-# """           
-# for author in clean_data['Author Full Names']:
-#     authors_by_art.append(author.replace(" ", "").split('-'))
-# # Convert the most common authors list of tuple into list of listed name
-# for aut_tuple in top_authors:
-#     top_authors_list.append(aut_tuple[0].replace(" ", ""))
-# # Reinitializing the indice
-# i = -1
-# # Adding points if the article is written by anyone in the top 10 of most common authors
-# for authors in authors_by_art:
-#     i += 1
-#     for name in top_authors_list:
-#         if name in authors:
-#            clean_data.at[i, 'Score'] += 1
-#            
-# =============================================================================
+"""
+Convert the list of single string into a list of multiple strings representing 
+authors
+"""           
+for author in clean_data['Author Full Names']:
+    authors_by_art.append(author.replace(" ", "").split('-'))
+# Convert the most common authors list of tuple into list of listed name
+for aut_tuple in top_authors:
+    top_authors_list.append(aut_tuple[0].replace(" ", ""))
+# Reinitializing the indice
+i = -1
+# Adding points if the article is written by anyone in the top 10 of most common authors
+for authors in authors_by_art:
+    i += 1
+    for name in top_authors_list:
+        if name in authors:
+           clean_data.at[i, 'Score'] += 1
+           
 # =============================================================================
 # # Plot
 # # Creating histogram of number of articles in function of publication year
