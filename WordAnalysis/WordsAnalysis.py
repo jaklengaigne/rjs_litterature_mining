@@ -209,14 +209,12 @@ words (not the whole abstract)
 """
 for abstracts in all_abstracts_list:
     abst_words_by_art.append(abstracts.split())
-# =============================================================================
-# # Removing points depending of words that we don't particularly want into the article
-# for abstracts in abst_words_by_art:
-#     i += 1
-#     for word in minus_word:
-#         if word in abstracts:
-#            clean_data.at[i, 'Score'] -= 1
-# =============================================================================
+# Removing points depending of words that we don't particularly want into the article
+for abstracts in abst_words_by_art:
+    i += 1
+    for word in minus_word:
+        if word in abstracts:
+           clean_data.at[i, 'Score'] -= 1
 # Reinitializing the indice and removing points depending of number of citations
 i = -1
 # Removing points if the article have been cite less than 10 times
