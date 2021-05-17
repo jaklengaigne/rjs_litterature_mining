@@ -224,15 +224,13 @@ for abstracts in all_abstracts_list:
 #     if nb_cita < cita_lim:
 #         clean_data.at[i, 'Score'] -= 1
 # =============================================================================
-# =============================================================================
-# # Reinitializing the indice and adding points depending of wanted words
-# i = -1
-# for abstracts in abst_words_by_art:
-#     i += 1
-#     for word in plus_word:
-#         if word in abstracts:
-#            clean_data.at[i, 'Score'] += 1
-# =============================================================================
+# Reinitializing the indice and adding points depending of wanted words
+i = -1
+for abstracts in abst_words_by_art:
+    i += 1
+    for word in plus_word:
+        if word in abstracts:
+           clean_data.at[i, 'Score'] += 1
 """
 Convert the list of single string into a list of multiple strings representing 
 authors
