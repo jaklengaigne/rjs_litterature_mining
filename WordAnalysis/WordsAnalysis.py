@@ -254,14 +254,31 @@ clean_words_occ_dfm = pd.read_csv("CleanWordsOccurence_modified.csv", sep=",")
 clean_words_occ_dfm = clean_words_occ_dfm.fillna('nan')
 material_df = clean_words_occ_dfm[clean_words_occ_dfm.materials != 'nan']
 
+# Articles mentionning a certain word
+"""
+Creating a dataframe [nrow X 2]. The first colunms contain the title of abstract 
+(article) mentioning the word. The second is the unique number of the article.
+Input :     word        word used to filter and keep article mentionning it (String)
+            df          dataframe that contain the column (see below)
+            col_word    column's name of the dataframe where to search the word (String)
+            col_info    column's name of the dataframe where the title is (String)
+            col_ID      column's name of the dataframe where the unique number is (String)
+Return :    art_with_word   dataframe [nrow X 2]
+"""
+def article_with_word(word, df, col_word, col_info, col_ID):
+    # Defining the words to look for
+    word_list = [word]
+    # Adding columns 'word'. Putting True in according cell if word is found.
+    df[word] = df[col_word].apply(lambda x: any([k in x for k in word_list]))
+    # Keeping only the rows containing True (the word is in it)
+    art_with_word = df[df[word] == True]
+    # Refining the dataframe to be easily use as a check list
+    art_with_word = pd.concat([art_with_word[col_info], art_with_word[col_ID]], axis=1)
+    # Removing the added columns because it is no more useful
+    del df[word]
+    return art_with_word
 # Articles about blend material
-# Defining the words to look for
-blend_list = ['blend']
-# Adding columns 'Blend'. Putting True in according cell if word is found.
-clean_data['blend'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in blend_list]))
-art_with_blend = clean_data[clean_data.blend == False]
-art_with_blend = pd.concat([art_with_blend['Article Title'], art_with_blend['UT (Unique WOS ID)']], axis=1)
-del clean_data['blend']
+art_with_blend = article_with_word('blend', clean_data, 'Abstract', 'Article Title', 'UT (Unique WOS ID)')
            
  
 # =============================================================================
