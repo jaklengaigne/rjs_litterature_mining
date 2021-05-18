@@ -254,9 +254,17 @@ clean_words_occ_dfm = pd.read_csv("CleanWordsOccurence_modified.csv", sep=",")
 clean_words_occ_dfm = clean_words_occ_dfm.fillna('nan')
 material_df = clean_words_occ_dfm[clean_words_occ_dfm.materials != 'nan']
 
+# Articles about blend material
+# Defining the words to look for
+blend_list = ['blend']
+# Adding columns 'Blend'. Putting True in according cell if word is found.
+clean_data['blend'] = clean_data['Abstract'].apply(lambda x: any([k in x for k in blend_list]))
+art_with_blend = clean_data[clean_data.blend == False]
+art_with_blend = pd.concat([art_with_blend['Article Title'], art_with_blend['UT (Unique WOS ID)']], axis=1)
+del clean_data['blend']
            
+ 
 # =============================================================================
-#  
 # # Plot
 # # Creating histogram of number of articles in function of publication year
 # nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
@@ -344,14 +352,18 @@ material_df = clean_words_occ_dfm[clean_words_occ_dfm.materials != 'nan']
 # # Writing a csv file for the occurence of all the clean words
 # clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
 # clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
+# 
+# # Writing a csv file with the article sorted by the score
+# # Creating a refined dataframe
+# art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
+# art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
+# # Writing the file
+# art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
+# 
+# # Writing a csv file with the mention materials sorted by most common
+# material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
 # =============================================================================
 
-# Writing a csv file with the article sorted by the score
-# Creating a refined dataframe
-art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
-art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
-# Writing the file
-art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
+# Writing a csv file with articles about blend material
+art_with_blend.to_csv('./Results/ArticlesAboutBlend.csv', sep=';')
 
-# Writing a csv file with the mention materials sorted by most common
-material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
