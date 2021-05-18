@@ -246,8 +246,17 @@ for authors in authors_by_art:
     for name in top_authors_list:
         if name in authors:
            clean_data.at[i, 'Score'] += 1
+ 
+# Most common materials
+# First a materials columns was manually add in CleanWordsOccurence.csv and fill 
+# with 1 if the word was a material
+clean_words_occ_dfm = pd.read_csv("CleanWordsOccurence_modified.csv", sep=",")
+clean_words_occ_dfm = clean_words_occ_dfm.fillna('nan')
+material_df = clean_words_occ_dfm[clean_words_occ_dfm.materials != 'nan']
+
            
 # =============================================================================
+#  
 # # Plot
 # # Creating histogram of number of articles in function of publication year
 # nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
@@ -343,3 +352,6 @@ art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Articl
 art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
 # Writing the file
 art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
+
+# Writing a csv file with the mention materials sorted by most common
+material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
