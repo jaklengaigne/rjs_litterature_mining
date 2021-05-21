@@ -192,7 +192,7 @@ top_authors = Counter(" ".join(clean_data['Author Full Names']).split('-')).most
 """
 Sorting the articles with the help of an homemade intuition base criteria's equation
 -1 : solut, tio, carbon, tissu, cell, drug, treatment, scaffold, less than 10 citations
-+1 : microfib, most common authors, jet, model, nozzle, temperatur, morpholog, speed, viscos
++1 : microfib, jet, model, nozzle, temperatur, morpholog, speed, viscos
 """
 # Definition of constants and variables
 clean_data['Score'] = 0
@@ -200,8 +200,6 @@ minus_word = ['solut', 'tio', 'carbon', 'tissu', 'cell', 'drug', 'treatment', 's
 plus_word = ['microfib', 'jet', 'model', 'nozzl', 'temperatur', 'morpholog', 'speed', 'viscos']
 cita_lim = 10
 abst_words_by_art = []
-authors_by_art = []
-top_authors_list = []
 i = -1
 """
 Convert the list of single string into a list of multiple strings representing 
@@ -228,23 +226,6 @@ for abstracts in abst_words_by_art:
     i += 1
     for word in plus_word:
         if word in abstracts:
-           clean_data.at[i, 'Score'] += 1
-"""
-Convert the list of single string into a list of multiple strings representing 
-authors
-"""           
-for author in clean_data['Author Full Names']:
-    authors_by_art.append(author.replace(" ", "").split('-'))
-# Convert the most common authors list of tuple into list of listed name
-for aut_tuple in top_authors:
-    top_authors_list.append(aut_tuple[0].replace(" ", ""))
-# Reinitializing the indice
-i = -1
-# Adding points if the article is written by anyone in the top 10 of most common authors
-for authors in authors_by_art:
-    i += 1
-    for name in top_authors_list:
-        if name in authors:
            clean_data.at[i, 'Score'] += 1
  
 # Most common materials
@@ -370,17 +351,20 @@ art_with_blend = article_with_word('blend', clean_data, 'Abstract', 'Article Tit
 # clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
 # clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
 # 
-# # Writing a csv file with the article sorted by the score
-# # Creating a refined dataframe
-# art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
-# art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
-# # Writing the file
-# art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
-# 
+# =============================================================================
+# Writing a csv file with the article sorted by the score
+# Creating a refined dataframe
+art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
+art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
+# Writing the file
+art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
+
+# =============================================================================
 # # Writing a csv file with the mention materials sorted by most common
 # material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
+# 
+# # Writing a csv file with articles about blend material
+# art_with_blend.to_csv('./Results/ArticlesAboutBlend.csv', sep=';')
 # =============================================================================
 
-# Writing a csv file with articles about blend material
-art_with_blend.to_csv('./Results/ArticlesAboutBlend.csv', sep=';')
 
