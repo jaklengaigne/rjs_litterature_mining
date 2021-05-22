@@ -1,0 +1,68 @@
+article:
+  ID:
+  type: modelling, experimental or numerical
+
+materials:
+  state: melt or solution
+  polymer name: exemple PP
+  additives: none, nanoparticles, etc
+
+machine characteristics:
+  speed: # rpm
+    min
+    max
+  collector diameter: # po
+    min
+    max
+  temperature: # C°
+    min
+    max
+  nozzle diameter: # mm
+    min
+    max
+  spinneret diameter: # po
+    min
+    max
+  special: if something special example → (system pressure, electrical field, nozzle orientation # ° between center line of nozzle and ...)
+
+Fiber's results:
+  fiber diameter: # µm
+    min
+    max
+  fiber morphology:
+  defects:
+    exemple
+    beads
+    etc
+  Production rate: # g/h
+    min
+    max
+  tools: 
+    exemple
+    SEM
+    etc
+  other tests: 
+    exemple
+    filtration
+    degradation
+    etc
+
+# Filter's results:
+#   mass: # mg
+#   thickness: # mm
+#   weight per unit area: # g/m^2
+#   Density: # g/cm^3
+#   Efficiency: # µm
+#   defects:
+#     exemple
+#     beads
+#     etc
+#   tools: 
+#     exemple
+#     SEM
+#     etc
+#   other tests: 
+#     exemple
+#     filtration
+#     degradation
+#     etc
