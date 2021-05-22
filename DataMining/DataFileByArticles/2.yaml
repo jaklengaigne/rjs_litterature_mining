@@ -1,68 +1,36 @@
 article:
-  ID:
-  type: modelling, experimental or numerical
+  WOS:000430239300044
+  type: modelling
 
 materials:
-  state: melt or solution
-  polymer name: exemple PP
-  additives: none, nanoparticles, etc
+  state: melt
+  polymer name: polycaprolactone (PCL)
+  additives: none
 
 machine characteristics:
   speed: # rpm
-    min
-    max
+    6000
   collector diameter: # po
-    min
-    max
+    unknown
   temperature: # C°
-    min
-    max
+    unknown
   nozzle diameter: # mm
-    min
-    max
+    unknown
   spinneret diameter: # po
-    min
-    max
-  special: if something special example → (system pressure, electrical field, nozzle orientation # ° between center line of nozzle and ...)
+    unknown
+  special: 
+    unknown
 
 Fiber's results:
   fiber diameter: # µm
-    min
-    max
+    0.3
   fiber morphology:
+    unknown
   defects:
-    exemple
-    beads
-    etc
+    unknown
   Production rate: # g/h
-    min
-    max
+    unknown
   tools: 
-    exemple
-    SEM
-    etc
+    scanning electron microscope (SEM)
   other tests: 
-    exemple
-    filtration
-    degradation
-    etc
-
-# Filter's results:
-#   mass: # mg
-#   thickness: # mm
-#   weight per unit area: # g/m^2
-#   Density: # g/cm^3
-#   Efficiency: # µm
-#   defects:
-#     exemple
-#     beads
-#     etc
-#   tools: 
-#     exemple
-#     SEM
-#     etc
-#   other tests: 
-#     exemple
-#     filtration
-#     degradation
-#     etc
+    unknown

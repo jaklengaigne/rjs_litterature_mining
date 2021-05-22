@@ -1,0 +1,8 @@
+Methodology :
+1) copy title cell in checklist
+2) searched for: TITLE: on Web of Science, paste it
+3) open the article page on Web of Science
+4) full text from publisher
+5) use Diigo (Firefox add on) to annotate (keep track where the data mined come from)
+6) enter data in .yaml
+7) when it's done : 1 is put in the checklist in the according column

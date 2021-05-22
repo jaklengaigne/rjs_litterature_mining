@@ -1,5 +1,5 @@
 article:
-  ID:
+  WOS:
   type: modelling, experimental or numerical
 
 materials:
@@ -23,13 +23,18 @@ machine characteristics:
   spinneret diameter: # po
     min
     max
-  special: if something special example → (system pressure, electrical field, nozzle orientation # ° between center line of nozzle and ...)
+  special: 
+    if something special example → (system pressure, electrical field, nozzle orientation # ° between center line of nozzle and ...)
 
 Fiber's results:
   fiber diameter: # µm
     min
     max
   fiber morphology:
+    exemple  
+    crystalline
+    amorphous
+    etc
   defects:
     exemple
     beads
@@ -66,3 +71,5 @@ Fiber's results:
 #     filtration
 #     degradation
 #     etc
+
+# unknown, if no data
