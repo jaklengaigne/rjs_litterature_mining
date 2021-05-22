@@ -1,11 +1,14 @@
 article:
-  WOS:000430239300044
-  type: modelling
+  WOS: 000430239300044
+  type: 
+    modelling
 
 materials:
   state: melt
-  polymer name: polycaprolactone (PCL)
-  additives: none
+  name: 
+    polycaprolactone (PCL)
+  additive: 
+    none
 
 machine characteristics:
   speed: # rpm
@@ -26,11 +29,11 @@ Fiber's results:
     0.3
   fiber morphology:
     unknown
-  defects:
+  defect:
     unknown
   Production rate: # g/h
     unknown
-  tools: 
+  tool: 
     scanning electron microscope (SEM)
   other tests: 
     unknown

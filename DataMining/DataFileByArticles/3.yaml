@@ -1,0 +1,48 @@
+article:
+  WOS: 000367459300011
+  type: 
+    modelling
+    experimental
+
+materials:
+  state: solution
+  name: 
+    Polyisobutylene (PIB)
+    polybutene (PB)
+    trichloroethylene (TCE)
+  additive: 
+    none
+
+machine characteristics:
+  speed: # rpm
+    1300
+    3750
+  collector diameter: # po
+    unknown
+  temperature: # C°
+    unknown
+  nozzle diameter: # mm
+    0.5
+  spinneret diameter: # po
+    1.2795275590551
+  special: 
+    channel width 1.5 mm
+
+Fiber's results:
+  fiber diameter: # µm
+    unknown
+  fiber morphology:
+    unknown
+  defect:
+    unknown
+  Production rate: # g/h
+    0.6
+    0.9
+  tool: 
+    RedLake MotionPro HS-3 with Nikon MICRO NIKORR 60 mm 1:2:8 lens 1000fr/s f/2.8-5.6
+    500 W lamp with wax paper
+    MotionStudio X64 
+    ImageJ
+  other tests: 
+    radius of the jet in function of contour length
+    trajectory of an jet particule

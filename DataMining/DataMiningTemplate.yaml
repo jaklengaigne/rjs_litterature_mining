@@ -1,11 +1,14 @@
 article:
   WOS:
-  type: modelling, experimental or numerical
+  type: 
+    modelling, experimental and/or numerical
 
 materials:
   state: melt or solution
-  polymer name: exemple PP
-  additives: none, nanoparticles, etc
+  name: 
+    exemple PP
+  additive: 
+    none, nanoparticles, etc
 
 machine characteristics:
   speed: # rpm
@@ -35,14 +38,14 @@ Fiber's results:
     crystalline
     amorphous
     etc
-  defects:
+  defect:
     exemple
     beads
     etc
   Production rate: # g/h
     min
     max
-  tools: 
+  tool: 
     exemple
     SEM
     etc
