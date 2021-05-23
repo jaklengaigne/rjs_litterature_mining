@@ -1,0 +1,46 @@
+article:
+  WOS: 000612955400002
+  type: 
+    experimental
+
+materials:
+  state: melt
+  name: 
+    polylactic acid (PLA)
+  additive: 
+    none
+
+machine characteristics:
+  speed: # rpm
+    650
+    2800
+  collector diameter: # po
+    unknown
+  temperature: # C°
+    190
+    230
+  nozzle diameter: # mm
+    0.6
+  spinneret diameter: # po
+    unknown
+  special: 
+    PLA resins were first dried at 60 °C overnight
+
+Fiber's results:
+  fiber diameter: # µm
+    5
+    22
+  fiber morphology:
+    unknown
+  defect:
+    beads
+  Production rate: # g/h
+    unknown
+  tool: 
+    scanning electron microscope (SEM)
+    thermogravimetric analyzer (TGA)
+    dynamic mechanical analyzer (DMA)
+  other tests: 
+    wettability of non-woven fibers - evaporation of the water saturation mats
+    viscosity - dynamic mechanical analysis
+    degradation of fibers - thermogravimetric analysis

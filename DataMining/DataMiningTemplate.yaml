@@ -55,24 +55,4 @@ Fiber's results:
     degradation
     etc
 
-# Filter's results:
-#   mass: # mg
-#   thickness: # mm
-#   weight per unit area: # g/m^2
-#   Density: # g/cm^3
-#   Efficiency: # µm
-#   defects:
-#     exemple
-#     beads
-#     etc
-#   tools: 
-#     exemple
-#     SEM
-#     etc
-#   other tests: 
-#     exemple
-#     filtration
-#     degradation
-#     etc
-
 # unknown, if no data
