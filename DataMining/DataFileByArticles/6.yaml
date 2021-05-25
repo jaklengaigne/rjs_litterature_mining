@@ -1,0 +1,50 @@
+article:
+  WOS: 000348269400009
+  type: 
+    experimental
+    numerical
+
+materials:
+  state: solution
+  name: 
+    poly acrylonitrile (PAN)
+    dimethyl formamide (DMF)
+  additive: 
+    none
+
+machine characteristics:
+  speed: # rpm
+    2160
+    4320
+  collector diameter: # po
+    3.14960629921
+  temperature: # C°
+    unknown
+  nozzle diameter: # mm
+    0.16
+  spinneret diameter: # po
+    2.08661417323
+  special: 
+    air-sealed
+
+Fiber's results:
+  fiber diameter: # µm
+    0.171
+    0.220
+  fiber morphology:
+    unknown
+  defect:
+    unknown
+  Production rate: # g/h
+    to convert 0.2862-0.9598 ml/h
+  tool: 
+    high speed camera - Canon EOS 400D
+    Digimizer4
+    field emission scanning electron microscope (FESEM)
+    sputter coater
+  other tests: 
+    non-linear analysis of the Navier–Stokes equations
+    trajectory of an jet particule
+    flow
+
+# unknown, if no data
