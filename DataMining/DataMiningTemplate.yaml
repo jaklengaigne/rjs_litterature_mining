@@ -27,7 +27,9 @@ machine characteristics:
     min
     max
   special: 
-    if something special example → (system pressure, electrical field, nozzle orientation # ° between center line of nozzle and ...)
+    if something special example → 
+    (system pressure, electrical field, 
+    nozzle orientation # ° between center line of nozzle and ...)
 
 Fiber's results:
   fiber diameter: # µm

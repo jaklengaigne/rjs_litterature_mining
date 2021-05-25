@@ -1,0 +1,48 @@
+article:
+  WOS: 000445193600003
+  type: 
+    modelling
+    experimental
+
+materials:
+  state: solution
+  name: 
+    polyethylene oxide (PEO)
+    unknown
+  additive: 
+    none
+
+machine characteristics:
+  speed: # rpm
+    2000
+    6000
+  collector diameter: # po
+    7.87401574803
+    23.6220472441
+  temperature: # C°
+    room
+  nozzle diameter: # mm
+    0.01574803149
+    0.03937007874
+  spinneret diameter: # po
+    0.3937007874
+  special: 
+    unknown
+
+Fiber's results:
+  fiber diameter: # µm
+    0.300
+    0.895
+  fiber morphology:
+    unknown
+  defect:
+    unknown
+  Production rate: # g/h
+    unknown
+  tool: 
+    scanning electron microscope (SEM)
+  other tests: 
+    pressure distribution of flow field
+    velocity distribution
+
+# unknown, if no data
