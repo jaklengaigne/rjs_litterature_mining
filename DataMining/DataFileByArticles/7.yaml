@@ -1,0 +1,45 @@
+article:
+  WOS: 000459378400001
+  type: 
+    modelling
+    experimental
+
+materials:
+  state: solution
+  name: 
+    poly acrylonitrile (PAN)
+    unknown
+  additive: 
+    none
+
+machine characteristics:
+  speed: # rpm
+    2000
+    4000
+  collector diameter: # po
+    unknown
+  temperature: # C°
+    unknown
+  nozzle diameter: # mm
+    0.4
+  spinneret diameter: # po
+    unknown
+  special: 
+    unknown
+
+Fiber's results:
+  fiber diameter: # µm
+    0.400
+    0.580
+  fiber morphology:
+    unknown
+  defect:
+    beads
+  Production rate: # g/h
+    unknown
+  tool: 
+    unknown
+  other tests: 
+    unknown
+
+# unknown, if no data
