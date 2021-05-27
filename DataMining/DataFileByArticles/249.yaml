@@ -1,0 +1,56 @@
+article:
+  WOS: 000601051200003
+  type: # paper type
+    experimental
+  application_field: medical # application target
+
+materials:
+  state: solution
+  name:
+    polylactic acid (PLA)
+  additive: # additive and solvents use
+    hydroxy apatite, clove extract, chloroform,
+
+machine_characteristics:
+  speed: # rpm
+    min: 5000
+    max: 5000
+  feed_rate: #ml/min or kg/min
+  collector_diameter: # po
+    min:
+    max:
+  temperature: # C°
+    min:
+    max:
+  nozzle_diameter: # mm
+    min:
+    max:
+  spinneret_diameter: # po
+    min:
+    max:
+  special:
+    if something special example →
+    (system pressure, electrical field,
+    nozzle orientation # ° between center line of nozzle and ...)
+
+Fiber_results:
+  fiber_diameter: # µm
+    min: 0.9e-6
+    max: 1.2e-6
+    average:  #format [average, error]
+  fiber_morphology:
+  defect:
+    fiber ripples
+  Production_rate: # g/h
+    min:
+    max:
+  tool:
+    FTIR
+    EDS
+    SEM
+    TGA
+
+  other_tests:
+    cell growth
+
+# unknown, if no data

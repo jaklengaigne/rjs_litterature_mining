@@ -1,0 +1,60 @@
+article:
+  WOS: 000350636300095
+  type:
+    modelling, experimental and/or numerical
+
+materials:
+  state: melt or solution
+  name:
+    exemple PP
+  additive:
+    none, nanoparticles, etc
+
+machine characteristics:
+  speed: # rpm
+    min
+    max
+  collector diameter: # po
+    min
+    max
+  temperature: # C°
+    min
+    max
+  nozzle diameter: # mm
+    min
+    max
+  spinneret diameter: # po
+    min
+    max
+  special:
+    if something special example →
+    (system pressure, electrical field,
+    nozzle orientation # ° between center line of nozzle and ...)
+
+Fiber's results:
+  fiber diameter: # µm
+    min
+    max
+  fiber morphology:
+    exemple
+    crystalline
+    amorphous
+    etc
+  defect:
+    exemple
+    beads
+    etc
+  Production rate: # g/h
+    min
+    max
+  tool:
+    exemple
+    SEM
+    etc
+  other tests:
+    exemple
+    filtration
+    degradation
+    etc
+
+# unknown, if no data

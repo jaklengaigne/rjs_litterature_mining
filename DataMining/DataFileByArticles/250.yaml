@@ -1,0 +1,58 @@
+article:
+  WOS: 000596306700035
+  type: # paper type
+    experimental
+  application_field: battery # application target
+
+materials:
+  state: solution
+  name:
+    polyacrylonitrile (PNA)
+  additive: # additive and solvents use
+    TiS2 nanoparticles, N-dime-thylformamide (DMF),
+
+machine_characteristics:
+  speed: # rpm
+    min: 7000
+    max: 7000
+  feed_rate: #l/min or kg/min
+  feed_volume: 1.5e-3 #liter
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # C°
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m
+    min:
+    max:
+  special:
+    Cyclone L-1000 M, FibeRio Technology
+    drying and calcination
+
+Fiber_results:
+  fiber_diameter: # µm
+    min: 1.0e-6
+    max: 2.8e-6
+    average:  2.5e-6 #format [average, error]
+  fiber_morphology:
+    amorphous
+  defect:
+
+  Production_rate: # g/h
+    min:
+    max:
+  tool:
+    TEM
+    SEM
+    TGA
+    DSC
+  other_tests:
+    cyclic voltametry
+    electrochemical impedance spectroscopy
+    EDS
+    XPS
+    XRD

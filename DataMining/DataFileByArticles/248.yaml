@@ -1,0 +1,56 @@
+article:
+  WOS: 000297010500016
+  type: # paper type
+    experimental
+  application_field: medical # application target
+
+materials:
+  state: solution
+  name:
+    titanium dioxide (TiO2)
+  additive: # additive and solvents use
+    methanol, AcAc, TEA
+
+machine_characteristics:
+  speed: # rpm
+    min:
+    max:
+  feed_rate: #ml/min or kg/min
+  collector_diameter: # po
+    min:
+    max:
+  temperature: # C°
+    min:
+    max:
+  nozzle_diameter: # mm
+    min:
+    max:
+  spinneret_diameter: # po
+    min:
+    max:
+  special:
+    sol-gel, calcination
+
+Fiber_results:
+  fiber_diameter: # µm
+    min: 0.9e-6
+    max: 1.2e-6
+    average:  #format [average, error]
+  fiber_morphology:
+  defect:
+    fiber ripples
+  Production_rate: # g/h
+    min:
+    max:
+  tool:
+    SEM
+    TGA
+    DSC
+    XRD
+    XPS
+
+  other_tests:
+    cell growth
+    nitrogen absorption
+
+# unknown, if no data

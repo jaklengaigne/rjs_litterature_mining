@@ -1,0 +1,54 @@
+article:
+  WOS: 000576448300001
+  type:
+    experimental
+  application_field: medical, scaffold # application target
+
+materials:
+  state: solution
+  name:
+    polycaprolactone (PCL)
+    polycaprolactone, gelatine
+  additive:
+    chloroform, hexafluoropropanol
+
+machine_characteristics:
+  speed: # rpm
+    min: 30000
+    max: 30000
+  feed_rate: [1.5, 2.5, 3.0]  #ml/min
+  collector_diameter: # po
+    min:
+    max:
+  temperature: # C°
+    min:
+    max:
+  nozzle_diameter: # mm
+    min:
+    max:
+  spinneret_diameter: # po
+    min:
+    max:
+  special:
+    electrospinning
+
+Fiber_results:
+  fiber_diameter: # µm
+    min:
+    max:
+    average: [6.9e-6, 3.2e-6]
+  fiber_morphology:
+  fiber orientation_OOD: 0.96
+  defect: none
+  Production_rate: # g/h
+    min:
+    max:
+  tool:
+    SEM
+    confocal microscope
+
+  other_tests:
+    cell growth
+    fiber orientation
+    uniaxial tensile test
+# unknown, if no data
