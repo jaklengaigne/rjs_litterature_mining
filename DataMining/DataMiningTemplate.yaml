@@ -1,42 +1,43 @@
 article:
   WOS:
-  type: 
+  type:
     modelling, experimental and/or numerical
+  application_field: medical, filtration, etc # application target
 
 materials:
   state: melt or solution
-  name: 
+  name:
     exemple PP
-  additive: 
+  additive:
     none, nanoparticles, etc
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    min
-    max
-  collector diameter: # po
-    min
-    max
+    min:
+    max:
+  collector_diameter: # po
+    min:
+    max:
   temperature: # C°
-    min
-    max
-  nozzle diameter: # mm
-    min
-    max
-  spinneret diameter: # po
-    min
-    max
-  special: 
-    if something special example → 
-    (system pressure, electrical field, 
+    min:
+    max:
+  nozzle_diameter: # mm
+    min:
+    max:
+  spinneret_diameter: # po
+    min:
+    max:
+  special:
+    if something special example →
+    (system pressure, electrical field,
     nozzle orientation # ° between center line of nozzle and ...)
 
-Fiber's results:
-  fiber diameter: # µm
-    min
-    max
-  fiber morphology:
-    exemple  
+Fiber_results:
+  fiber_diameter: # µm
+    min:
+    max:
+  fiber_morphology:
+    exemple
     crystalline
     amorphous
     etc
@@ -44,14 +45,14 @@ Fiber's results:
     exemple
     beads
     etc
-  Production rate: # g/h
-    min
-    max
-  tool: 
+  Production_rate: # g/h
+    min:
+    max:
+  tool:
     exemple
     SEM
     etc
-  other tests: 
+  other_tests:
     exemple
     filtration
     degradation
