@@ -1,20 +1,21 @@
 article:
   WOS:
-  type:
-    modelling, experimental and/or numerical
+  type: # paper type
+    experimental or numerical or analytical
   application_field: medical, filtration, etc # application target
 
 materials:
   state: melt or solution
   name:
     exemple PP
-  additive:
+  additive: # additive and solvents use
     none, nanoparticles, etc
 
 machine_characteristics:
   speed: # rpm
     min:
     max:
+  feed_rate: #ml/min or kg/min
   collector_diameter: # po
     min:
     max:
@@ -36,6 +37,7 @@ Fiber_results:
   fiber_diameter: # µm
     min:
     max:
+    average:  #format [average, error]
   fiber_morphology:
     exemple
     crystalline
