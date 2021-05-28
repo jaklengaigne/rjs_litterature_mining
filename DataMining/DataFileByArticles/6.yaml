@@ -1,50 +1,56 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000348269400009
-  type: 
+  type: # paper type
     experimental
     numerical
+  application_field: # application target, 1 or 2 max
+    todo
 
 materials:
-  state: solution
-  name: 
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     poly acrylonitrile (PAN)
+  additive: # additive and solvents use
     dimethyl formamide (DMF)
-  additive: 
-    none
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    2160
-    4320
-  collector diameter: # po
-    3.14960629921
-  temperature: # C°
-    unknown
-  nozzle diameter: # mm
-    0.16
-  spinneret diameter: # po
-    2.08661417323
+    min: 2160
+    max: 4320
+  collector_diameter: # m
+    min: 3.14960629921
+    max: 3.14960629921
+  temperature: # K
+    min: 
+    max: 
+  nozzle_diameter: # m
+    min: 0.16
+    max: 0.16
+  spinneret_diameter: # m
+    min: 2.08661417323
+    max: 2.08661417323
   special: 
     air-sealed
 
-Fiber's results:
-  fiber diameter: # µm
-    0.171
-    0.220
-  fiber morphology:
-    unknown
+fiber_results:
+  fiber_diameter: # m
+    min: 0.171
+    max: 0.220
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
-    unknown
-  Production rate: # g/h
-    to convert 0.2862-0.9598 ml/h
+  production_rate: # kg/min
+    min: to convert 0.2862-0.9598 ml/h
+    max: to convert 0.2862-0.9598 ml/h
   tool: 
     high speed camera - Canon EOS 400D
     Digimizer4
-    field emission scanning electron microscope (FESEM)
+    FESEM
     sputter coater
-  other tests: 
+  other_tests: 
     non-linear analysis of the Navier–Stokes equations
     trajectory of an jet particule
     flow
-
-# unknown, if no data

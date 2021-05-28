@@ -1,48 +1,49 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000445193600003
-  type: 
-    modelling
+  type: # paper type
+    analytical
     experimental
+  application_field: # application target, 1 or 2 max
+    todo
 
 materials:
   state: solution
-  name: 
+  name: # fullName (ABBREVIATION)
     polyethylene oxide (PEO)
+  additive:  # additive and solvents use
     unknown
-  additive: 
-    none
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    2000
-    6000
-  collector diameter: # po
-    7.87401574803
-    23.6220472441
-  temperature: # C°
+    min: 2000
+    max: 6000
+  collector_diameter: # m
+    min: 7.87401574803
+    max: 23.6220472441
+  temperature: # K
     room
-  nozzle diameter: # mm
-    0.01574803149
-    0.03937007874
-  spinneret diameter: # po
-    0.3937007874
-  special: 
-    unknown
+  nozzle_diameter: # m
+    min: 0.01574803149
+    max: 0.03937007874
+  spinneret_diameter: # m
+    min: 0.3937007874
+    max: 0.3937007874
+  special:
 
-Fiber's results:
-  fiber diameter: # µm
-    0.300
-    0.895
-  fiber morphology:
-    unknown
+fiber_results:
+  fiber_diameter: # m
+    min: 0.300
+    max: 0.895
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
-    unknown
-  Production rate: # g/h
-    unknown
+  production_rate: # kg/min
+    min: 
+    max: 
   tool: 
-    scanning electron microscope (SEM)
-  other tests: 
+    SEM
+  other_tests: 
     pressure distribution of flow field
     velocity distribution
-
-# unknown, if no data

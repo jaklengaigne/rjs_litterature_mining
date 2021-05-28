@@ -1,46 +1,55 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000612955400002
-  type: 
+  type: # paper type
     experimental
+  application_field: # application target, 1 or 2 max
+    todo
 
 materials:
-  state: melt
-  name: 
+  state: 
+    melt
+  name: # fullName (ABBREVIATION)
     polylactic acid (PLA)
-  additive: 
+  additive: # additive and solvents use
     none
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    650
-    2800
-  collector diameter: # po
-    unknown
-  temperature: # C°
-    190
-    230
-  nozzle diameter: # mm
-    0.6
-  spinneret diameter: # po
-    unknown
+    min: 650
+    max: 2800
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 190
+    max: 230
+  nozzle_diameter: # m
+    min: 0.6
+    max: 0.6
+  spinneret_diameter: # m
+    min:
+    max: 
   special: 
     PLA resins were first dried at 60 °C overnight
 
-Fiber's results:
-  fiber diameter: # µm
-    5
-    22
-  fiber morphology:
-    unknown
+fiber_results:
+  fiber_diameter: # m
+    min: 5
+    max: 22
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
     beads
-  Production rate: # g/h
-    unknown
+  production_rate: # kg/min
+    min:
+    max:
   tool: 
-    scanning electron microscope (SEM)
-    thermogravimetric analyzer (TGA)
-    dynamic mechanical analyzer (DMA)
-  other tests: 
+    SEM
+    TGA
+    DMA
+  other_tests: 
     wettability of non-woven fibers - evaporation of the water saturation mats
     viscosity - dynamic mechanical analysis
     degradation of fibers - thermogravimetric analysis

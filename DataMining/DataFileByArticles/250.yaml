@@ -1,26 +1,28 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000596306700035
   type: # paper type
     experimental
-  application_field: battery # application target
+  application_field: # application target, 1 or 2 max
+     battery
 
 materials:
-  state: solution
-  name:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     polyacrylonitrile (PNA)
   additive: # additive and solvents use
-    TiS2 nanoparticles, N-dime-thylformamide (DMF),
+    TiS2 nanoparticles
+    N-dime-thylformamide (DMF)
 
 machine_characteristics:
   speed: # rpm
     min: 7000
     max: 7000
-  feed_rate: #l/min or kg/min
-  feed_volume: 1.5e-3 #liter
   collector_diameter: # m
     min:
     max:
-  temperature: # C°
+  temperature: # K
     min:
     max:
   nozzle_diameter: # m
@@ -33,16 +35,17 @@ machine_characteristics:
     Cyclone L-1000 M, FibeRio Technology
     drying and calcination
 
-Fiber_results:
-  fiber_diameter: # µm
+fiber_results:
+  fiber_diameter: # m
     min: 1.0e-6
     max: 2.8e-6
-    average:  2.5e-6 #format [average, error]
+    average: #format [average, error]
+      [2.5e-6, 0]
   fiber_morphology:
     amorphous
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
-
-  Production_rate: # g/h
+  production_rate: # kg/min
     min:
     max:
   tool:

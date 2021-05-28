@@ -1,54 +1,60 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000576448300001
-  type:
+  type: # paper type
     experimental
-  application_field: medical, scaffold # application target
+  application_field: # application target, 1 or 2 max
+    medical
+    scaffold
 
 materials:
-  state: solution
-  name:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     polycaprolactone (PCL)
-    polycaprolactone, gelatine
-  additive:
-    chloroform, hexafluoropropanol
+  additive: # additive and solvents use
+    chloroform
+    hexafluoropropanol (HFP)
 
 machine_characteristics:
   speed: # rpm
     min: 30000
     max: 30000
-  feed_rate: [1.5, 2.5, 3.0]  #ml/min
-  collector_diameter: # po
+  collector_diameter: # m
     min:
     max:
-  temperature: # C°
+  temperature: # K
     min:
     max:
-  nozzle_diameter: # mm
+  nozzle_diameter: # m
     min:
     max:
-  spinneret_diameter: # po
+  spinneret_diameter: # m
     min:
     max:
   special:
     electrospinning
 
-Fiber_results:
-  fiber_diameter: # µm
+fiber_results:
+  fiber_diameter: # m
     min:
     max:
-    average: [6.9e-6, 3.2e-6]
+    average: #format [average, error]
+      [6.9e-6, 3.2e-6]
   fiber_morphology:
-  fiber orientation_OOD: 0.96
-  defect: none
-  Production_rate: # g/h
-    min:
-    max:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0.96
+  defect: 
+    none
+  production_rate: # ml/min
+    min: 1.5
+    max: 3.0
   tool:
     SEM
     confocal microscope
-
+    pixel-based image analyzer (MATLAB® code)
   other_tests:
     cell growth
     fiber orientation
     uniaxial tensile test
-# unknown, if no data
+

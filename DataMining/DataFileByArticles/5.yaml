@@ -1,60 +1,69 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000396394700008
-  type: 
+  type: # paper type
     experimental
+  application_field: # application target, 1 or 2 max
+    todo
 
 materials:
-  state: solution
-  name: 
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     para-phenylene terephthalamide (PPTA)
     nylon
     DNA
     alginate
+  additive:  # additive and solvents use
     sulfuric acid
     hexafluoroisopropanol (HFIP)
     ethanol
     aqueous CaCl2
-  additive: 
-    none
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    15000
-    65000
-  collector diameter: # po
-    unknown
-  temperature: # C°
-    unknown
-  nozzle diameter: # mm
-    0.175
-    0.375
-  spinneret diameter: # po
-    unknown
+    min: 15000
+    max: 65000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.175
+    max: 0.375
+  spinneret_diameter: # m
+    min:
+    max:
   special: 
     bath - immersion rotary jet-spinning (iRJS)
     air gap - collector minus spinneret - 0.787402 to 2.3622 po
 
-Fiber's results:
-  fiber diameter: # µm
-    0.25
-    2.75
-  fiber morphology:
+fiber_results:
+  fiber_diameter: # m
+    min: 0.25
+    max: 2.75
+    average:  #format [average, error]
+  fiber_morphology:
     semicrystalline
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
     beads
-  Production rate: # g/h
-    unknown
+  production_rate: # kg/min
+    min:
+    max:
   tool: 
-    scanning electron microscope (SEM)
-    object-oriented programming (OOP) - angle-color image algorithms
-    transmission electron microscope (TEM)
+    SEM
+    OOP - angle-color image algorithms
+    TEM
     raman spectrometer
-    fourier transform infrared spectrometer (FT-IR)
+    FT-IR
     sputter coater
     ImageJ
-    energy-dispersive X-ray spectroscopy (EDS)
+    EDS
     SigmaPlot software 
-  other tests: 
+  other_tests: 
     uniaxial tensile testing
     bulk crystallinity - Raman spectroscopy and fourier transform infrared spectroscopy
     detection of sulfuric acid impurities

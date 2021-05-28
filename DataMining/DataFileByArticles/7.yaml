@@ -1,45 +1,49 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000459378400001
-  type: 
-    modelling
+  type: # paper type
+    analytical
     experimental
+  application_field: # application target, 1 or 2 max
+    todo
 
 materials:
-  state: solution
-  name: 
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     poly acrylonitrile (PAN)
+  additive: # additive and solvents use
     unknown
-  additive: 
-    none
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    2000
-    4000
-  collector diameter: # po
-    unknown
-  temperature: # C°
-    unknown
-  nozzle diameter: # mm
-    0.4
-  spinneret diameter: # po
-    unknown
-  special: 
-    unknown
+    min: 2000
+    max: 4000
+  collector_diameter: # m
+    min: 
+    max: 
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.4
+    max: 0.4
+  spinneret_diameter: # m
+    min: 
+    max: 
+  special:
 
-Fiber's results:
-  fiber diameter: # µm
-    0.400
-    0.580
-  fiber morphology:
-    unknown
+fiber_results:
+  fiber_diameter: # m
+    min: 0.400
+    max: 0.580
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
     beads
-  Production rate: # g/h
-    unknown
-  tool: 
-    unknown
-  other tests: 
-    unknown
-
-# unknown, if no data
+  production_rate: # kg/min
+    min: 
+    max: 
+  tool:
+  other_tests: 

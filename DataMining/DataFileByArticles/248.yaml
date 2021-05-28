@@ -1,45 +1,51 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000297010500016
   type: # paper type
     experimental
-  application_field: medical # application target
+  application_field: # application target, 1 or 2 max
+    medical
 
 materials:
-  state: solution
-  name:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     titanium dioxide (TiO2)
   additive: # additive and solvents use
-    methanol, AcAc, TEA
+    methanol
+    AcAc
+    TEA
 
 machine_characteristics:
   speed: # rpm
     min:
     max:
-  feed_rate: #ml/min or kg/min
-  collector_diameter: # po
+  collector_diameter: # m
     min:
     max:
-  temperature: # C°
+  temperature: # K
     min:
     max:
-  nozzle_diameter: # mm
+  nozzle_diameter: # m
     min:
     max:
-  spinneret_diameter: # po
+  spinneret_diameter: # m
     min:
     max:
   special:
-    sol-gel, calcination
+    sol-gel
+    alcination
 
-Fiber_results:
-  fiber_diameter: # µm
+fiber_results:
+  fiber_diameter: # m
     min: 0.9e-6
     max: 1.2e-6
     average:  #format [average, error]
   fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
     fiber ripples
-  Production_rate: # g/h
+  production_rate: # kg/min
     min:
     max:
   tool:
@@ -48,9 +54,6 @@ Fiber_results:
     DSC
     XRD
     XPS
-
   other_tests:
     cell growth
     nitrogen absorption
-
-# unknown, if no data

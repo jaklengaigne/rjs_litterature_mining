@@ -1,48 +1,56 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000367459300011
   type: 
-    modelling
+    analytical
     experimental
+  application_field: # application target, 1 or 2 max
+    todo
 
 materials:
-  state: solution
-  name: 
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
     polyisobutylene (PIB)
     polybutene (PB)
+  additive: # additive and solvents use
     trichloroethylene (TCE)
-  additive: 
-    none
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    1300
-    3750
-  collector diameter: # po
-    unknown
-  temperature: # C°
-    unknown
-  nozzle diameter: # mm
-    0.5
-  spinneret diameter: # po
-    1.2795275590551
+    min: 1300
+    max: 3750
+  collector_diameter: # m
+    min: 
+    max: 
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.5
+    max: 0.5
+  spinneret_diameter: # m
+    min: 1.2795275590551
+    max: 1.2795275590551
   special: 
     channel width 1.5 mm
 
-Fiber's results:
-  fiber diameter: # µm
-    unknown
-  fiber morphology:
-    unknown
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
-    unknown
-  Production rate: # g/h
-    0.6
-    0.9
+  production_rate: # kg/min
+    min: 0.6
+    max: 0.9
   tool: 
     RedLake MotionPro HS-3 with Nikon MICRO NIKORR 60 mm 1:2:8 lens 1000fr/s f/2.8-5.6
     500 W lamp with wax paper
     MotionStudio X64 
     ImageJ
-  other tests: 
+  other_tests: 
     radius of the jet in function of contour length
     trajectory of an jet particule

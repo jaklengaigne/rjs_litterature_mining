@@ -1,60 +1,42 @@
+# if there is no data, leave a blank space in the according field
 article:
   WOS: 000350636300095
-  type:
-    modelling, experimental and/or numerical
+  type: # paper type
+  application_field: # application target, 1 or 2 max
 
 materials:
-  state: melt or solution
-  name:
-    exemple PP
-  additive:
-    none, nanoparticles, etc
+  state: 
+  name: # fullName (ABBREVIATION)
+  additive: # additive and solvents use
 
-machine characteristics:
+machine_characteristics:
   speed: # rpm
-    min
-    max
-  collector diameter: # po
-    min
-    max
-  temperature: # C°
-    min
-    max
-  nozzle diameter: # mm
-    min
-    max
-  spinneret diameter: # po
-    min
-    max
+    min:
+    max:
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m
+    min:
+    max:
   special:
-    if something special example →
-    (system pressure, electrical field,
-    nozzle orientation # ° between center line of nozzle and ...)
 
-Fiber's results:
-  fiber diameter: # µm
-    min
-    max
-  fiber morphology:
-    exemple
-    crystalline
-    amorphous
-    etc
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
-    exemple
-    beads
-    etc
-  Production rate: # g/h
-    min
-    max
+  production_rate: # kg/min
+    min:
+    max:
   tool:
-    exemple
-    SEM
-    etc
-  other tests:
-    exemple
-    filtration
-    degradation
-    etc
-
-# unknown, if no data
+  other_tests:
