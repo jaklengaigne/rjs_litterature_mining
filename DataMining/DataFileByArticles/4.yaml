@@ -4,7 +4,7 @@ article:
   type: # paper type
     experimental
   application_field: # application target, 1 or 2 max
-    todo
+    properties
 
 materials:
   state: 
@@ -22,11 +22,11 @@ machine_characteristics:
     min:
     max:
   temperature: # K
-    min: 190
-    max: 230
+    min: 463.15
+    max: 503.15
   nozzle_diameter: # m
-    min: 0.6
-    max: 0.6
+    min: 0.6e-3
+    max: 0.6e-3
   spinneret_diameter: # m
     min:
     max: 
@@ -35,8 +35,8 @@ machine_characteristics:
 
 fiber_results:
   fiber_diameter: # m
-    min: 5
-    max: 22
+    min: 5.0e-6
+    max: 22.0e-6
     average:  #format [average, error]
   fiber_morphology:
   fiber_orientation: # 0-1, 1 → perfectly aligned

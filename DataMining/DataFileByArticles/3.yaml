@@ -5,7 +5,7 @@ article:
     analytical
     experimental
   application_field: # application target, 1 or 2 max
-    todo
+    nanofiber diameter
 
 materials:
   state: 
@@ -27,13 +27,13 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min: 0.5
-    max: 0.5
+    min: 0.5e-3
+    max: 0.5e-3
   spinneret_diameter: # m
-    min: 1.2795275590551
-    max: 1.2795275590551
+    min: 32.5e-3
+    max: 32.5e-3
   special: 
-    channel width 1.5 mm
+    channel width 1.5e-3 m
 
 fiber_results:
   fiber_diameter: # m
@@ -44,8 +44,8 @@ fiber_results:
   fiber_orientation: # 0-1, 1 → perfectly aligned
   defect:
   production_rate: # kg/min
-    min: 0.6
-    max: 0.9
+    min: 8.5e-3
+    max: 12.75e-3
   tool: 
     RedLake MotionPro HS-3 with Nikon MICRO NIKORR 60 mm 1:2:8 lens 1000fr/s f/2.8-5.6
     500 W lamp with wax paper

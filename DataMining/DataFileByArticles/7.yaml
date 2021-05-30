@@ -5,7 +5,7 @@ article:
     analytical
     experimental
   application_field: # application target, 1 or 2 max
-    todo
+    nozzle
 
 materials:
   state: 
@@ -26,8 +26,8 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min: 0.4
-    max: 0.4
+    min: 0.4e-3
+    max: 0.4e-3
   spinneret_diameter: # m
     min: 
     max: 
@@ -35,8 +35,8 @@ machine_characteristics:
 
 fiber_results:
   fiber_diameter: # m
-    min: 0.400
-    max: 0.580
+    min: 0.400e-6
+    max: 0.580e-6
     average:  #format [average, error]
   fiber_morphology:
   fiber_orientation: # 0-1, 1 → perfectly aligned

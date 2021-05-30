@@ -5,7 +5,7 @@ article:
     experimental
     numerical
   application_field: # application target, 1 or 2 max
-    todo
+    improvement
 
 materials:
   state: 
@@ -20,24 +20,24 @@ machine_characteristics:
     min: 2160
     max: 4320
   collector_diameter: # m
-    min: 3.14960629921
-    max: 3.14960629921
+    min: 80.0e-3
+    max: 80.0e-3
   temperature: # K
     min: 
     max: 
   nozzle_diameter: # m
-    min: 0.16
-    max: 0.16
+    min: 0.16e-3
+    max: 0.16e-3
   spinneret_diameter: # m
-    min: 2.08661417323
-    max: 2.08661417323
+    min: 53.0e-3
+    max: 53.0e-3
   special: 
     air-sealed
 
 fiber_results:
   fiber_diameter: # m
-    min: 0.171
-    max: 0.220
+    min: 0.171e-6
+    max: 0.220e-6
     average:  #format [average, error]
   fiber_morphology:
   fiber_orientation: # 0-1, 1 → perfectly aligned

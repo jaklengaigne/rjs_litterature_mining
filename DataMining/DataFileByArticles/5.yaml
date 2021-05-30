@@ -4,7 +4,7 @@ article:
   type: # paper type
     experimental
   application_field: # application target, 1 or 2 max
-    todo
+    improvement
 
 materials:
   state: 
@@ -31,8 +31,8 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min: 0.175
-    max: 0.375
+    min: 0.175e-3
+    max: 0.375e-3
   spinneret_diameter: # m
     min:
     max:
@@ -42,8 +42,8 @@ machine_characteristics:
 
 fiber_results:
   fiber_diameter: # m
-    min: 0.25
-    max: 2.75
+    min: 0.25e-6
+    max: 2.75e-6
     average:  #format [average, error]
   fiber_morphology:
     semicrystalline
