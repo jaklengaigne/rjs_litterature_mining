@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a8e0ec133ab04b7bba21c2a1d1357dfb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_a8e0ec133ab04b7bba21c2a1d1357dfb" ></div>
+        
+</body>
+<script>    
+    
+            var map_a8e0ec133ab04b7bba21c2a1d1357dfb = L.map(
+                "map_a8e0ec133ab04b7bba21c2a1d1357dfb",
+                {
+                    center: [0, 0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 1,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_590cfc0b14f145c994dbec8584a179bf = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_a8e0ec133ab04b7bba21c2a1d1357dfb);
+        
+    
+            var marker_cluster_a5875bfc6c1549d3b7bc25220387c952 = L.markerClusterGroup(
+                {}
+            );
+            map_a8e0ec133ab04b7bba21c2a1d1357dfb.addLayer(marker_cluster_a5875bfc6c1549d3b7bc25220387c952);
+        
+    
+            var circle_marker_a0cc2eb7dfa24f05b7bf03c248fdaeed = L.circleMarker(
+                [46.34515, -72.5477],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_a5875bfc6c1549d3b7bc25220387c952);
+        
+    
+        var popup_f47088b69c384411ace43bc9ebc6f94f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_683521bc017d48f08d833b2d9355332f = $(`<div id="html_683521bc017d48f08d833b2d9355332f" style="width: 100.0%; height: 100.0%;">City : TROIS RIVIERES<br></div>`)[0];
+            popup_f47088b69c384411ace43bc9ebc6f94f.setContent(html_683521bc017d48f08d833b2d9355332f);
+        
+
+        circle_marker_a0cc2eb7dfa24f05b7bf03c248fdaeed.bindPopup(popup_f47088b69c384411ace43bc9ebc6f94f)
+        ;
+
+        
+    
+    
+            var circle_marker_df428d72dd7349e48673f5ec5b715c00 = L.circleMarker(
+                [39.507, -84.74523],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_a5875bfc6c1549d3b7bc25220387c952);
+        
+    
+        var popup_4b5a2a169feb42e08bd5e97af9840980 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_37e58475ddc44176943b67b9dec890e2 = $(`<div id="html_37e58475ddc44176943b67b9dec890e2" style="width: 100.0%; height: 100.0%;">City : OXFORD<br></div>`)[0];
+            popup_4b5a2a169feb42e08bd5e97af9840980.setContent(html_37e58475ddc44176943b67b9dec890e2);
+        
+
+        circle_marker_df428d72dd7349e48673f5ec5b715c00.bindPopup(popup_4b5a2a169feb42e08bd5e97af9840980)
+        ;
+
+        
+    
+    
+            var circle_marker_d84682ba070c43329fbef4b89109106a = L.circleMarker(
+                [46.05007, -71.96579],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_a5875bfc6c1549d3b7bc25220387c952);
+        
+    
+        var popup_8028dd24cd5c489a89cf1f3183cda759 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_27f9654b719e4be6907ed7a4e808a56e = $(`<div id="html_27f9654b719e4be6907ed7a4e808a56e" style="width: 100.0%; height: 100.0%;">City : VICTORIAVILLE<br></div>`)[0];
+            popup_8028dd24cd5c489a89cf1f3183cda759.setContent(html_27f9654b719e4be6907ed7a4e808a56e);
+        
+
+        circle_marker_d84682ba070c43329fbef4b89109106a.bindPopup(popup_8028dd24cd5c489a89cf1f3183cda759)
+        ;
+
+        
+    
+    
+            var circle_marker_e5ddeefbb2c341d18d22618ba9162698 = L.circleMarker(
+                [37.566, 126.9784],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_a5875bfc6c1549d3b7bc25220387c952);
+        
+    
+        var popup_cc8e8b500f874ba69e28d267959ec115 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f88471e3fbef4793aee54f0b72a20872 = $(`<div id="html_f88471e3fbef4793aee54f0b72a20872" style="width: 100.0%; height: 100.0%;">City : SEOUL<br></div>`)[0];
+            popup_cc8e8b500f874ba69e28d267959ec115.setContent(html_f88471e3fbef4793aee54f0b72a20872);
+        
+
+        circle_marker_e5ddeefbb2c341d18d22618ba9162698.bindPopup(popup_cc8e8b500f874ba69e28d267959ec115)
+        ;
+
+        
+    
+    
+            var circle_marker_433e75c4276f47aab1cf98959574dd90 = L.circleMarker(
+                [37.566, 126.9784],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_a5875bfc6c1549d3b7bc25220387c952);
+        
+    
+        var popup_ea6a6bce84124d56aeeb54eb62b5aa6f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_62149ed19ffa4085ab2ecfeb468bdf18 = $(`<div id="html_62149ed19ffa4085ab2ecfeb468bdf18" style="width: 100.0%; height: 100.0%;">City : SEOUL<br></div>`)[0];
+            popup_ea6a6bce84124d56aeeb54eb62b5aa6f.setContent(html_62149ed19ffa4085ab2ecfeb468bdf18);
+        
+
+        circle_marker_433e75c4276f47aab1cf98959574dd90.bindPopup(popup_ea6a6bce84124d56aeeb54eb62b5aa6f)
+        ;
+
+        
+    
+</script>
