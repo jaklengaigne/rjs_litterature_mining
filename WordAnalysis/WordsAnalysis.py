@@ -11,6 +11,8 @@ from nltk import word_tokenize, bigrams, trigrams
 from collections import Counter
 import os
 import matplotlib.pyplot as plt
+from geopy.geocoders import Nominatim
+import geonamescache
 
 
 # Read the database file
@@ -260,6 +262,27 @@ def article_with_word(word, df, col_word, col_info, col_ID):
     return art_with_word
 # Articles about blend material
 art_with_blend = article_with_word('blend', clean_data, 'Abstract', 'Article Title', 'UT (Unique WOS ID)')
+# Article in a journal with a country or city in his name
+
+# Map of publisher's city
+''' 
+Based on :
+Oh, J. (2020, April 23). Using Python to create a world map from a list of country names. 
+Medium. https://towardsdatascience.com/using-python-to-create-a-world-map-from-a-list-of-country-names-cd7480d03b10
+'''
+# =============================================================================
+# # Getting a list of country
+# results = []
+# for country in pycountry.countries:
+#         results.append({
+#             "type": "country",
+#             "key": country.alpha_2,
+#             "text": "{} ({})".format(country.name, country.alpha_2),
+#         })
+# =============================================================================
+# 
+
+# Keyword comparison with research areas
            
  
 # Plot
@@ -317,7 +340,7 @@ def plot_word_by_year(word, df, col_word, col_year, path):
     # Converting the year (int) into str in the dataframe used to plot → no bar 
     # in year with no pub : so 0-2000 is not a problem
     nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(int).astype(str)
-    # Plotting the dataframe dans saving it in a folder
+    # Plotting the dataframe and saving it in a folder
     fig = plt.figure()
     axes = fig.add_subplot()
     axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
