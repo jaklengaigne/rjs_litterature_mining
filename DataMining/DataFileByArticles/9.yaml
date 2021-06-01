@@ -1,0 +1,61 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000424017600064
+  type: # paper type
+    analytical
+    experimental
+  application_field: # application target, 1 or 2 max
+    mass production
+
+materials:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
+    glycerol
+  additive: # additive and solvents use
+    water
+
+machine_characteristics:
+  speed: # rpm
+    min: 1080
+    max: 1440
+  collector_diameter: # m
+    min: 16.0e-2 # interpretation doubt
+    max: 16.0e-2
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m
+    min:
+    max:
+  special:
+    air-sealed
+    electro-spinning
+    max potential difference, 25000 V
+    min potential difference, 9000 V
+    collector_diameter - spinneret_diameter = 0.057 m
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+  production_rate: # kg/min
+    min: 0.00015
+    max: 0.00049
+  tool:
+     Canon EOS 6D DSLR camera
+     200 mm f /4d Micro Nikkor lens
+     Canon 430 EXII speed light
+     DV-II + Pro viscometer
+     EU 3540 conductivity meter
+     DCAT11 surface tension instrument
+     Libror AEU-210 balance
+  other_tests:
+    jet trajectory
