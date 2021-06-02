@@ -1,0 +1,65 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000378542300012
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    material
+    adsorption
+
+materials:
+  state: 
+    melt
+  name: # fullName (ABBREVIATION)
+    Polyvinylpyrrolidone/1-triacontene (PVP/TA)
+  additive: # additive and solvents use
+    none
+
+machine_characteristics:
+  speed: # rpm
+    min: 7000
+    max: 15000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 345.15
+    max: 345.15
+  nozzle_diameter: # m
+    min: 159.0e-6
+    max: 602.0e-6
+  spinneret_diameter: # m
+    min:
+    max:
+  special:
+    distance between spinneret and collector = 115.0e-3 m
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+      [1.5e-6, 0.5e-6]
+  fiber_morphology:
+    triacontene branches interlock and form small lateral crystals around an amorphous backbone
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+    brittle
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    DSC
+    XRD
+    SEM
+    Dianix AC-E
+    RH2000 capillary rheometer
+    Forcespinning™ L1000 M centrifugal spinner
+    sputter coater
+    Image J
+    UV–Vis spectrophotometer
+    ANOVA
+  other_tests:
+    adsorption
+    shear rate
+    shear viscosity
