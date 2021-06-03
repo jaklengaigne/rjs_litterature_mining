@@ -33,7 +33,7 @@ machine_characteristics:
   nozzle_diameter: # m
     min:
     max:
-  spinneret_diameter: # m
+  spinneret_diameter: # m  ***At nozzle/syringe tip***
     min:
     max:
   special:
