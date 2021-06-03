@@ -1,1 +1,5 @@
 Note : files are named based on excel row indexed, so it keeps the sorting.
+
+Exeptions :
+index_nofile.yaml → No "free" access to the article
+index_notRJS.yaml → Article is not about RJS, it is just mentionning it
