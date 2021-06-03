@@ -1,29 +1,24 @@
 # if there is no data, leave a blank space in the according field
 article:
-  WOS:
+  WOS: 000344361500005
   type: # paper type
-    experimental or numerical or analytical or review
+    experimental
   application_field: # application target, 1 or 2 max
-    medical
-    filtration
-    etc 
+    nozzle
+    trajectory
 
 materials:
   state: 
-    melt or solution
+    solution
   name: # fullName (ABBREVIATION)
-    example polypropylene (PP)
+    polyvinylpyrrolidone (PVP)
   additive: # additive and solvents use
-    example
-    none
-    nanoparticles
-    hexafluoroisopropanol (HFIP)
-    etc
+    distilled water
 
 machine_characteristics:
   speed: # rpm
-    min:
-    max:
+    min: 3000
+    max: 3000
   collector_diameter: # m
     min:
     max:
@@ -31,42 +26,26 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min:
-    max:
+    min: 0.2e-3
+    max: 0.2e-3
   spinneret_diameter: # m  ***At nozzle/syringe/needle tip***
     min:
     max:
   special:
-    if something special example →
-    (system pressure, electrical field,
-    nozzle orientation # ° between center line of nozzle and ...)
 
 fiber_results:
   fiber_diameter: # m
     min:
     max:
     average:  #format [average, error]
-      [nominal, +-]
   fiber_morphology:
-    example
-    crystalline
-    amorphous
-    etc
   fiber_orientation: # 0-1, 1 → perfectly aligned
-    num
   defect:
-    example
-    beads
-    etc
   production_rate: # kg/min
     min:
     max:
   tool:
-    example
-    SEM
-    etc
   other_tests:
-    example
-    filtration
-    degradation
-    etc
+    surface tension
+    jet velocity
+    jet trajectory
