@@ -1,0 +1,55 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000344905100029
+  type: # paper type
+    analytical
+  application_field: # application target, 1 or 2 max
+    beads
+
+materials:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
+    polylactic acid (PLA)
+  additive: # additive and solvents use
+    chloroform
+    dimethylformamide (DMF)
+
+machine_characteristics:
+  speed: # rpm
+    min: 0
+    max: 75000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 343.0e-6
+    max: 343.0e-6
+  spinneret_diameter: # m
+    min:
+    max:
+  special:
+    distance between spinneret and collector = 10.0e-2 m
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+    beads
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    sputter coater
+    SEM
+    rheometer
+  other_tests:
+    viscosity
+    mass transfer
