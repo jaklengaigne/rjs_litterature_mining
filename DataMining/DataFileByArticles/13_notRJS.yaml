@@ -1,0 +1,50 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000378195000071
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    air filter
+
+materials:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
+    benzenetrisamides
+  additive: # additive and solvents use
+    butanone
+    isopropanol
+    ethanol
+    water
+
+machine_characteristics:
+  speed: # rpm
+    min:
+    max:
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m
+    min:
+    max:
+  special:
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+  other_tests:
