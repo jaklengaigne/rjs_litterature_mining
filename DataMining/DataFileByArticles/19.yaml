@@ -1,0 +1,45 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000403090300015
+  type: # paper type
+    analytical
+  application_field: # application target, 1 or 2 max
+    3D modelisation
+
+materials:
+  state:
+  name: # fullName (ABBREVIATION)
+    non-Newtonian fluid
+  additive: # additive and solvents use
+
+machine_characteristics:
+  speed: # rpm
+    min:
+    max:
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip***
+    min:
+    max:
+  special:
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+  other_tests:
