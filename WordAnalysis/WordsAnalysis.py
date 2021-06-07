@@ -262,9 +262,15 @@ def article_with_word(word, df, col_word, col_info, col_ID):
 # Articles about blend material
 art_with_blend = article_with_word('blend', clean_data, 'Abstract', 'Article Title', 'UT (Unique WOS ID)')
 
-# Article in a journal with a country or city in his name
+# Article in a journal with a country or city in his name (might be use in futur to remove point from score)
 
-# Keyword comparison with research areas
+# Keyword comparison with research areas (most tuple → (keyw, rea) as bigrams)
+
+# average number of page by document type plot
+
+# number of page vs cited reference count
+
+# map author from addresses
            
  
 # Plot
