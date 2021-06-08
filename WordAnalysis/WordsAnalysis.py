@@ -1,9 +1,11 @@
 """
 Base on this tutorial
-Chalaguine, L. A. (2020, August 3). Getting started with text analysis in Python. Medium. https://towardsdatascience.com/getting-started-with-text-analysis-in-python-ca13590eb4f7
+Chalaguine, L. A. (2020, August 3).
+Getting started with text analysis in Python. Medium.
+https://towardsdatascience.com/getting-started-with-text-analysis-in-python-ca13590eb4f7
 """
 
-# Librairies 
+# Librairies
 import pandas as pd
 import re
 from nltk.stem import PorterStemmer
@@ -38,7 +40,7 @@ of False and True.
 """
 raw_data['dup'].value_counts()
 # Creating a new data frame without the duplicates
-raw_data_noDup = raw_data[ raw_data['dup']==False ]
+raw_data_noDup = raw_data[raw_data['dup'] == False]
 """
 Deleting the column with the True and False because because it is
 no more useful
@@ -52,7 +54,8 @@ raw_data_useField = raw_data_noDup.dropna(axis=1, how='all')
 
 
 
-# Changing the type of NaN to string (For text cleaning everything need to be string)
+# Changing the type of NaN to string
+# (For text cleaning everything need to be string)
 raw_data_str = raw_data_useField.fillna("NaN")
 
 
@@ -61,7 +64,7 @@ raw_data_str = raw_data_useField.fillna("NaN")
 """
 SmartStoplist.txt
 by Lisa Andreevna
-Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021, 
+Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021,
 from https://github.com/lisanka93/text_analysis_python_101
 **** Note : nan is added to Lisa Andreevna's list ****
 """
@@ -76,16 +79,16 @@ with open(stop_words_file, "r") as f:
 stop_words = stop_words
 """
 Definition of a cleaning function (preprocess before words analysis)
-This function get a text and return a text (string) of stemmed word in 
+This function get a text and return a text (string) of stemmed word in
 lowercase without stop words and any caracter except letter
 """
 def preprocess(raw_text):
     """
-    Keep only letters in the text (lowercase and capitals) using Regex (re). 
+    Keep only letters in the text (lowercase and capitals) using Regex (re).
     Replace all symboles with a blank space.
     """
     letters_only_text = re.sub("[^a-zA-Z]", " ", raw_text)
-    # Change the capitals for lowercase AND split into a list of words (no expression)   
+    # Change the capitals for lowercase AND split into a list of words (no expression)
     words = letters_only_text.lower().split()
     # Define a variable to receive only the useful crop (or not) words
     cleaned_words = []
@@ -127,14 +130,14 @@ clean_words_occ = Counter(" ".join(clean_data['Abstract']).split()).most_common(
 
 # Number of articles that write about 1 subject AND/OR another
 """
-Creating a dataframe [3x1]. The first row contain the number of abstract 
-(article) mentioning 1 word. The second is the number for another word. The 
+Creating a dataframe [3x1]. The first row contain the number of abstract
+(article) mentioning 1 word. The second is the number for another word. The
 third and last one is the number of article that mentioned both.
 Input :     word1        word to count how many article mention it (String)
             word2        word to count how many article mention it (String)
             df          dataframe that contain the column (see below)
             col_words   column's name of the dataframe where to search both words (String)
-Return :    nb_word_by_year     
+Return :    nb_word_by_year
 Save :      plot bar (x,y) → (Publication Year, number of article)
 """
 def nb_art_vs_2sub(word1, word2, df, col_words):
@@ -203,7 +206,7 @@ cita_lim = 10
 abst_words_by_art = []
 i = -1
 """
-Convert the list of single string into a list of multiple strings representing 
+Convert the list of single string into a list of multiple strings representing
 words (not the whole abstract)
 """
 for abstracts in all_abstracts_list:
@@ -213,7 +216,7 @@ for abstracts in abst_words_by_art:
     i += 1
     for word in minus_word:
         if word in abstracts:
-           clean_data.at[i, 'Score'] -= 1
+            clean_data.at[i, 'Score'] -= 1
 # Reinitializing the indice and removing points depending of number of citations
 i = -1
 # Removing points if the article have been cite less than 10 times
@@ -227,10 +230,10 @@ for abstracts in abst_words_by_art:
     i += 1
     for word in plus_word:
         if word in abstracts:
-           clean_data.at[i, 'Score'] += 1
- 
+            clean_data.at[i, 'Score'] += 1
+
 # Most common materials
-# First a materials columns was manually add in CleanWordsOccurence.csv and fill 
+# First a materials columns was manually add in CleanWordsOccurence.csv and fill
 # with 1 if the word was a material
 clean_words_occ_dfm = pd.read_csv("CleanWordsOccurence_modified.csv", sep=",")
 clean_words_occ_dfm = clean_words_occ_dfm.fillna('nan')
@@ -238,7 +241,7 @@ material_df = clean_words_occ_dfm[clean_words_occ_dfm.materials != 'nan']
 
 # Articles mentionning a certain word
 """
-Creating a dataframe [nrow X 2]. The first colunms contain the title of abstract 
+Creating a dataframe [nrow X 2]. The first colunms contain the title of abstract
 (article) mentioning the word. The second is the unique number of the article.
 Input :     word        word used to filter and keep article mentionning it (String)
             df          dataframe that contain the column (see below)
@@ -271,14 +274,15 @@ art_with_blend = article_with_word('blend', clean_data, 'Abstract', 'Article Tit
 # number of page vs cited reference count
 
 # map author from addresses
-           
- 
+
+
+
 # Plot
 # Creating histogram of number of articles in function of publication year
 nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
 nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
 plt.bar(nb_art_by_pub_year.index.map(int).map(str), nb_art_by_pub_year['Publication Year'])
-plt.xticks(rotation = 65)
+plt.xticks(rotation=65)
 plt.xlabel('Publication Year')
 plt.gcf().subplots_adjust(bottom=0.20)
 plt.ylabel('Number of Article')
@@ -286,7 +290,7 @@ plt.suptitle('Number of articles by publication year')
 plt.savefig('./Results/PlotArticleByYear.svg')
 # Creating histogram of most common words in function of publication year?????? 100*25!!!!!!!!!!
 """
-Defining a function that create an histogram of number of articles mentioning a 
+Defining a function that create an histogram of number of articles mentioning a
 certain clean word by publication year.
 Note : this function replace NaN made into 'NaN' to 0.
 Input :     word        word that is want to count by year (List of one string element)
@@ -295,7 +299,7 @@ Input :     word        word that is want to count by year (List of one string e
             col_year    column's name of the dataframe where it is store the year of publication (String)
             plot_title  Title of the plot (String)
             path        Where to save the plot (String)
-Return :    nb_word_by_year     
+Return :    nb_word_by_year
 Save :      plot bar (x,y) → (Publication Year, number of article)
 """
 def plot_word_by_year(word, df, col_word, col_year, path):
@@ -319,23 +323,23 @@ def plot_word_by_year(word, df, col_word, col_year, path):
     for article in df[col_year]:
         i += 1
         j = -1
-        for year in nb_word_by_year['Publication Year']:     
+        for year in nb_word_by_year['Publication Year']:
             j += 1
             if (df.at[i, 'Word'] == True) & (col_year_noStr.at[i, col_year] == year):
                 nb_word_by_year.at[j, 'Count'] += 1
     # Removing the columns with the true or false indicating if the word is in it
     del df['Word']
-    # Converting the year (int) into str in the dataframe used to plot → no bar 
+    # Converting the year (int) into str in the dataframe used to plot → no bar
     # in year with no pub : so 0-2000 is not a problem
     nb_word_by_year['Publication Year'] = nb_word_by_year['Publication Year'].astype(int).astype(str)
     # Plotting the dataframe and saving it in a folder
     fig = plt.figure()
     axes = fig.add_subplot()
-    axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color = 'orchid')
+    axes.bar(nb_word_by_year['Publication Year'], nb_word_by_year['Count'], color='orchid')
     axes.set_xlabel('Publication Year')
     axes.set_ylabel('Number of article with ' + word[0])
     axes.set_title('Number of article mentionning ' + word[0] + ' by year')
-    plt.xticks(rotation = 65)
+    plt.xticks(rotation=65)
     min_y = min(nb_word_by_year['Count'])
     max_y = max(nb_word_by_year['Count'])
     y_increment_by_1 = range(math.floor(min_y), math.ceil(max_y)+1)
@@ -352,13 +356,13 @@ plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './R
 plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
 
 # Map of publisher's city
-''' 
+'''
 Based on :
-Oh, J. (2020, April 23). Using Python to create a world map from a list of country names. 
+Oh, J. (2020, April 23). Using Python to create a world map from a list of country names.
 Medium. https://towardsdatascience.com/using-python-to-create-a-world-map-from-a-list-of-country-names-cd7480d03b10
 '''
 """
-Defining a function that create a map of publisher's city and add latitude and 
+Defining a function that create a map of publisher's city and add latitude and
 longitude in the initial database
 Note :  this function DO NOT map cities with no correspondence with the cities
         Can't save in svg, only html works
@@ -375,12 +379,12 @@ def map_publisher_city(df, col_city, path):
     import geonamescache
     import pandas as pd
     import folium
-    from folium.plugins import MarkerCluster   
+    from folium.plugins import MarkerCluster
     # Get a dictionnary of cities
     gc = geonamescache.GeonamesCache()
     cities_dic = gc.get_cities()
     # Transform dictionary into dataframe
-    allCity_df =  pd.DataFrame(cities_dic).transpose()
+    allCity_df = pd.DataFrame(cities_dic).transpose()
     # Change the modified dataframe index because it is not sorted so it make key error otherwise
     allCity_df = allCity_df.reset_index()
     # Refine the dataframe to be less heavy (useless info for us)
@@ -390,7 +394,7 @@ def map_publisher_city(df, col_city, path):
     # Replace word : letter with specials caracters for the same letter without it
     clean_name = []
     for name in allCity_dfm['name']:
-        clean_name.append(name.replace("À","A").replace("Â","A").replace("Á", "A").replace("Ä","A").replace("Ã","A").replace("Ā","A").replace("Ą","A").replace("È","E").replace("Ê","E").replace("É","E").replace("Ë","E").replace("Ẽ","E").replace("Ę","E").replace("Ì","I").replace("Î","I").replace("Í","I").replace("Ï","I").replace("Ĩ","I").replace("Ī","I").replace("Ò","O").replace("Ô","O").replace("Ó", "O").replace("Ö","O").replace("Õ","O").replace("Ō","O").replace("Ù","U").replace("Û","U").replace("Ú", "U").replace("Ü","U").replace("Ũ","U").replace("Ū","U").replace("Ç", "C").replace("Ḏ","D").replace("Ń","N").replace("Ñ", "N").replace("Ś","S").replace("Ş","S").replace("Ź","Z").replace("Ż","Z").replace("Ţ","T").replace("Ł","T").replace("–", "-").replace("-", " ").replace("’", " ").replace("‘"," ").replace("'", " ").replace("̧ "," ").replace(".", "").replace("  "," "))
+        clean_name.append(name.replace("À", "A").replace("Â", "A").replace("Á", "A").replace("Ä", "A").replace("Ã", "A").replace("Ā", "A").replace("Ą", "A").replace("È", "E").replace("Ê", "E").replace("É", "E").replace("Ë", "E").replace("Ẽ", "E").replace("Ę", "E").replace("Ì", "I").replace("Î", "I").replace("Í", "I").replace("Ï", "I").replace("Ĩ", "I").replace("Ī", "I").replace("Ò", "O").replace("Ô", "O").replace("Ó", "O").replace("Ö", "O").replace("Õ", "O").replace("Ō", "O").replace("Ù", "U").replace("Û", "U").replace("Ú", "U").replace("Ü", "U").replace("Ũ", "U").replace("Ū", "U").replace("Ç", "C").replace("Ḏ", "D").replace("Ń", "N").replace("Ñ", "N").replace("Ś", "S").replace("Ş", "S").replace("Ź", "Z").replace("Ż", "Z").replace("Ţ", "T").replace("Ł", "T").replace("–", "-").replace("-", " ").replace("’", " ").replace("‘", " ").replace("'", " ").replace("̧ ", " ").replace(".", "").replace("  ", " "))
     allCity_dfm['name'] = clean_name
     # Exploring the database and add latitude and longitude of the publisher's city
     df['Latitude'] = 0.0
@@ -399,13 +403,13 @@ def map_publisher_city(df, col_city, path):
         for j in range(len(allCity_dfm)):
             if (df.at[i, col_city] == allCity_dfm.at[j, 'name']):
                 df.at[i, 'Latitude'] = allCity_dfm.at[j, 'latitude']
-                df.at[i,'Longitude'] = allCity_dfm.at[j, 'longitude']
+                df.at[i, 'Longitude'] = allCity_dfm.at[j, 'longitude']
     # Drop rows with no correspondence in a new dataframe
-    map_df = pd.DataFrame(columns=[col_city, 'Latitude','Longitude'])
+    map_df = pd.DataFrame(columns=[col_city, 'Latitude', 'Longitude'])
     map_df[col_city] = df[col_city]
     map_df['Latitude'] = df['Latitude']
     map_df['Longitude'] = df['Longitude']
-    map_dfm = map_df[(map_df[['Latitude','Longitude']]!=0).all(axis=1)]
+    map_dfm = map_df[(map_df[['Latitude', 'Longitude']] != 0).all(axis=1)]
     # Create an empty world map
     world_map = folium.Map(tiles="cartodbpositron")
     marker_cluster = MarkerCluster().add_to(world_map)
@@ -416,7 +420,7 @@ def map_publisher_city(df, col_city, path):
         rad = 6
         popup_text = """City : {}<br>"""
         popup_text = popup_text.format(map_dfm.iloc[i][col_city])
-        folium.CircleMarker(location=[lat,lon], radius=rad, popup=popup_text, fill=True).add_to(marker_cluster)
+        folium.CircleMarker(location=[lat, lon], radius=rad, popup=popup_text, fill=True).add_to(marker_cluster)
     # Save the fill world map
     world_map.save(path)
     return df
@@ -444,5 +448,3 @@ material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
 
 # Writing a csv file with articles about blend material
 art_with_blend.to_csv('./Results/ArticlesAboutBlend.csv', sep=';')
-
-
