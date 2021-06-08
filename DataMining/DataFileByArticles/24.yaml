@@ -1,0 +1,64 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000489331500009
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    novel technology
+    trajectory
+
+materials:
+  state: 
+    melt
+  name: # fullName (ABBREVIATION)
+    polypropylene (PP)
+  additive: # additive and solvents use
+    none
+
+machine_characteristics:
+  speed: # rpm
+    min: 2000
+    max: 4000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 473.15
+    max: 513.15
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip***
+    min: 200.0e-3
+    max: 200.0e-3
+  special:
+    melt differential centrifugal electrospinning (MDCE)
+    distance between nozzle and collector, 150.0e-3
+    electric field intensity min, 25000 V
+    electric field intensity max, 45000 V
+
+fiber_results:
+  fiber_diameter: # m
+    min: 790.0e-9
+    max: 8.09e-6
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+    crystallinity min, 18.1 %
+    crystallinity max, 28.7 %
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+    droplets
+  production_rate: # kg/min
+    min: 0.00207
+    max: 0.00322
+  tool:
+    DSC
+    XRD
+    infrared thermometer
+    SEM
+    ImageJ
+    nanotensile testing system (Aglient T150 UTM)
+  other_tests:
+    tensile mechanical strength
+    trajectory
