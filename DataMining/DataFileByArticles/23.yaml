@@ -1,0 +1,65 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000418868800007
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    melamine formaldehyde (MF)
+    flame retardance
+
+materials:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
+    melamine formaldehyde (MF)
+  additive: # additive and solvents use
+    polyvinyl alcohol (PVA)
+    polyethylene glycol (PEG)
+    paraformaldehyde
+    thiourea
+    triethanolamine
+
+machine_characteristics:
+  speed: # rpm
+    min: 2800
+    max: 2800
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.21e-3
+    max: 0.21e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip***
+    min:
+    max:
+  special:
+    distance between spinneret and collector = 10.0e-2 m
+    Also have an electro-spinning set-up (not in this data sheet)
+
+fiber_results:
+  fiber_diameter: # m
+    min: 5.2e-6
+    max: 6.3e-6
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+    FT-IR
+    TGA
+    nephelometer
+    viscometer
+    Image Pro Plus 6.0
+    DTG
+  other_tests:
+    flame retardance
+    CO2 adsorption
+    turbidity
+    filtration by temperature
