@@ -1,0 +1,65 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000436560200117
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    recycled materials
+
+materials:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
+    polyethylene terephthalate (PET)
+  additive: # additive and solvents use
+    trifluoroacetic acid (TFA)
+    dichloromethane (DCM)
+
+machine_characteristics:
+  speed: # rpm
+    min: 6000
+    max: 15000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 298.15
+    max: 298.15
+  nozzle_diameter: # m
+    min: 160.0e-6
+    max: 340.0e-6
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip***
+    min: 32.0e-3
+    max: 32.0e-3
+  special:
+    air-sealed
+    recycled PET pellets
+    distance between nozzle and collector, 10.0e-2 m
+    hygrothermograph
+    relative humidity, 30 %
+    syringe pump
+
+fiber_results:
+  fiber_diameter: # m
+    min: 283.0e-9
+    max: 792.0e-9
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+    crystallinity min, 11.6 %
+    crystallinity max, 15.1 %
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+    beads
+  production_rate: # kg/min
+    min: 0.00012
+    max: 0.00256
+  tool:
+    vibro viscometer
+    SEM
+    sputter coater
+    ImageJ
+    DSC
+    tensile testing machine
+  other_tests:
+    mechanical properties
