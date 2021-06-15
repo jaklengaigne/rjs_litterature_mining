@@ -6,6 +6,16 @@ Date    : 2021-06-14
 File containing all functions of wordanalysis package
 ----------------------------------------------------------------------------"""
 
+# Import
+import re
+from nltk.stem import PorterStemmer
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+import geonamescache
+import folium
+from folium.plugins import MarkerCluster
+
 
 # =============================================================================
 # SmartStoplist.txt
@@ -16,14 +26,28 @@ File containing all functions of wordanalysis package
 # =============================================================================
 """
 Definition of a cleaning function (preprocess before words analysis)
-This function get a text and return a text (string) of stemmed word in
-lowercase without stop words and any caracter except letter
+This function get a text and a the name of a stop words list and return a text
+(string) of stemmed word in lowercase without stop words and any caracter
+except letter
+Input :     raw_text        text to be clean (String)
+            stopwords_file  name.txt of file that contains list of stop words
+                            (String) Need to be in the same folder as raw_text
+Return :    clean_text      raw_text without special caracter and stop words, 
+                            in lowercase with only stemmed words
 """
-def preprocess(raw_text):
+def preprocess(raw_text, stopwords_file):
     """
     Keep only letters in the text (lowercase and capitals) using Regex (re).
     Replace all symboles with a blank space.
     """
+    # Definition of constant and variable
+    stop_words_file = stopwords_file
+    stop_words = []
+    # Creating a list of stop words while reading the stop words's file
+    with open(stop_words_file, "r") as f:
+        for line in f:
+            stop_words.extend(line.split())
+    stop_words = stop_words
     letters_only_text = re.sub("[^a-zA-Z]", " ", raw_text)
     # Change the capitals for lowercase AND split into a list of words (no expression)
     words = letters_only_text.lower().split()
@@ -116,9 +140,6 @@ Return :    nb_word_by_year
 Save :      plot bar (x,y) → (Publication Year, number of article)
 """
 def plot_word_by_year(word, df, col_word, col_year, path):
-    # Import
-    import matplotlib.pyplot as plt
-    import math
     # Adding a new columns in df and if word in it put True un cell, else False
     df['Word'] = df[col_word].apply(lambda x: any([k in x for k in word]))
     # Creating a new datafram with the pub year columns and removing 'NaN' → all int
@@ -182,11 +203,6 @@ Return :    the dataframe with two new columns (latitude and longitude)
 Save :      plot bar (x,y) → (Publication Year, number of article)
 """
 def map_publisher_city(df, col_city, path):
-    # Libraries
-    import geonamescache
-    import pandas as pd
-    import folium
-    from folium.plugins import MarkerCluster
     # Get a dictionnary of cities
     gc = geonamescache.GeonamesCache()
     cities_dic = gc.get_cities()
