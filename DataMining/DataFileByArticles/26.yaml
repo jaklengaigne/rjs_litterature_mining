@@ -1,29 +1,23 @@
 # if there is no data, leave a blank space in the according field
 article:
-  WOS:
+  WOS: 000262343500008
   type: # paper type
-    experimental or numerical or analytical or review
+    experimental
   application_field: # application target, 1 or 2 max
-    medical
-    filtration
-    etc 
+    yttrium aluminum garnet
 
 materials:
   state: 
-    melt or solution
+    solution
   name: # fullName (ABBREVIATION)
-    example polypropylene (PP)
+    yttrium aluminum garnet (YAG)
   additive: # additive and solvents use
-    example
-    none
-    nanoparticles
-    hexafluoroisopropanol (HFIP)
-    etc
+    water
 
 machine_characteristics:
   speed: # rpm
-    min:
-    max:
+    min: 3000
+    max: 4000
   collector_diameter: # m
     min:
     max:
@@ -31,42 +25,35 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min:
-    max:
+    min: 0.2e-3
+    max: 0.2e-3
   spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
     min:
     max:
   special:
-    if something special example →
-    (system pressure, electrical field,
-    nozzle orientation # ° between center line of nozzle and ...)
+    drum-collector
+    collector with controlled heating
+    external air flow
+    number of nozzle, 840
 
 fiber_results:
   fiber_diameter: # m
-    min:
-    max:
+    min: 3.0e-6
+    max: 10.0e-6
     average:  #format [average, error]
       [nominal, +-]
   fiber_morphology:
-    example
-    crystalline
-    amorphous
-    etc
   fiber_orientation: # 0-1, 1 → perfectly aligned
-    num
   defect:
-    example
-    beads
-    etc
   production_rate: # kg/min
     min:
     max:
   tool:
-    example
-    SEM
-    etc
+     TG/DTA
+     XRD
+     FT-IR
+     SEM
+     electronic single fiber strength tester (AGS-50NG)
   other_tests:
-    example
-    filtration
-    degradation
-    etc
+    grain size
+    tensile strength
