@@ -38,6 +38,6 @@ The dataset use in [WordsAnalysis.py](https://github.com/jaklengaigne/rjs_litter
 
 [<b id="f1">1</b>] [↩](#a1) : Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021, from https://github.com/lisanka93/text_analysis_python_101/blob/master/Railroad_incidents_USA2019.ipynb
 
-[<b id="f2">2</b>] [↩](#a2) : Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021, from https://github.com/lisanka93/text_analysis_python_101/blob/master/SmartStoplist.txt
+[<b id="f2">2</b>] [↩](#a2) : Oh, J. (2020, April 23). Using Python to create a world map from a list of country names. Medium. https://towardsdatascience.com/using-python-to-create-a-world-map-from-a-list-of-country-names-cd7480d03b10
 
-[<b id="f3">3</b>] [↩](#a3) : Oh, J. (2020, April 23). Using Python to create a world map from a list of country names. Medium. https://towardsdatascience.com/using-python-to-create-a-world-map-from-a-list-of-country-names-cd7480d03b10
+[<b id="f3">3</b>] [↩](#a3) : Lisanka93/text_analysis_python_101. (n.d.). GitHub. Retrieved May 3, 2021, from https://github.com/lisanka93/text_analysis_python_101/blob/master/SmartStoplist.txt
