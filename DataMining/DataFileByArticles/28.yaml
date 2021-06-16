@@ -1,0 +1,65 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000474203200001
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    mass production
+    composite
+
+materials:
+  state:
+    solution # blend
+  name: # fullName (ABBREVIATION)
+    polyethylene glycol (PEG)
+    polyacrylonitrile (PAN)
+  additive: # additive and solvents use
+    dimethylformamide (DMF)
+    SiC powder
+    ethanol
+    distilled water
+
+machine_characteristics:
+  speed: # rpm
+    min: 1500
+    max: 5000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 298.15
+    max: 298.15
+  nozzle_diameter: # m
+    min: 0.5e-3
+    max: 0.5e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 3.0e-2
+    max: 3.0e-2
+  special:
+    rod-collector
+    distance between nozzle and collector, 20.0e-2 m
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+    beads
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+    XRD
+    FT-IR
+    DSC
+    TGA
+  other_tests:
+    thermal conductivity
+    form-stable
+    leakage
+    thermal storage performance
+    degradation
