@@ -1,0 +1,69 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000239268500016
+  type: # paper type
+    experimental or numerical or analytical or review
+  application_field: # application target, 1 or 2 max
+    high temperature insulating
+    metal
+
+materials:
+  state: 
+    solution
+  name: # fullName (ABBREVIATION)
+    aluminum chloride
+  additive: # additive and solvents use
+    aluminum powder
+    colloidal silica
+    water
+
+machine_characteristics:
+  speed: # rpm
+    min: 2000
+    max: 2000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.4e-3
+    max: 0.4e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    sol–gel centrifugal spinning
+    number of nozzle, 120
+
+fiber_results:
+  fiber_diameter: # m
+    min: 10.0e-6
+    max: 10.0e-6
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+    example
+    crystalline
+    amorphous
+    etc
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    num
+  defect:
+    example
+    beads
+    etc
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    rotational viscometer
+    XRD
+    XRF
+    DTA
+    TG
+    SEM
+    FT-IR
+  other_tests:
+    heat treatement
