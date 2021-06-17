@@ -1,1 +1,1 @@
-# -*- coding: utf-8 -*-
+from .wordanalysis import *

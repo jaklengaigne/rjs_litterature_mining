@@ -178,46 +178,48 @@ art_with_blend = wa.article_with_word('blend', clean_data, 'Abstract', 'Article 
 
 
 
-# Plot
-# Creating histogram of number of articles in function of publication year
-nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
-nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
-plt.bar(nb_art_by_pub_year.index.map(int).map(str), nb_art_by_pub_year['Publication Year'])
-plt.xticks(rotation=65)
-plt.xlabel('Publication Year')
-plt.gcf().subplots_adjust(bottom=0.20)
-plt.ylabel('Number of Article')
-plt.suptitle('Number of articles by publication year')
-plt.savefig('./Results/PlotArticleByYear.svg')
-# Creating histogram of number of articles mentioning microfib in function of publication year
-wa.plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', './Results/PlotMicrofibByYear.svg')
-# Creating histogram of number of articles mentioning scaffold in function of publication year
-wa.plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './Results/PlotScaffoldByYear.svg')
-# Creating histogram of number of articles mentioning viscos in function of publication year
-wa.plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
-
-# Map of publisher's city
-wa.map_publisher_city(clean_data, 'Publisher City', './Results/mapPublisherCity.html')
-
-
-
-# Write files
-# If there is no folder for the result create one
-os.makedirs('Results', exist_ok=True)
-
-# Writing a csv file for the occurence of all the clean words
-clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
-clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
-
-# Writing a csv file with the article sorted by the score
-# Creating a refined dataframe
-art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
-art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
-# Writing the file
-art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
-
-# Writing a csv file with the mention materials sorted by most common
-material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
-
-# Writing a csv file with articles about blend material
-art_with_blend.to_csv('./Results/ArticlesAboutBlend.csv', sep=';')
+# =============================================================================
+# # Plot
+# # Creating histogram of number of articles in function of publication year
+# nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
+# nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
+# plt.bar(nb_art_by_pub_year.index.map(int).map(str), nb_art_by_pub_year['Publication Year'])
+# plt.xticks(rotation=65)
+# plt.xlabel('Publication Year')
+# plt.gcf().subplots_adjust(bottom=0.20)
+# plt.ylabel('Number of Article')
+# plt.suptitle('Number of articles by publication year')
+# plt.savefig('./Results/PlotArticleByYear.svg')
+# # Creating histogram of number of articles mentioning microfib in function of publication year
+# wa.plot_word_by_year(['microfib'], clean_data, 'Abstract', 'Publication Year', './Results/PlotMicrofibByYear.svg')
+# # Creating histogram of number of articles mentioning scaffold in function of publication year
+# wa.plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './Results/PlotScaffoldByYear.svg')
+# # Creating histogram of number of articles mentioning viscos in function of publication year
+# wa.plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
+# 
+# # Map of publisher's city
+# wa.map_publisher_city(clean_data, 'Publisher City', './Results/mapPublisherCity.html')
+# 
+# 
+# 
+# # Write files
+# # If there is no folder for the result create one
+# os.makedirs('Results', exist_ok=True)
+# 
+# # Writing a csv file for the occurence of all the clean words
+# clean_words_occ_df = pd.DataFrame(clean_words_occ, columns=['Word', 'Count'])
+# clean_words_occ_df.to_csv('./Results/CleanWordsOccurence.csv', sep=';')
+# 
+# # Writing a csv file with the article sorted by the score
+# # Creating a refined dataframe
+# art_refined_by_score = pd.concat([clean_data['Score'], raw_data_useField['Article Title'], clean_data['UT (Unique WOS ID)']], axis=1)
+# art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
+# # Writing the file
+# art_sorted_by_score_df.to_csv('./Results/ArticlesSortedByScore.csv', sep=';')
+# 
+# # Writing a csv file with the mention materials sorted by most common
+# material_df.to_csv('./Results/MaterialsSortedByMostCommon.csv', sep=';')
+# 
+# # Writing a csv file with articles about blend material
+# art_with_blend.to_csv('./Results/ArticlesAboutBlend.csv', sep=';')
+# =============================================================================
