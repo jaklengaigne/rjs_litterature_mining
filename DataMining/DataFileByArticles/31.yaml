@@ -42,18 +42,9 @@ fiber_results:
     min: 10.0e-6
     max: 10.0e-6
     average:  #format [average, error]
-      [nominal, +-]
   fiber_morphology:
-    example
-    crystalline
-    amorphous
-    etc
   fiber_orientation: # 0-1, 1 → perfectly aligned
-    num
   defect:
-    example
-    beads
-    etc
   production_rate: # kg/min
     min:
     max:
