@@ -1,0 +1,54 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000482042102022
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    fibritary
+    hair
+
+materials:
+  state: 
+    melt
+  name: # fullName (ABBREVIATION)
+    polypropylene (PP)
+  additive: # additive and solvents use
+    none
+
+machine_characteristics:
+  speed: # rpm
+    min: 3800
+    max: 6700
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 413.15
+    max: 513.15
+  nozzle_diameter: # m
+    min: 1.0e-3
+    max: 1.0e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    heat-aided rotary jet-spinning
+    consumable cotton candy machine TK-5 (Asahi Industry Co., Ltd.)
+    arduino
+    resistance of heating element, 15.3 Ω
+    mesh
+
+fiber_results:
+  fiber_diameter: # m
+    min: 1.0e-9
+    max: 100.e-9
+    average:  #format [average, error]
+  fiber_morphology:
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+  defect:
+  production_rate: # kg/min
+    min: 0.010
+    max: 0.010
+  tool:
+    microscope
+  other_tests:
