@@ -1,0 +1,212 @@
+
+
+tmdLoader = window.tmdLoader ? tmdLoader : {};
+tmdLoader.emoji = String.fromCodePoint(0x1F489) + " [TrendMD] "
+tmdLoader.dois = ['10.1111/(ISSN)1360-0443','10.1002/(ISSN)1096-8644','10.1111/(ISSN)1600-6143','10.1111/(ISSN)1467-8330','10.1111/(ISSN)1467-8519','10.1111/(ISSN)1541-0420','10.1111/(ISSN)1948-7169','10.1001/(ISSN)2042-3306','10.1002/(ISSN)1098-2760','10.1002/(ISSN)1097-0142','10.1002/(ISSN)1097-0266','10.1111/(ISSN)1365-2648','10.1111/(ISSN)1467-6478','10.1111/(ISSN)1540-4781','10.1111/(ISSN)1467-9523','10.1111/(ISSN)1467-9566','10.1002/(ISSN)1521-3765','10.1002/(ISSN)1099-0690','10.1002/(ISSN)2475-8817','10.1111/(ISSN)1469-7793','10.1111/(ISSN)1939-1668','10.1002/(ISSN)1938-3703','10.1002/(ISSN)1549-4918','10.1002/(ISSN)2157-6580','10.1002/(ISSN)2398-8835','10.1111/(ISSN)1750-3841','10.1111/(ISSN)1540-6261','10.1111/(ISSN)1865-1682','10.1002/(ISSN)1099-1379','10.1002/(ISSN)1097-0010','10.1002/(ISSN)1542-0981','10.1002/(ISSN)2476-1508','10.1111/(ISSN)1365-313X','10.1111/(ISSN)1464-410X','10.1002/(ISSN)1097-4679','10.1111/(ISSN)1467-6494','10.1002/(ISSN)1097-0258','10.1001/(ISSN)2042-3292','10.1111/(ISSN)2059-1101','10.1002/(ISSN)2050-4527','10.1111/(ISSN)1939-1676','10.1002/(ISSN)1469-0705','10.1002/(ISSN)1097-0215','10.1111/(ISSN)1469-8137','10.1002/(ISSN)1864-564X','10.1002/(ISSN)1547-5905','10.1002/(ISSN)2195-1071','10.1111/(ISSN)1365-2214','10.1111/(ISSN)1365-2834','10.1111/(ISSN)1365-2850','10.1002/(ISSN)1099-050X','10.1111/(ISSN)1467-8624','10.1002/(ISSN)1097-0088','10.1111/(ISSN)1365-2621','10.1002/(ISSN)1545-7249','10.1111/(ISSN)1532-950X','10.1111/(ISSN)1745-9133','10.1002/(ISSN)2330-1643','10.1111/(ISSN)2151-6952','10.1111/(ISSN)1468-2397','10.1002/(ISSN)1099-1131','10.1002/(ISSN)1521-4095','10.1002/(ISSN)1554-2769','10.1111/(ISSN)1475-4762','10.1111/(ISSN)1365-2133','10.1002/(ISSN)1861-471X','10.1111/(ISSN)1541-4337','10.1002/(ISSN)1099-128X','10.1111/(ISSN)1469-7610','10.1111/(ISSN)1600-051X','10.1002/(ISSN)1522-2624','10.1111/(ISSN)2397-2335','10.1111/(ISSN)1467-9868','10.1111/(ISSN)1467-9922','10.1111/(ISSN)1468-2249','10.1111/(ISSN)1740-9713','10.1111/(ISSN)1475-4959','10.1002/(ISSN)2053-1095','10.1111/(ISSN)1399-5448','10.1111/(ISSN)1600-0501'];
+tmdLoader.journalIds = ['64346','64410','64414','64454','64882','64894','74466','74885','75267','75270','75271','75272','75273','75274','75275','75276','75277','75278','75279','75280','75281','75282','75283','75284','75285','75286','75287','75288','75289','75290','75291','75292','75293','75294','75295','75296','75297','0','77498','77542','78181','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','78438','65379'];
+tmdLoader.groups = ['2','2','2','1a','1b','1a','2','2','2','2','1a','1b','1a','2','2','1b','1a','2','2','2','2','2','1b','1b','1b','1a','2','1a','1a','2','1a','1a','1b','2','1b','2','2','3','2','2','2','4','4','4','4','4','4','4','4','4','4','4','4','4','4','4','4','4','4','4','4','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','1b','1b'];
+tmdLoader.group = 0;
+tmdLoader.tryCount = 0;
+tmdLoader.wolDoubleClickcount = 0;
+tmdLoader.widgetIsLoaded = false;
+
+tmdLoader.load = function(){
+    tmdLoader.doi = window.digitalData && digitalData.publication && digitalData.publication.series && digitalData.publication.series.doi;
+    for(i=0;i<tmdLoader.dois.length; i++){
+        if(tmdLoader.doi.indexOf(tmdLoader.dois[i])>=0){
+            window.console && console.log(tmdLoader.emoji, "Journal DOI is in test");
+
+            tmdLoader.journalId = tmdLoader.journalIds[i];
+            tmdLoader.group = tmdLoader.groups[i];
+            window.console && console.log(tmdLoader.emoji, "Journal is in group", tmdLoader.group);
+            window._satellite && _satellite.setVar('tmdGroup',tmdLoader.group);
+            window._satellite && _satellite.track("event221");
+            
+            if(["1a","1b","2"].includes(tmdLoader.group)){
+                window.console && console.log(tmdLoader.emoji, "Preload TrendMD");
+                tmdDiv = document.createElement('div');
+                tmdDiv.setAttribute('id','trendmd-suggestions');
+                document.body.append(tmdDiv);
+                tmdDiv.style.display = "none";
+
+                tmdLoader.getWidget();
+                tmdLoader.checkIfTMDLoaded();
+            }
+           
+
+            if(tmdLoader.group == '1a'){
+                //side panel - tab closed, load on click
+
+                $(".related-tab").click(function(){
+                if(tmdLoader.wolDoubleClickcount ==0 ){
+                    tmdLoader.checkIfWOLLoaded();
+                    window._satellite && _satellite.track('event222');
+                }
+                tmdLoader.wolDoubleClickcount++;
+                });  
+            }
+            if(tmdLoader.group == '1b'){
+                //side panel - tab opened by default - page must load then simulate click then swap results
+                $(".related-tab").click(function(){
+                if(tmdLoader.wolDoubleClickcount ==0 ){
+                    tmdLoader.checkIfWOLLoaded();
+                }
+                tmdLoader.wolDoubleClickcount++;
+                });  
+                $(window).load(function(){
+                    $(".article-row-right:visible .related-tab").click();
+                    window._satellite && _satellite.track('event222');
+                   // simulate(document.getElementById("pane-pcw-relatedcon"), "click");
+                });
+            }
+            if(tmdLoader.group == '2'){
+                //bottom of article - load immediately
+                window.console && console.log(tmdLoader.emoji, "Inserting widget in footer", tmdLoader.group);
+                document.querySelector('.article__body').after(tmdDiv);
+                tmdDiv.style.display="block";
+                window._satellite && _satellite.track('event224'); 
+
+            }
+            if(tmdLoader.group == '3'){
+                //side panel - tab opened by default but not trendmd - page must load then simulate click, do not swap results
+                $(window).load(function(){
+                    window.console && console.log(tmdLoader.emoji, "Opening RR", tmdLoader.group);
+                    $(".article-row-right:visible .related-tab").click();
+                    window._satellite && _satellite.track('event222');
+                  
+                });
+            }
+            if(tmdLoader.group == '4'){
+                //no change, but track clicks through
+                window.console && console.log(tmdLoader.emoji, "Control", tmdLoader.group);
+                $(".related-tab").click(function(){
+                    if(tmdLoader.wolDoubleClickcount ==0 ){
+                        window._satellite && _satellite.track('event222');  
+                    }
+                    tmdLoader.wolDoubleClickcount++;
+                });
+            }
+            
+        }
+    }
+}
+
+tmdLoader.getWidget = function(){
+    window.console && console.log(tmdLoader.emoji, "Getting Trend MD Widget");
+    tagString = "<script src='//js.trendmd.com/trendmd.min.js?' data-trendmdconfig='{\"journal_id\":\"" + tmdLoader.journalId + "\",\"element\":\"#trendmd-suggestions\"}'><\/s" + "cript>";
+    var range = document.createRange();
+    range.selectNode(document.getElementsByTagName("BODY")[0]);
+    var documentFragment = range.createContextualFragment(tagString);
+    document.body.appendChild(documentFragment);
+}
+
+
+tmdLoader.checkIfWOLLoaded = function(){
+    //necessary as WOL related links destroy anything else in pane
+    tmdLoader.wtryCount = 0;
+    tmdLoader.wrrLoader = setInterval(function(){
+        tmdLoader.wtryCount++;
+        window.console && console.log(tmdLoader.emoji, "Checking if WOL RR Widget is loaded...");
+        if( $(".show-recommended__content").length > 0){
+            window.console && console.log(tmdLoader.emoji, "Success. WOL RR Widget is loaded.");
+
+            tmdLoader.loadTMDInPane();
+
+            clearInterval(tmdLoader.wrrLoader);
+        }
+        else{
+            //window.console && console.log(tmdLoader.emoji, "Check again. WOL RR Widget is not loaded.");
+        } 
+        if(tmdLoader.wtryCount > 50){
+            window.console && console.log(tmdLoader.emoji, "Fail. WOL RR Widget did not load in time.");
+            clearInterval(tmdLoader.wrrLoader);
+        }
+    }, 300);
+}
+
+tmdLoader.checkIfTMDLoaded = function(){
+    tmdLoader.ttryCount = 0;
+    tmdLoader.twidgetLoader = setInterval(function(){
+        tmdLoader.ttryCount++;
+        window.console && console.log(tmdLoader.emoji, "Check if TrendMD widget has links yet...");
+        if( $(".trendmd-widget-list-item__link").length > 1){
+            window.console && console.log(tmdLoader.emoji, "Success. TrendMD widget is ready.");
+
+            tmdLoader.widgetIsLoaded  = true;
+            
+            clearInterval(tmdLoader.twidgetLoader);
+        }
+        else{
+            //window.console && console.log(tmdLoader.emoji, "Check again. TrendMD widget is not loaded.");
+        } 
+        if(tmdLoader.ttryCount > 50){
+            window.console && console.log(tmdLoader.emoji, "Fail. TrendMD Widget did not load in time.");
+
+            tmdLoader.widgetIsLoaded  = "failed";
+
+            clearInterval(tmdLoader.twidgetLoader);
+        }
+    }, 300);
+}
+
+tmdLoader.loadTMDInPane = function(){
+    
+    if ($("#pane-pcw-related .trendmd-widget-list-item__link").length < 1 ){
+        window.console && console.log(tmdLoader.emoji, "Trend MD not yet in right rail");
+        
+        if(tmdLoader.widgetIsLoaded == true){
+            tmdLoader.renderTrendMDRR();
+        }
+        if(tmdLoader.widgetIsLoaded == false){
+            tmdLoader.waitForWidget = setInterval(function(){
+                tmdLoader.xtryCount++;
+                
+                if(tmdLoader.widgetIsLoaded == false){
+                    window.console && console.log(tmdLoader.emoji, "TrendMD Widget not ready, waiting...");
+                }
+                if(tmdLoader.widgetIsLoaded == true){
+                    window.console && console.log(tmdLoader.emoji, "TrendMD Widget now ready, inject");
+                    clearInterval(tmdLoader.waitForWidget);
+                    tmdLoader.renderTrendMDRR();
+                }
+                if(tmdLoader.widgetIsLoaded == "failed"){
+                    window.console && console.log(tmdLoader.emoji, "TrendMD Widget failed. Ending.");
+                    clearInterval(tmdLoader.waitForWidget);
+                }                
+                if(tmdLoader.wtryCount > 50){
+                    clearInterval(tmdLoader.waitForWidget);
+                }
+            }, 300); 
+        }
+       
+       
+       
+    }
+    else{
+        window.console && console.log(tmdLoader.emoji, "TrendMD already injected");
+    }
+}
+
+
+
+
+tmdLoader.renderTrendMDRR = function(){
+    relatedpane = document.querySelector('#pane-pcw-related');
+    relatedpane.appendChild(tmdDiv);
+    tmdDiv.style.display="block";
+    $(".show-recommended__content").empty();
+    $(".show-recommended__title").empty();
+    $(".trendmd-widget-header__heading").text("Related Content");
+    tmdLoader.wolDoubleClickcount = 0;
+    window.console && console.log(tmdLoader.emoji, "TrendMD Added to Right Rail", tmdLoader.group);
+    window.window._satellite && _satellite.track('event223');
+    tmdLoader.addWOLparams();
+}
+tmdLoader.addWOLparams = function(){
+    console.log(String.fromCodePoint(0x1FA7A), "Adding WOL parameters to links");
+    $('.trendmd-widget-list-item__link').each(function(ix,el){
+        newurl = $(el).attr('href') + '&sid=WOL_tmd' + tmdLoader.group;
+        $(el).attr('href', newurl);
+    });
+}
+tmdLoader.load()

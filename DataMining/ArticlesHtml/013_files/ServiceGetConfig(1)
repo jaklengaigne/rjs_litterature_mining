@@ -1,0 +1,3 @@
+SnapEngage.callbackGetWidgetConfig(1,"","","",0,0,0,0,0,"CA");
+if ( typeof SnapEngage.setVisitorCountry == 'function' ) { SnapEngage.setVisitorCountry("CA");
+}
