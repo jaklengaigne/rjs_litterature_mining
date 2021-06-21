@@ -1,71 +1,23 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 18 11:25:52 2021
-
-@author: valer
-"""
-
-import requests
 from bs4 import BeautifulSoup
-import html2text
 import codecs
+import re
 
-# =============================================================================
-# h = html2text.HTML2Text()
-# 
-# html = function_to_get_some_html()
-# text = html2text.html2text(html)
-# =============================================================================
-
-# list of URL to experiment the coding (from articles already datamined)
-# 4.yaml → 20 → melt
-# 5.yaml → 145 → multiple materials (to much data; min max global) + immersion
-# 12.yaml → 165 → dia fibre x±y
-# 13.yaml → 166 → not about RJS, surprise!!
-# 24.yaml → 52 → melt
-# Shit can't use a list of url because the site I use uses firewall with login, can't access without it
-
-
-# =============================================================================
-# # Providing url
-# url = 'https://www.sciencedirect.com/science/article/pii/S2589234720300154'
-#   
-# # Creating request object
-# req = requests.get(url)
-#   
-# # Creating soup object
-# soup = BeautifulSoup(req.text, 'html.parser')
-# 
-# # =============================================================================
-# # # Text content in inspector
-# # text = soup.find_all(text=True)
-# # set([t.parent.name for t in text])
-# # 
-# # # Html text that we do not want (tag, etc.)
-# # output = ''
-# # blacklist = ['[document]',
-# #             'noscript',
-# #             'header',
-# #             'html',
-# #             'meta',
-# #             'head', 
-# #             'input',
-# #             'script',]
-# # for t in text:
-# #     if t.parent.name not in blacklist:
-# #         output += '{} '.format(t)
-# #         
-# # print(output)
-# # =============================================================================
-# 
-# # To work without html knowledge, convert to easy to read text
-# text2 = html2text.html2text(soup)
-# =============================================================================
-
+# Get article text from a saved html file
 path = './ArticlesHtml/4.html'
 f = codecs.open(path, 'r', 'utf-8')
 document = BeautifulSoup(f.read(),features='html.parser').get_text()
-print(document)
 f.close()
+
+# Get the RPM range
+teststr1 = 'rotational speed between 650, 1700 and 2800 rpm'
+teststr2 = 'rotational speed greater than 1700 rpm cause the formation'
+teststr3 = 'synthesized PLA (at 650 rpm) decreased'
+teststr4 = 'Table 3. The average fiber diameters of non-woven PLA fiber (L130).Rotational speed (rpm)Average fiber diameter (μm)190 °C210 °C230 °C65018.6 ± 5.311.8 ± 3.511.2 ± 4.7170015.4 ± 4.513.3 ± 5.711.4 ± 4.7280014.1 ± 5.49.6 ± 4.15.5 ± 2.7PLA, polylactic acid.'
+speed1 = re.findall(r'(\d+)?,? ?(\d+)?,? ?(\d+)? ?\w+ (\d+) rpm', teststr1)
+speed2 = re.findall(r'(\d+)?,? ?(\d+)?,? ?(\d+)? ?\w+ (\d+) rpm', teststr2)
+speed3 = re.findall(r'(\d+)?,? ?(\d+)?,? ?(\d+)? ?\w+ (\d+) rpm', teststr3)
+speed4 = re.findall(r'(\d+)?,? ?(\d+)?,? ?(\d+)? ?\w+ (\d+) rpm', teststr4)
+speed = re.findall(r'(\d+)?,? ?(\d+)?,? ?(\d+)? ?\w+ (\d+) rpm', document)
+
 
 
