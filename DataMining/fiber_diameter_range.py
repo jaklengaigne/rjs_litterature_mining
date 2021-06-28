@@ -25,7 +25,66 @@ for filename in os.listdir(directory):
         # Keep only a range
         # clean tuple list of dia 
         # (remove empty string → false min, space, comma and untis → conversion)
-        dia = [(re.split(' and | to | ± |–|-| | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in dia]
+        dia = [(re.split(' and | to |–|-| | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in dia]
+        # ((remove generator because it's painfull to work with as beginner in python))
+        dia = pd.DataFrame(dia)
+        dia = pd.DataFrame(dia[0].tolist())
+        # ((change object type because everything is not suppose to be str))
+        def isfloat(value):
+          try:
+            float(value)
+            return True
+          except ValueError:
+            return False
+        for i, row in dia.iterrows():
+            for j in range(len(row)):
+                if isinstance(row[j], str):
+                    if row[j].isdigit() or isfloat(row[j]):
+                        row[j] = float(row[j])
+                if not row[j]:
+                    row[j] = np.nan
+        # ((special case : ±))
+        if len(dia) > 1:
+            for imatch in range(len(dia)):
+                for jgroup in range(len(dia.columns)):
+                    if dia.at[imatch, jgroup] == '±':
+                        plus = dia.at[imatch, 0] + dia.at[imatch, 2]
+                        new_rowp = [plus, dia.at[imatch, 3]]
+                        new_rowp = pd.DataFrame(new_rowp).transpose()
+                        
+                        minus = dia.at[imatch, 0] - dia.at[imatch, 2]
+                        new_rowm = [minus, dia.at[imatch, 3]]
+                        new_rowm = pd.DataFrame(new_rowm).transpose()
+                        
+                        dia = pd.concat([dia, new_rowp])
+                        dia = pd.concat([dia, new_rowm])
+        if len(dia) == 1:
+            bool_df = (dia == '±').any()
+            for igroup in range(dia.size):
+                if bool_df[igroup]:
+                    plus = dia[0] + dia[2]
+                    new_elep = [plus, dia[3]]
+                    
+                    minus = dia[0] - dia[2]
+                    new_elem = [minus, dia[3]]
+                    
+                    new_elep = pd.DataFrame(new_elep).reset_index()
+                    new_elep = new_elep.drop('index', axis=1)
+                    new_elep = new_elep.transpose()
+                    dia = dia.append(new_elep)
+                    
+                    new_elem = pd.DataFrame(new_elem).reset_index()
+                    new_elem = new_elem.drop('index', axis=1)
+                    new_elem = new_elem.transpose()
+                    dia = dia.append(new_elem)
+            del bool_df
+
+        dia = dia.reset_index().drop('index', axis=1)    
+        for index, row in dia.iterrows():
+            if row[1] == '±':
+                dia = dia.drop(index, axis=0)
+                    
+                    
         
 #        dia = [(re.split('[\s| ]±[\s| ]', x) if re.search('±', x) else x for x in _ if x) for _ in dia]
 #        dia = [re.split('[\s| ]', x[1]) if isinstance(x, list) else x for x in dia if x]
