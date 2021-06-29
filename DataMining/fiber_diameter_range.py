@@ -59,8 +59,27 @@ for filename in os.listdir(directory):
                 dia = pd.concat([dia, new_rowm])
                 dia = dia.reset_index().drop('index', axis=1)  
                 dia = dia.drop(dia.index[imatch], axis=0)
-          
-                
+                dia = dia.reset_index().drop('index', axis=1)  
+        # ((conversion to meter))
+        for imatch in range(len(dia)):
+            for jgroup in range(len(dia.columns)):
+                ele = dia.at[imatch, jgroup]
+                if jgroup < len(dia.columns)-1:
+                    next_ele = dia.at[imatch, jgroup+1]
+                if isfloat(ele) and np.isfinite(ele):
+                    if isfloat(next_ele):
+                        unit = dia.at[imatch, jgroup+2]
+                    if isinstance(next_ele, str):
+                        unit = next_ele
+                    if unit == 'μm':
+                        dia.at[imatch, jgroup] = ele*10**-6
+                    if unit == 'nm':
+                        dia.at[imatch, jgroup] = ele*10**-9
+                if isinstance(ele, str):
+                    dia.at[imatch, jgroup] = np.nan
+        # Find min max
+        
+               
                     
                     
         
