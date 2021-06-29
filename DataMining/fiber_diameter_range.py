@@ -45,41 +45,22 @@ for filename in os.listdir(directory):
                     row[j] = np.nan
         # ((special case : ±))
         bool_df = (dia == '±').any(axis=1)         
-        if len(dia) > 1:
-            for imatch in range(len(dia)):
-                if bool_df[imatch]:
-                    plus = dia.at[imatch, 0] + dia.at[imatch, 2]
-                    new_rowp = [plus, dia.at[imatch, 3]]
-                    new_rowp = pd.DataFrame(new_rowp).transpose()
-                    
-                    minus = dia.at[imatch, 0] - dia.at[imatch, 2]
-                    new_rowm = [minus, dia.at[imatch, 3]]
-                    new_rowm = pd.DataFrame(new_rowm).transpose()
-                    
-                    dia = pd.concat([dia, new_rowp])
-                    dia = pd.concat([dia, new_rowm])
-        if len(dia) == 1:
-            if bool_df[0]:
-                plus = dia[0] + dia[2]
-                new_elep = [plus, dia[3]]
+        for imatch in range(len(dia)):
+            if bool_df[imatch]:
+                plus = dia.at[imatch, 0] + dia.at[imatch, 2]
+                new_rowp = [plus, dia.at[imatch, 3]]
+                new_rowp = pd.DataFrame(new_rowp).transpose()
                 
-                minus = dia[0] - dia[2]
-                new_elem = [minus, dia[3]]
+                minus = dia.at[imatch, 0] - dia.at[imatch, 2]
+                new_rowm = [minus, dia.at[imatch, 3]]
+                new_rowm = pd.DataFrame(new_rowm).transpose()
                 
-                new_elep = pd.DataFrame(new_elep).reset_index()
-                new_elep = new_elep.drop('index', axis=1)
-                new_elep = new_elep.transpose()
-                dia = dia.append(new_elep)
+                dia = pd.concat([dia, new_rowp])
+                dia = pd.concat([dia, new_rowm])
+                dia = dia.reset_index().drop('index', axis=1)  
+                dia = dia.drop(dia.index[imatch], axis=0)
+          
                 
-                new_elem = pd.DataFrame(new_elem).reset_index()
-                new_elem = new_elem.drop('index', axis=1)
-                new_elem = new_elem.transpose()
-                dia = dia.append(new_elem)
-
-        dia = dia.reset_index().drop('index', axis=1)    
-        for index, row in dia.iterrows():
-            if row[1] == '±':
-                dia = dia.drop(index, axis=0)
                     
                     
         
