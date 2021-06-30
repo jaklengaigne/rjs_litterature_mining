@@ -10,7 +10,6 @@ directory = './ArticlesHtml'
 dia_range = pd.DataFrame(columns=('min', 'max'))
 for filename in os.listdir(directory):
     if filename.endswith('.html'):
-        dia_range = pd.DataFrame(columns=('min', 'max'))
         # Get article text from a saved html file
         path = os.path.join(directory, filename)
         f = codecs.open(path, 'r', 'utf-8')
