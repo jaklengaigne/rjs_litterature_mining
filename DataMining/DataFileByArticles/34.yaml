@@ -1,0 +1,66 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000495382700019
+  type: # paper type
+    experimental, analytical
+  application_field: # application target, 1 or 2 max
+    medical
+    filtration
+    etc
+
+materials:
+  state:
+    melt or solution
+  name: # fullName (ABBREVIATION)
+    carboxylated chitosan (CCS)
+    polyethylene oxide (PEO)
+  additive: # additive and solvents use
+    water
+
+machine_characteristics:
+  speed: # rpm
+    min: 3000
+    max: 5000
+  collector_diameter: # m
+    min: 30e-2
+    max: 30e2
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.06e3
+    max: 0.15e3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 6.5e3
+    max: 25e3
+  special:
+    ratio  # ° between center line of nozzle and ...)
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+    example
+    crystalline
+    amorphous
+    etc
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    num
+  defect:
+    example
+    beads
+    etc
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    FTIR-ATR
+    SEM
+    DSC
+    TGA
+  other_tests:
+    parallel plate rheometry
+    traction testing

@@ -1,0 +1,56 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000461066000013
+  type: experimental
+  application_field: materials
+
+materials:
+  state: solution
+  name: # fullName (ABBREVIATION)
+     Polyvinylepyrrolidone (PVP)
+  additive: # additive and solvents use
+    ethanol
+
+machine_characteristics:
+  speed: # rpm
+    min: 197
+    max: 4051
+  collector_diameter: # m
+    min: 13.3e-2
+    max: 13.3e-2
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.15e-3
+    max: 0.15e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 18e-3
+    max: 18e-3
+  special:
+    high voltage (0 to 14kV)
+
+fiber_results:
+  fiber_diameter: # m
+    min: 310e-9
+    max: 828e-9
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+    map of kV and rpm for nanofiber formation
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+    beads
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+    XRD
+    Optical photography
+  other_tests:
+    example
+    filtration
+    degradation
+    etc
