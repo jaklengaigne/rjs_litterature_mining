@@ -2,15 +2,13 @@
 article:
   WOS: 000495382700019
   type: # paper type
-    experimental, analytical
+    experimental
+    analytical
   application_field: # application target, 1 or 2 max
-    medical
-    filtration
-    etc
 
 materials:
   state:
-    melt or solution
+    solution
   name: # fullName (ABBREVIATION)
     carboxylated chitosan (CCS)
     polyethylene oxide (PEO)
@@ -34,25 +32,21 @@ machine_characteristics:
     min: 6.5e3
     max: 25e3
   special:
-    ratio  # ° between center line of nozzle and ...)
+
 
 fiber_results:
   fiber_diameter: # m
-    min:
-    max:
+    min: 200e-9
+    max: 800e-9
     average:  #format [average, error]
-      [nominal, +-]
+
   fiber_morphology:
-    example
-    crystalline
-    amorphous
-    etc
+
   fiber_orientation: # 0-1, 1 → perfectly aligned
-    num
+    1
   defect:
-    example
     beads
-    etc
+
   production_rate: # kg/min
     min:
     max:

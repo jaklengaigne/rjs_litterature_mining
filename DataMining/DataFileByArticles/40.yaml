@@ -1,24 +1,23 @@
 # if there is no data, leave a blank space in the according field
 article:
-  WOS: 000468252800023
+  WOS: 000372323400012
   type: # paper type
     experimental
   application_field: # application target, 1 or 2 max
-    heat storage
+
 
 materials:
   state:
     solution
   name: # fullName (ABBREVIATION)
-    allyloxy polyethylene glycol (APEG)
-    sodium alginate (SA)
-    feather keratin (FK)
+    monomer
   additive: # additive and solvents use
-    NaOH
+    ethylacetate (EA)
+    formic acid
 machine_characteristics:
   speed: # rpm
-    min: 250
-    max: 750
+    min: 1500
+    max: 10500
   collector_diameter: # m
     min:
     max:
@@ -26,34 +25,33 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min:
-    max:
+    min: 210e-6
+    max: 337e-6
   spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
-    min:
-    max:
+    min: 23.2e-2
+    max: 23.2e-2
   special:
-    immersion RJS
-    immersion bath temperature (30 to 70C)
+    FibeRio Cyclone L-1000
+    UV lamp for in situ polymerization
 fiber_results:
   fiber_diameter: # m
-    min: 390e-6
-    max: 450e-6
+    min: 0.4e-6
+    max: 16e-6
     average:  #format [average, error]
 
   fiber_morphology:
-
+    uniform
   fiber_orientation: # 0-1, 1 → perfectly aligned
-
+    0
   defect:
+    fused
+    beads
 
   production_rate: # kg/min
-    min:
-    max:
+    min: 0.102e-3
+    max: 0.118e-3
   tool:
-    FTIR
-    NMR
     SEM
-    DSC
-    EDS
+
   other_tests:
-    single fiber traction testing
+    shear rheometry

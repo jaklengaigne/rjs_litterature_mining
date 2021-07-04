@@ -1,24 +1,24 @@
 # if there is no data, leave a blank space in the according field
 article:
-  WOS: 000468252800023
+  WOS: 000412040900006
   type: # paper type
-    experimental
+    numerical
+    modelling
   application_field: # application target, 1 or 2 max
-    heat storage
+    materials
 
 materials:
   state:
     solution
   name: # fullName (ABBREVIATION)
-    allyloxy polyethylene glycol (APEG)
-    sodium alginate (SA)
-    feather keratin (FK)
+    polyisobutylene
   additive: # additive and solvents use
-    NaOH
+    polybutene
+
 machine_characteristics:
   speed: # rpm
-    min: 250
-    max: 750
+    min: 2140
+    max: 2140
   collector_diameter: # m
     min:
     max:
@@ -26,18 +26,17 @@ machine_characteristics:
     min:
     max:
   nozzle_diameter: # m
-    min:
-    max:
+    min: 0.5e-3
+    max: 0.5e-3
   spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
-    min:
-    max:
+    min: 3e-2
+    max: 3e-2
   special:
-    immersion RJS
-    immersion bath temperature (30 to 70C)
+
 fiber_results:
   fiber_diameter: # m
-    min: 390e-6
-    max: 450e-6
+    min:
+    max:
     average:  #format [average, error]
 
   fiber_morphology:
@@ -50,10 +49,6 @@ fiber_results:
     min:
     max:
   tool:
-    FTIR
-    NMR
-    SEM
-    DSC
-    EDS
+
   other_tests:
-    single fiber traction testing
+    high speed imaging

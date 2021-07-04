@@ -1,59 +1,60 @@
 # if there is no data, leave a blank space in the according field
 article:
-  WOS: 000468252800023
+  WOS: 000376785800009
   type: # paper type
     experimental
   application_field: # application target, 1 or 2 max
-    heat storage
+    medical
 
 materials:
   state:
-    solution
+    melt
   name: # fullName (ABBREVIATION)
-    allyloxy polyethylene glycol (APEG)
-    sodium alginate (SA)
-    feather keratin (FK)
+    sucrose
   additive: # additive and solvents use
-    NaOH
+    BCS Class II model drugs
 machine_characteristics:
   speed: # rpm
-    min: 250
-    max: 750
+    min: 2400
+    max: 2400
   collector_diameter: # m
     min:
     max:
   temperature: # K
-    min:
-    max:
+    min: 473
+    max: 473
   nozzle_diameter: # m
-    min:
-    max:
+    min: 0.8e-3
+    max: 0.8e-3
   spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
-    min:
-    max:
+    min: 12.2e-2
+    max: 12.2e-2
   special:
-    immersion RJS
-    immersion bath temperature (30 to 70C)
+    if something special example →
+    (system pressure, electrical field,
+    nozzle orientation # ° between center line of nozzle and ...)
+
 fiber_results:
   fiber_diameter: # m
-    min: 390e-6
-    max: 450e-6
+    min: 3e-6
+    max: 25e-6
     average:  #format [average, error]
 
   fiber_morphology:
-
+    uniform
+    amorphous
   fiber_orientation: # 0-1, 1 → perfectly aligned
-
+    0
   defect:
 
   production_rate: # kg/min
     min:
     max:
   tool:
-    FTIR
-    NMR
-    SEM
     DSC
-    EDS
+    SEM
+    XRD
+    FTIR
+    OM
   other_tests:
-    single fiber traction testing
+    dissolution
