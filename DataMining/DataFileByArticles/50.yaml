@@ -1,0 +1,59 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 0003805875000130
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+
+materials:
+  state:
+    melt
+  name: # fullName (ABBREVIATION)
+    polyprolactone (PCL)
+    polylactic acid (PLA)
+    polydioxanone (PDO)
+    coprolactone (PLC)
+  additive: # additive and solvents use
+
+machine_characteristics:
+  speed: # rpm
+    min: 3000
+    max: 3000
+  collector_diameter: # m
+    min: 60e-2
+    max: 60e-2
+  temperature: # K
+    min: 85
+    max: 310
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 15e-2
+    max: 15e-2
+  special:
+    Commercial cotton candy machine Gold Metal Breeze 3030EX
+    thin slits
+
+fiber_results:
+  fiber_diameter: # m
+    min: 3.5
+    max: 9.0
+    average:  #format [average, error]
+
+  fiber_morphology:
+    twisted
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+    beads
+    twists
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+    OM
+  other_tests:

@@ -1,0 +1,55 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000352110300001
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    polyacrylonitrile (PAN)
+  additive: # additive and solvents use
+    dimethylformamide (DMF)
+
+machine_characteristics:
+  speed: # rpm
+    min: 2650
+    max: 3575
+  collector_diameter: # m
+    min: 40e-2
+    max: 40e2
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    electro centrifugal spinning (8kV 22kV)
+
+fiber_results:
+  fiber_diameter: # m
+    min: 622
+    max: 872
+    average:  #format [average, error]
+      [751, 60]
+  fiber_morphology:
+    uniform
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    1
+  defect:
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    OM
+    SEM
+  other_tests:
+    orientation

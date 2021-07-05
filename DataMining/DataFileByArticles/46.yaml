@@ -1,0 +1,58 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000350483000006
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+materials:
+  state:
+    melt
+    solution
+  name: # fullName (ABBREVIATION)
+    polyethylene terephthalate (PET)
+    polyvinylpyrrolidone (PVP)
+  additive: # additive and solvents use
+    water
+
+machine_characteristics:
+  speed: # rpm
+    min: 1500
+    max: 2700
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 245
+    max: 247
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 100e-3
+    max:
+  special:
+    if something special example →
+    (system pressure, electrical field,
+    nozzle orientation # ° between center line of nozzle and ...)
+
+fiber_results:
+  fiber_diameter: # m
+    min: 0.4e-6
+    max: 3e-6
+    average:  #format [average, error]
+
+  fiber_morphology:
+    uniform
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    1
+  defect:
+
+  production_rate: # kg/min
+    min: 5e-3
+    max: 5e-3
+  tool:
+    SEM
+
+  other_tests:
+    high speed imagery

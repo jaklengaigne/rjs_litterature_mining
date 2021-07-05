@@ -1,0 +1,57 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000368364700013
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    battery
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    tin chloride (SnCl2)
+    Polyacrylonitrile (PAN)
+  additive: # additive and solvents use
+    N,N-dimethylformide (DMF)
+
+machine_characteristics:
+  speed: # rpm
+    min: 4000
+    max: 4000
+  collector_diameter: # m
+    min: 26e-2
+    max: 26e-2
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.4e-3
+    max: 0.4e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 3e-2
+    max: 3e-2
+  special:
+    calcination
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+
+  fiber_morphology:
+
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+    fused
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    XRD
+    SEM
+    EDX
+  other_tests:
+    electrochemical impedance spectroscopy
