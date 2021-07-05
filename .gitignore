@@ -1,2 +1,3 @@
-# Private folder
-./DataMining/ArticlesHtml*
+# Private folder to avoid sharing copyrighted data
+DataMining\ArticlesHtml*
+DataMining/ArticlesHtml*
