@@ -1,0 +1,58 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000446384000006
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    filtration
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    nylon
+  additive: # additive and solvents use
+    formic acid
+    chitosan
+
+machine_characteristics:
+  speed: # rpm
+    min: 10000
+    max: 10000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.14e-3
+    max: 0.14e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    L1000 FibeRio
+
+fiber_results:
+  fiber_diameter: # m
+    min: 100-9
+    max: 800e-9
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    1
+  defect:
+    twist
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    TGA
+    SEM
+
+  other_tests:
+    absroption

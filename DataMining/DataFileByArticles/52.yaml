@@ -1,0 +1,61 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000432768200077
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    example polypropylene (PP)
+  additive: # additive and solvents use
+    Aluminium nitrate nonahydrate (ANN)
+    Aluminium powder
+machine_characteristics:
+  speed: # rpm
+    min: 500
+    max: 3000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min: 24
+    max: 150
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 600e-3
+    max: 600e-3
+  special:
+    hot air blower
+    calcination
+
+fiber_results:
+  fiber_diameter: # m
+    min:
+    max:
+    average:  #format [average, error]
+
+  fiber_morphology:
+
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+
+  defect:
+    beads
+    twist
+    droplets
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    FTIR
+    XRD
+    SEM
+
+  other_tests:
+    shear rheometry

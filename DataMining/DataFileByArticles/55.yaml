@@ -1,0 +1,57 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000390650800038
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    polyvinyl pyrrolidone (PVP)
+  additive: # additive and solvents use
+    ethyl cellulose (EC)
+    ethanol
+    water
+
+machine_characteristics:
+  speed: # rpm
+    min: 3500
+    max: 3500
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min:
+    max:
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    electrospinning comparison
+
+fiber_results:
+  fiber_diameter: # m
+    min: 2e-6
+    max: 7e-6
+    average:  #format [average, error]
+
+  fiber_morphology:
+    porous
+    uniform
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+
+  defect:
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+
+  other_tests:
+    hydrophobicity

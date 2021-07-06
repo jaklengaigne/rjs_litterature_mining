@@ -1,0 +1,56 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000371296000055
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    polyvinyl pyrrolidone (PVP)
+  additive: # additive and solvents use
+    FeCl3·6H2O
+    N,N-dimethyl-formamide (DMF)
+    ethanol
+
+machine_characteristics:
+  speed: # rpm
+    min: 4500
+    max: 6000
+  collector_diameter: # m
+    min: 20
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.16e-3
+    max: 0.25e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    calcination
+
+fiber_results:
+  fiber_diameter: # m
+    min: 1e-6
+    max: 4.5e-6
+    average:  #format [average, error]
+
+  fiber_morphology:
+    uniform
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+    XRD
+    DSC
+  other_tests:
