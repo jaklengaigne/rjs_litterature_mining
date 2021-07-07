@@ -17,13 +17,13 @@ for filename in os.listdir(directory):
         f.close()
         
         # Get diameter
-        dia_rex = r'nozzles?\sdiameters?\s\w+\s(\d+?\.?\d+\s?[μ|n]m)|syringes?\sdiameters?\s\w+\s(\d+?\.?\d+\s?[μ|n]m)|needles?\sdiameters?\s\w+\s(\d+?\.?\d+\s?[μ|n]m)|holes?\sdiameters?\s\w+\s(\d+?\.?\d+\s?[μ|n]m)|orifices?\sdiameters?\s\w+\s(\d+?\.?\d+\s?[μ|n]m)|(\d+?\.?\d+\s?[μ|n]?m?\s\w+\s\d+?\.?\d+\s?[μ|n]m)\sdiameters?\sorifices?|orifices?\sdiameters?\s.*\s(\d+?\.?\d+\s?[μ|n]?m?\s.*\s\d+?\.?\d+\s?[μ|n]m)'
+        dia_rex = r'nozzles?\s+diameters?\s+\w+\s+(\d+?\.?\d+\s?[μ|n|m]m)|syringes?\s+diameters?\s+\w+\s+(\d+?\.?\d+\s?[μ|n|m]m)|needles?\s+diameters?\s+\w+\s+(\d+?\.?\d+\s?[μ|n|m]m)|holes?\s+diameters?\s+\w+\s+(\d+?\.?\d+\s?[μ|n|m]m)|orifices?\s+diameters?\s+\w+\s+(\d+?\.?\d+\s?[μ|n|m]m)|(\d+?\.?\d+\s?[μ|n|m]?m?\s\w+\s\d+?\.?\d+\s?[μ|n|m]m)\s+diameters?\s+orifices?|orifices?\s+diameters?\s+.*\s+(\d+?\.?\d+\s?[μ|n|m]?m?\s+.*\s+\d+?\.?\d+\s?[μ|n|m]m)|diameters?\s+.*\s+orifices?\s+\w+\s+(\d+\s?[μ|n|m]m)|diameters?\s+.*\s+orifices?\s+.*\s+(\d+\s?\s+\w+\s+\d+?\.?\d+\s?[μ|n|m]m)'
         dia = re.findall(dia_rex, document)
         
         # Keep only a range
         # clean tuple list of dia 
         # (remove empty string → false min, space, comma and untis → conversion)
-        dia = [(re.split(' and | to | or |–|-| | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in dia]
+        dia = [(re.split(' and | to | or |–|-| | | |, and ', x) if isinstance(x, str) else x for x in _ if x) for _ in dia]
         # ((remove generator because it's painfull to work with as beginner in python))
         dia = pd.DataFrame(dia)
         if not dia.empty:
@@ -70,6 +70,8 @@ for filename in os.listdir(directory):
                             unit = dia.at[imatch, jgroup+2]
                         if isinstance(next_ele, str):
                             unit = next_ele
+                        if unit == 'mm':
+                            dia.at[imatch, jgroup] = ele*10**-3
                         if unit == 'μm':
                             dia.at[imatch, jgroup] = ele*10**-6
                         if unit == 'nm':
