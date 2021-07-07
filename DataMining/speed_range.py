@@ -17,13 +17,13 @@ for filename in os.listdir(directory):
         f.close()
         
         # Get RPM
-        speed_rex = r'(\d+?[\s|,]?\d{2,})?,?\s?(\d+?[\s|,]?\d{2,})?\s?\w+\s(\d+?[\s|,]?\d{2,})\s[r|R][p|P]?\s?[m|M]'
+        speed_rex = r'(\d+?[\s|,]?\d{2,})?,?\s?(\d+?[\s|,]?\d{2,})?\s?\w+\s(\d+?[\s|,]?\d{2,})\s[r|R][p|P]?\s?[m|M]|(\d+?[\s|,]?\d{2,})-(\d+?[\s|,]?\d{2,})\s[r|R][p|P]?\s?[m|M]'
         speed = re.findall(speed_rex, document)
         
         # Keep only a range
         # clean tuple list of speed 
         # (remove empty string → false min, space and comma)
-        speed = [(x.replace(',', '').replace(' ', '') if isinstance(x, str) else x for x in _ if x) for _ in speed]
+        speed = [(x.replace(',', '').replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '') if isinstance(x, str) else x for x in _ if x) for _ in speed]
         speed = [(tuple(int(x) if x.isdigit() else x for x in _ if x)) for _ in speed]
         # find minimum speed
         min0 = 300000000
