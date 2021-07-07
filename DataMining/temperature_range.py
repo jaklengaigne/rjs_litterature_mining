@@ -18,7 +18,7 @@ for filename in os.listdir(directory):
         f.close()
         
         # Get tempmeter
-        temp_rex = r'\s(\d{3,}\s?°?[C|F|K])[\s|\.]|\s(\d{3,}\s?±\s?\d{3,}\s?°?[C|F|K])[\s|\.]|\s(\d{3,}\s?\w+\s?\d{3,}\s?°?[C|F|K])[\s|\.]'
+        temp_rex = r'\s(\d{3,}\s?°?[CFK])[\s|\.]|\s(\d{3,}\s?±\s?\d{3,}\s?°?[CFK])[\s|\.]|\s(\d{3,}\s?\w+\s?\d{3,}\s?°?[CFK])[\s|\.]'
         temp = re.findall(temp_rex, document)
         
         # Keep only a range
