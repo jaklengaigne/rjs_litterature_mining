@@ -1,0 +1,56 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000418590200052
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    polyvinylpyrrolidone (PVP)
+    polyethylene glycol (PEG)
+
+  additive: # additive and solvents use
+    ethanol
+
+machine_characteristics:
+  speed: # rpm
+    min: 2000
+    max: 2000
+  collector_diameter: # m
+    min: 43e-2
+    max: 43e-2
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.5e-3
+    max: 0.5e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min: 3e-2
+    max: 3e-2
+  special:
+
+fiber_results:
+  fiber_diameter: # m
+    min: 1e-6
+    max: 2e-6
+    average:  #format [average, error]
+
+  fiber_morphology:
+    uniform
+
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    1
+  defect:
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    DSC
+    SEM
+    TGA
+  other_tests:

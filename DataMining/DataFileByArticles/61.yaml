@@ -1,0 +1,55 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000430091700004
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+    filtration
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    polyurethane (TPU)
+  additive: # additive and solvents use
+    N, N-dimethylformamide (DMF)
+    ethyl acetate
+
+machine_characteristics:
+  speed: # rpm
+    min: 4000
+    max: 12000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.413e-3
+    max: 1.194e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    Nanocentrino L1.0 (Areka Group LLC.)
+
+fiber_results:
+  fiber_diameter: # m
+    min: 100e-9
+    max: 1e6
+    average:  #format [average, error]
+      [400, 200]
+  fiber_morphology:
+    uniform
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    SEM
+  other_tests:
+    filtration

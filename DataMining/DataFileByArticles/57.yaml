@@ -1,0 +1,60 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000380256100009
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    polycaprolactone (PCL)
+  additive: # additive and solvents use
+    tetrahydrofuran (THF)
+    N,N-dimethylformamide (DMF)
+
+machine_characteristics:
+  speed: # rpm
+    min: 1000
+    max: 10000
+  collector_diameter: # m
+    min:
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.159e-3
+    max: 0.159e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    solvent affect the quality
+
+fiber_results:
+  fiber_diameter: # m
+    min: 0.25e-6
+    max: 5e-6
+    average:  #format [average, error]
+      [nominal, +-]
+  fiber_morphology:
+    crystalline
+    uniform
+
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+    beads
+    droplets
+
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    DSC
+    SEM
+    XRD
+  other_tests:

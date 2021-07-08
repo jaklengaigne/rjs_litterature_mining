@@ -1,0 +1,66 @@
+# if there is no data, leave a blank space in the according field
+article:
+  WOS: 000413925200019
+  type: # paper type
+    experimental
+  application_field: # application target, 1 or 2 max
+
+
+materials:
+  state:
+    solution
+  name: # fullName (ABBREVIATION)
+    starch
+  additive: # additive and solvents use
+    water
+    amylose
+    amylopectin
+    sodium hydroxide
+
+machine_characteristics:
+  speed: # rpm
+    min:
+    max:
+  collector_diameter: # m
+    min: 120e-3
+    max:
+  temperature: # K
+    min:
+    max:
+  nozzle_diameter: # m
+    min: 0.153e-3
+    max: 0.153e-3
+  spinneret_diameter: # m  ***At nozzle/syringe/needle tip or hole***
+    min:
+    max:
+  special:
+    heated air blowing 250, 350, 450 °C, 190 L/min
+
+fiber_results:
+  fiber_diameter: # m
+    min: 0.5e-6
+    max: 4e-6
+    average:  #format [average, error]
+
+  fiber_morphology:
+    amorphous
+    nanostructures
+
+  fiber_orientation: # 0-1, 1 → perfectly aligned
+    0
+  defect:
+    example
+    beads
+    etc
+  production_rate: # kg/min
+    min:
+    max:
+  tool:
+    example
+    SEM
+    etc
+  other_tests:
+    example
+    filtration
+    degradation
+    etc
