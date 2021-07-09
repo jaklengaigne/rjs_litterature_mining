@@ -86,7 +86,7 @@ for filename in os.listdir(directory):
         header_after_intro = re.findall(rex_flush_intro, raw_document)
         if len(header_after_intro) == 1:
             raw_document = raw_document.split(header_after_intro[0])
-            raw_document = raw_document[1]
+            raw_document = max(raw_document, key=len)
         raw_document = raw_document.rsplit('References', 1)
         raw_document = raw_document[0]
         clean_doc = preprocess(raw_document, 'SmartStoplist.txt')

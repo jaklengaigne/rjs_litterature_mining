@@ -15,15 +15,19 @@ for filename in os.listdir(directory):
         f = codecs.open(path, 'r', 'utf-8')
         document = BeautifulSoup(f.read(),features='html.parser').get_text()
         f.close()
-        
+        # remove introduction
+        rex_flush_intro = r'[\D][\.|\n](2\.?\s[A-Z]\w+)'
+        header_after_intro = re.findall(rex_flush_intro, document)
+            document = max(document, key=len)
+            
         # Get diameter
-        dia_rex = r'fib.*\s(\d+\s?±\s?\d+\s?[μ|n]m)|n?a?n?o?fibers?\swith\san?\s?a?v?e?r?a?g?e?\sdiameters?\s.*[\s≈~](\d+?\.?\d+[\s| ]?[μ|n]m)|diameters?\sof\sn?a?n?o?fibers?\s.*\s(\d+?\.?\d+[\s| ]?[μ|n]m)|fibers?\sdiameters?.*\s(\d+?\.?\d+\s?[μ|n]?m?\s\w+\s\d+?\.?\d+\s?[μ|n]m)|fibers?\sdiameters?.*[\s(](\d+[–|-]\d+\s?[μ|n]m)'
+        dia_rex = r'fib.*\s+(\d+\s?±\s?\d+\s?[μn]m)|n?a?n?o?fibers?\s+with\san?\s+?a?v?e?r?a?g?e?\s+diameters?\s+.*[\s≈~](\d+?\.?\d+[\s ]?[μn]m)|diameters?\s+of\s+n?a?n?o?fibers?\s+.*\s+(\d+?\.?\d+[\s ]?[μn]m)|fibers?\s+diameters?.*\s+(\d+?\.?\d+\s?[μn]?m?\s+\w+\s+\d+?\.?\d+\s?[μn]m)|fibers?\s+diameters?.*[\s(](\d+[–-]\d+\s?[μn]m)|n?a?n?o?fibers?\s+diameters?\s+\w+\s+(\d+,\s+\d+\s+\w+\s+\d+[\s+ ]?[μn]m)'
         dia = re.findall(dia_rex, document)
         
         # Keep only a range
         # clean tuple list of dia 
         # (remove empty string → false min, space, comma and untis → conversion)
-        dia = [(re.split(' and | to |–|-| | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in dia]
+        dia = [(re.split('\s+and\s+|\s+to\s+|–|-| | | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in dia]
         # ((remove generator because it's painfull to work with as beginner in python))
         dia = pd.DataFrame(dia)
         if not dia.empty:
@@ -43,31 +47,39 @@ for filename in os.listdir(directory):
                     if not row[j]:
                         row[j] = np.nan
             # ((special case : ±))
-            bool_df = (dia == '±').any(axis=1)         
+            bool_df = (dia == '±').any(axis=1)    
+            difimatch = 0     
             for imatch in range(len(dia)):
-                if bool_df[imatch]:
-                    plus = dia.at[imatch, 0] + dia.at[imatch, 2]
-                    new_rowp = [plus, dia.at[imatch, 3]]
+                if bool_df[difimatch]:
+                    plus = dia.at[difimatch, 0] + dia.at[difimatch, 2]
+                    new_rowp = [plus, dia.at[difimatch, 3]]
                     new_rowp = pd.DataFrame(new_rowp).transpose()
                     
-                    minus = dia.at[imatch, 0] - dia.at[imatch, 2]
-                    new_rowm = [minus, dia.at[imatch, 3]]
+                    minus = dia.at[difimatch, 0] - dia.at[difimatch, 2]
+                    new_rowm = [minus, dia.at[difimatch, 3]]
                     new_rowm = pd.DataFrame(new_rowm).transpose()
                     
                     dia = pd.concat([dia, new_rowp])
                     dia = pd.concat([dia, new_rowm])
                     dia = dia.reset_index().drop('index', axis=1)  
-                    dia = dia.drop(dia.index[imatch], axis=0)
-                    dia = dia.reset_index().drop('index', axis=1)  
+                    dia = dia.drop(dia.index[difimatch], axis=0)
+                    dia = dia.reset_index().drop('index', axis=1)
+                    difimatch -= 1
+                difimatch += 1 
             # ((conversion to meter))
             for imatch in range(len(dia)):
                 for jgroup in range(len(dia.columns)):
                     ele = dia.at[imatch, jgroup]
                     if jgroup < len(dia.columns)-1:
                         next_ele = dia.at[imatch, jgroup+1]
+                    if len(dia.columns)>2 and jgroup < len(dia.columns)-2:
+                        next_next_ele = dia.at[imatch, jgroup+2]
                     if isfloat(ele) and np.isfinite(ele):
                         if isfloat(next_ele):
-                            unit = dia.at[imatch, jgroup+2]
+                            if 'next_next_ele' in locals() and isfloat(next_next_ele):
+                                unit = dia.at[imatch, jgroup+3]
+                            else:
+                                unit = dia.at[imatch, jgroup+2]
                         if isinstance(next_ele, str):
                             unit = next_ele
                         if unit == 'μm':

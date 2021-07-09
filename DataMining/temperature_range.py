@@ -24,7 +24,7 @@ for filename in os.listdir(directory):
         # Keep only a range
         # clean tuple list of temp 
         # (remove empty string → false min, space, comma and untis → conversion)
-        temp = [(re.split(' and | to | or |–|-| | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in temp]
+        temp = [(re.split('\s+and\s+|\s+to\s+|\s+or\s+|–|-| | | ', x) if isinstance(x, str) else x for x in _ if x) for _ in temp]
         # ((remove generator because it's painfull to work with as beginner in python))
         temp = pd.DataFrame(temp)
         if not temp.empty:
@@ -44,31 +44,39 @@ for filename in os.listdir(directory):
                     if not row[j]:
                         row[j] = np.nan
             # ((special case : ±))
-            bool_df = (temp == '±').any(axis=1)         
+            bool_df = (temp == '±').any(axis=1)    
+            difimatch = 0     
             for imatch in range(len(temp)):
-                if bool_df[imatch]:
-                    plus = temp.at[imatch, 0] + temp.at[imatch, 2]
-                    new_rowp = [plus, temp.at[imatch, 3]]
+                if bool_df[difimatch]:
+                    plus = temp.at[difimatch, 0] + temp.at[difimatch, 2]
+                    new_rowp = [plus, temp.at[difimatch, 3]]
                     new_rowp = pd.DataFrame(new_rowp).transpose()
                     
-                    minus = temp.at[imatch, 0] - temp.at[imatch, 2]
-                    new_rowm = [minus, temp.at[imatch, 3]]
+                    minus = temp.at[difimatch, 0] - temp.at[difimatch, 2]
+                    new_rowm = [minus, temp.at[difimatch, 3]]
                     new_rowm = pd.DataFrame(new_rowm).transpose()
                     
                     temp = pd.concat([temp, new_rowp])
                     temp = pd.concat([temp, new_rowm])
                     temp = temp.reset_index().drop('index', axis=1)  
-                    temp = temp.drop(temp.index[imatch], axis=0)
-                    temp = temp.reset_index().drop('index', axis=1)  
+                    temp = temp.drop(temp.index[difimatch], axis=0)
+                    temp = temp.reset_index().drop('index', axis=1)
+                    difimatch -= 1
+                difimatch += 1 
             # ((conversion to kelvin))
             for imatch in range(len(temp)):
                 for jgroup in range(len(temp.columns)):
                     ele = temp.at[imatch, jgroup]
                     if jgroup < len(temp.columns)-1:
                         next_ele = temp.at[imatch, jgroup+1]
+                    if len(temp.columns)>2 and jgroup < len(temp.columns)-2:
+                        next_next_ele = temp.at[imatch, jgroup+2]
                     if isfloat(ele) and np.isfinite(ele):
                         if isfloat(next_ele):
-                            unit = temp.at[imatch, jgroup+2]
+                            if 'next_next_ele' in locals() and isfloat(next_next_ele):
+                                unit = temp.at[imatch, jgroup+3]
+                            else:
+                                unit = temp.at[imatch, jgroup+2]
                         if isinstance(next_ele, str):
                             unit = next_ele
                         if unit == '°C':
@@ -77,6 +85,7 @@ for filename in os.listdir(directory):
                             temp.at[imatch, jgroup] = t2t.Fahrenheit.to_kelvin(ele)
                     if isinstance(ele, str):
                         temp.at[imatch, jgroup] = np.nan
+
         # find min max
         min_temp = temp.min().min()
         max_temp = temp.max().max()
