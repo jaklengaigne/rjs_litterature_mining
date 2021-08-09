@@ -1,0 +1,6 @@
+# Private folder to avoid sharing copyrighted data
+DataMining\ArticlesHtml*
+DataMining/ArticlesHtml*
+
+# Byte-compiled
+__pycache__/
