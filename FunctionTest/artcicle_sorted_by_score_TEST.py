@@ -1,17 +1,25 @@
 import numpy as np 
 import operator
 
+#***************************************************************************
+'''
+To sort in the function I need to return a new dataFrame and it seem
+to not work properly when I call twice the function???? To investigate
+So I decided to only score and not sort in the function :(
+'''
+#***************************************************************************
+
 # Score
 """
-Sorting the articles with the help of an homemade intuition base criteria's equation
+Scoring the articles with the help of an homemade intuition base criteria's equation
 There is two main way to use this function. You can search if the text contain
 some specifics words or you can check if a numeric parameter respect a certain
 condition. You can also use both at the same time. If you choose to work with
 words then you need to call as parameter : df, lst_word, lst_score and col_word.
 If you choose to work with numeric then you need to call as parameter : df and
 col_num (condition can be change but has a default state). The function added
-a column score to the original dataframe (df) and ordered it by score then you
-can refined your dataframe. The function can be use twice or more. The score is
+a column score to the original dataframe (df) then you can refined and ordered
+by score your dataframe. The function can be use twice or more. The score is
 cumulative, in other word the function check if the column Score is existing.
     Input :     df          dataframe that contain the columns (see below)
                 lst_word    list of words to search in text (List of strings)
@@ -69,11 +77,7 @@ def sorted_by_score(df, lst_word=None, lst_score=None, col_word=None, limit=None
             if ops[condition](nb_cita, limit):
                 df.at[i, 'Score'] += 1
 
-# =============================================================================
-# # Creating a refined dataframe
-# art_refined_by_score = pd.concat([df['Score'], raw_data_useField['Article Title'], df['UT (Unique WOS ID)']], axis=1)
-# art_sorted_by_score_df = pd.DataFrame(art_refined_by_score).sort_values(by='Score', ascending=False)
-# =============================================================================
+
 
 import pandas as pd
 
@@ -113,7 +117,11 @@ sorted_by_score(df_test5, limit=(10), col_num=('Times Cited, All Databases'))
 df_test6 = pd.read_csv('../WordAnalysis/DataBase_20210522.csv', sep=';')
 sorted_by_score(df_test6, limit=(1), col_num=('Times Cited, All Databases'), condition='==')
 
-
+'''
+To sort in the function I need to return a new dataFrame and it seem
+to not work properly when I call twice the function???? To investigate
+'''
+df_test3m = df_test3.sort_values(by='Score', ascending=False)
 
 # Help
 '''

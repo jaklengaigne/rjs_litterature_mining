@@ -31,7 +31,7 @@ class Rawtxt:
     Return :    clean_text      raw_text without special caracter and stop words, 
                                 in lowercase with only stemmed words
     """
-    def preprocess(self, stopwords_file, opt_caps, opt_stem):
+    def preprocess(self, stopwords_file, opt_caps='no', opt_stem='no'):
         # Definition of constant and variable
         stop_words_file = stopwords_file
         stop_words = []
@@ -78,6 +78,9 @@ test2 = obj2.preprocess('SmartStoplist.txt', 'lowercase', 'yes')
 
 obj3 = Rawtxt(monTexte)
 test3 = obj3.preprocess('SmartStoplist.txt', 'lowercase', 'not stem')
+
+obj4 = Rawtxt(monTexte)
+test4 = obj4.preprocess('SmartStoplist.txt')
 
 
 
