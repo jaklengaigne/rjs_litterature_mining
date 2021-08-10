@@ -1,0 +1,11 @@
+# Comme from :
+# Packaging Python Projects—Python Packaging User Guide. (n.d.). 
+# Retrieved June 14, 2021, from 
+# https://packaging.python.org/tutorials/packaging-projects/
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
