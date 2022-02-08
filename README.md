@@ -1,18 +1,36 @@
 # README
 
-We mine text data extracted from the literature on rotary jet spinning published in scientific journals with the intent of guiding our research on the subject and find insight in the state of the art.
+We mine text data extracted from the literature on rotary jet spinning published in scientific journals with the intent of guiding our research on the subject and finding insights in the state of the art.
 
 We first explore the data with a word analysis hoping that we could reduce the number of articles to data mined. We couldn't reduce it but we sorted them by giving subjective score to each article with some criteria easily manage in python code. Then we start datamining with those with the highest score.
 
 The word analysis part is based on a railroad incident text analysis by Lisa Andreevna<sup id="a1">[1](#f1)</sup>. Also most of codes are in python but [map_of_publisher_cities](https://github.com/jaklengaigne/rjs_litterature_mining/blob/main/FunctionTest/map_of_publisher_cities_TEST.py), based on John Oh tutorial<sup id="a2">[2](#f2)</sup>, save to html to do world map.
 
+## HOW TO RUN
+We use the anaconda toolkit (https://www.anaconda.com/), adapt the procedure if you use different tools.
+
+### Word analysis
+1. Collect, extract or format data (See next section)
+2. Install required libraries
+> conda install --file requirements.txt
+
+3.  
+
+## Datamining from htlm data
+1. Collect your articles and convert to text
+2.
+
 ## Data
 
+### Word analysis dataset
+
 * The first dataset originates from Web of Science database (https://apps.webofknowledge.com from Clariviate analytics) and contains all the bibliographic data from the keyword search:
-TOPIC: ("rotary jet spinning"  OR "centrifugal spinning"  OR "cotton candy method") 
-downloaded on: 2021-05 
+TOPIC: ("rotary jet spinning"  OR "centrifugal spinning"  OR "cotton candy method")
+downloaded on: 2021-05
 For more information about how the exportation was carried out please go see this text file : [Exportation_Prepa_Of_RawDataBase.txt](https://github.com/jaklengaigne/rjs_litterature_mining/blob/main/WordAnalysis/Exportation_Prepa_Of_RawDataBase.txt)
 The dataset use in [WordsAnalysis.py](https://github.com/jaklengaigne/rjs_litterature_mining/blob/main/WordAnalysis/WordsAnalysis.py) is contained here : [DataBase_20210522.csv](https://github.com/jaklengaigne/rjs_litterature_mining/blob/main/WordAnalysis/DataBase_20210522.csv)
+
+### Data  mining dataset
 
 ## Main Folders
 
@@ -29,7 +47,7 @@ The dataset use in [WordsAnalysis.py](https://github.com/jaklengaigne/rjs_litter
     * .yaml : data sheet template used to extract data from papers/articles
     * .csv : checklist to keep trace which articles have been data mined
     * [DataFileByArticles](https://github.com/jaklengaigne/rjs_litterature_mining/tree/main/DataMining/DataFileByArticles) : contains all the data sheet (one by article) and .txt files that explained how to proceed or where the notation comes from
-* [FunctionTest](https://github.com/jaklengaigne/rjs_litterature_mining/tree/main/FunctionTest) : 
+* [FunctionTest](https://github.com/jaklengaigne/rjs_litterature_mining/tree/main/FunctionTest) :
     * .py : contains tests of function used in [WordsAnalysis.py](https://github.com/jaklengaigne/rjs_litterature_mining/blob/main/WordAnalysis/WordsAnalysis.py) and [DataMining](https://github.com/jaklengaigne/rjs_litterature_mining/tree/main/DataMining)
     * .csv : related file needed to test [materials_table_TEST.py](https://github.com/jaklengaigne/rjs_litterature_mining/blob/main/FunctionTest/materials_table_TEST.py)
     * [TestPlot](https://github.com/jaklengaigne/rjs_litterature_mining/tree/main/FunctionTest/TestPlot) : contains resulting plot from tests

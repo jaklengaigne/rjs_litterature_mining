@@ -1,0 +1,18 @@
+#  For data mining
+os
+bs4
+codecs
+re
+pandas
+numpy
+nltk
+temp2temp
+
+#  For word analysis
+
+os
+re
+nltk
+pandas
+collections
+matplotlib

@@ -24,7 +24,9 @@ raw_data = pd.read_csv("DataBase_20210522.csv", sep=";")
 # Return the data frame of raw_data
 raw_data.head
 
-
+###############################################################################
+# DATA cleaning
+###############################################################################
 
 # Removing duplicates if needed
 """
@@ -120,8 +122,11 @@ clean_cita_data = raw_cita_data.loc[:, (raw_cita_data != 0).any(axis=0)]
 clean_data = pd.concat([clean_data, clean_cita_data], axis=1)
 
 
-
+###############################################################################
 # Data exploration
+###############################################################################
+
+
 # Most common words in all the abstracts (top 100)
 top_hundred = Counter(" ".join(clean_data['Abstract']).split()).most_common(100)
 
@@ -168,17 +173,20 @@ nb_art_fiber_size = nb_art_vs_2sub('microfib', 'nanofib', clean_data, 'Abstract'
 # Number of articles that write about viscosity AND/OR solution
 nb_art_visco_vs_sol = nb_art_vs_2sub('viscos', 'solut', clean_data, 'Abstract')
 
+
 # Most common bigrams and trigrams in clean data
 # Puting all abstracts into a list
 all_abstracts_list = clean_data['Abstract'].tolist()
 # Defining variables
 all_abstracts_bigrams = []
 all_abstracts_trigrams = []
+
 # Creating list of bigrams and trigrams by abstracts, i.e. list[0]=allBigramOfAbs1
 for abstracts in all_abstracts_list:
     abstracts = word_tokenize(abstracts)
     all_abstracts_bigrams.append(list(bigrams(abstracts)))
     all_abstracts_trigrams.append(list(trigrams(abstracts)))
+u
 # Obtaining the most commons ones by abstracts for all of them
 top3_bi = []
 for bi_by_abst in all_abstracts_bigrams:
@@ -192,7 +200,13 @@ for tri_by_abst in all_abstracts_trigrams:
 # Most common author's full name
 top_authors = Counter(" ".join(clean_data['Author Full Names']).split('-')).most_common(10)
 
+
+
+################################################################################
 # Score
+################################################################################
+
+
 """
 Sorting the articles with the help of an homemade intuition base criteria's equation
 -1 : solut, tio, carbon, tissu, cell, drug, treatment, scaffold, less than 10 citations
@@ -277,7 +291,11 @@ art_with_blend = article_with_word('blend', clean_data, 'Abstract', 'Article Tit
 
 
 
+################################################################################
 # Plot
+################################################################################
+
+
 # Creating histogram of number of articles in function of publication year
 nb_art_by_pub_year = clean_data['Publication Year'].replace('NaN', 0).value_counts().sort_index()
 nb_art_by_pub_year = pd.DataFrame(nb_art_by_pub_year)
@@ -355,6 +373,7 @@ plot_word_by_year(['scaffold'], clean_data, 'Abstract', 'Publication Year', './R
 # Creating histogram of number of articles mentioning viscos in function of publication year
 plot_word_by_year(['viscos'], clean_data, 'Abstract', 'Publication Year', './Results/PlotViscosByYear.svg')
 
+
 # Map of publisher's city
 '''
 Based on :
@@ -427,8 +446,10 @@ def map_publisher_city(df, col_city, path):
 map_publisher_city(clean_data, 'Publisher City', './Results/mapPublisherCity.html')
 
 
-
+################################################################################
 # Write files
+################################################################################
+
 # If there is no folder for the result create one
 os.makedirs('Results', exist_ok=True)
 
